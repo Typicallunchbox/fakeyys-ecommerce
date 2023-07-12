@@ -1,0 +1,14 @@
+.navbar{
+    .standard{
+        display: flex;
+        gap: 20px;
+        justify-content: end;
+        padding: 20px 40px;
+    }
+
+    .hamburger{
+        display: flex;
+        justify-content: end;
+        padding: 20px 40px; 
+    }
+}
