@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 const standard = () => {
   return (
     <div className="standard">
-			<Link to='/'>Home </Link>
-			<Link to='/about'>About </Link>
-			<Link to='/catalogue'>Catalogue </Link>
+			<Link to='/about'>ABOUT</Link>
+			<Link to='/catalogue'>CATALOGUE</Link>
     </div>
   )
 }

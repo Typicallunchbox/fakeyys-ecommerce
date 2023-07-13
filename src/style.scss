@@ -51,3 +51,18 @@ body {
     font-family: 'SourceSansPro-semibold-italic';
     src: url(./assets/fonts/SourceSansPro-semibold-italic.ttf);
 }
+
+/* DEFAULTS */
+p {
+    font-family: 'SourceSansPro-light', sans-serif;
+}
+
+a {
+    font-family: 'Vonique-92', sans-serif;
+    font-size: 40px;
+    text-decoration: none;
+}
+
+h3 {
+    font-family: 'Vonique-64', sans-serif;
+}

@@ -1,14 +1,27 @@
 .navbar{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    .title a{
+            font-family: 'Vonique-64', sans-serif;
+    }
+
     .standard{
         display: flex;
-        gap: 20px;
         justify-content: end;
-        padding: 20px 40px;
+        gap: 60px;
+        width: fit-content;
     }
 
     .hamburger{
-        display: flex;
-        justify-content: end;
-        padding: 20px 40px; 
+        .links{
+            display: flex;
+            gap: 40px;
+            background: #222;
+
+            a{
+                color: white;
+            }
+        }
     }
 }
