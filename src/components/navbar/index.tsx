@@ -8,6 +8,7 @@ import './style.scss';
 const index = () => {
 	const location = useLocation();
 	const [isStandard, setIsStandard] = useState(false);
+	const [isDarkTheme, setIsDarkTheme] = useState(false);
 	
 	useEffect(() => {
 		['/','/about'].includes(location.pathname) ? setIsStandard(true) : setIsStandard(false);

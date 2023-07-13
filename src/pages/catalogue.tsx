@@ -1,6 +1,6 @@
 const catalogue = () => {
   return (
-    <div>catalogue</div>
+    <div className="page">catalogue</div>
   )
 }
 

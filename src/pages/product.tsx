@@ -1,6 +1,6 @@
 const product = () => {
   return (
-    <div>product</div>
+    <div className="page">product</div>
   )
 }
 

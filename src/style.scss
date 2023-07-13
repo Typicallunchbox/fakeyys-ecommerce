@@ -2,7 +2,12 @@
     box-sizing: border-box; 
 }
 
-body {
+body,
+h1,
+h2,
+h3,
+p,
+a {
     margin: 0;
     padding: 0;
 }
@@ -52,17 +57,83 @@ body {
     src: url(./assets/fonts/SourceSansPro-semibold-italic.ttf);
 }
 
+:root {
+    /*Colours */
+    --fakeyys-black: #222222;
+    --fakeyys-cream: #E2E2E2;
+    --fakeyys-white: #FBFBFB;
+  }
+
+/* THEMES */
+.dark-mode{
+    background-color: var(--fakeyys-black);
+    color: var(--fakeyys-white);
+}
+
+.light-mode{
+    background-color: var(--fakeyys-white);
+    color: var(--fakeyys-black);
+}
+
 /* DEFAULTS */
 p {
     font-family: 'SourceSansPro-light', sans-serif;
+    font-size: 20px;
+    color: inherit;
 }
 
 a {
     font-family: 'Vonique-92', sans-serif;
     font-size: 40px;
     text-decoration: none;
+    color: inherit;
+}
+
+h2{
+    font-family: 'Vonique-64-bold-italic', sans-serif;
+    font-size: 35px;
+    color: inherit;
 }
 
 h3 {
     font-family: 'Vonique-64', sans-serif;
+    font-size: 25px;
+    color: inherit;
+}
+
+/* DEFAULT PAGE LOGIC */
+.page{
+    width: 70%;
+    margin: 0 auto;
+    border: 2px black solid;
+
+    /* ABOUT PAGE STYLING */
+    &.about{
+        min-height: 80vh;
+        align-items: center;
+        display: flex;
+
+        .content{
+            width: 70%;
+
+            span{
+                font-family: 'SourceSansPro-semibold-italic';
+                text-decoration: underline;
+            }
+
+            .inspirations{
+                display: flex;
+                flex-direction: column;
+                margin-top: 16px;
+
+                a{
+                    text-decoration: underline;
+                    font-size: 20px;
+                    margin-left: 6px;
+                    font-family: 'SourceSansPro-semibold-italic';
+                }
+            }
+        }
+    }
+
 }
