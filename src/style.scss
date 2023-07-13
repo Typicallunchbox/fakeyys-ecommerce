@@ -84,7 +84,7 @@ p {
 
 a {
     font-family: 'Vonique-92', sans-serif;
-    font-size: 40px;
+    font-size: 35px;
     text-decoration: none;
     color: inherit;
 }
@@ -103,7 +103,7 @@ h3 {
 
 /* DEFAULT PAGE LOGIC */
 .page{
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
     border: 2px black solid;
 
@@ -114,7 +114,11 @@ h3 {
         display: flex;
 
         .content{
-            width: 70%;
+            width: 80%;
+
+            h2{
+                margin-bottom: 20px;
+            }
 
             span{
                 font-family: 'SourceSansPro-semibold-italic';
@@ -131,6 +135,29 @@ h3 {
                     font-size: 20px;
                     margin-left: 6px;
                     font-family: 'SourceSansPro-semibold-italic';
+                }
+            }
+        }
+    }
+
+    /* ABOUT PAGE STYLING */
+    &.catalogue{
+        margin-top: 60px;
+
+        .content{
+            .product-list{
+                margin-top: 60px;
+                display: flex;
+                flex-wrap: wrap;
+
+                .product{
+                    flex: 0 0 50%;
+                    padding: 10px;
+                    
+                    >div{
+                        display: flex;
+                        justify-content: space-between;
+                    }
                 }
             }
         }
