@@ -1,11 +1,9 @@
-import img from '../assets/images/glasses.jpg';
-
 const catalogue = () => {
   const fakeyysProducts = [
     {
       id: 0,
       title: 'Dark Cosmic Purple',
-      cover_image: img,
+      cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -13,7 +11,7 @@ const catalogue = () => {
     {
       id: 1,
       title: 'Dark Cosmic Purple',
-      cover_image: img,
+      cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -21,7 +19,7 @@ const catalogue = () => {
     {
       id: 2,
       title: 'Dark Cosmic Purple',
-      cover_image: img,
+      cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -29,7 +27,7 @@ const catalogue = () => {
     {
       id: 3,
       title: 'Dark Cosmic Purple',
-      cover_image: img,
+      cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -37,7 +35,7 @@ const catalogue = () => {
     {
       id: 4,
       title: 'Dark Cosmic Purple',
-      cover_image: img,
+      cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -45,7 +43,7 @@ const catalogue = () => {
     {
       id: 5,
       title: 'Dark Cosmic Purple',
-      cover_image: img,
+      cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -53,7 +51,7 @@ const catalogue = () => {
     {
       id: 6,
       title: 'Dark Cosmic Purple',
-      cover_image: img,
+      cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -61,7 +59,7 @@ const catalogue = () => {
     {
       id: 7,
       title: 'Dark Cosmic Purple',
-      cover_image: img,
+      cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -85,6 +83,9 @@ const catalogue = () => {
                 </div>  
               </div>
             )})}
+        <div className="product">
+            <img src={'./images/comingSoon.png'}/>  
+        </div>
         </div>
       </div>
     </div>
