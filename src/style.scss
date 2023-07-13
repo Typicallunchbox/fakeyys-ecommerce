@@ -103,7 +103,7 @@ h3 {
 
 /* DEFAULT PAGE LOGIC */
 .page{
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
     border: 2px black solid;
 
@@ -114,7 +114,7 @@ h3 {
         display: flex;
 
         .content{
-            width: 80%;
+            width: 70%;
 
             h2{
                 margin-bottom: 20px;
@@ -140,7 +140,7 @@ h3 {
         }
     }
 
-    /* ABOUT PAGE STYLING */
+    /* CATALOGUE PAGE STYLING */
     &.catalogue{
         margin-top: 60px;
 
@@ -149,18 +149,65 @@ h3 {
                 margin-top: 60px;
                 display: flex;
                 flex-wrap: wrap;
+                gap: 6%;
 
                 .product{
-                    flex: 0 0 50%;
-                    padding: 10px;
+                    flex: 0 0 47%;
+                    margin: 10px 0;
+
+                    p{
+                        font-family: 'Vonique-64-bold', sans-serif;
+                    }
                     
                     >div{
                         display: flex;
                         justify-content: space-between;
+                    }
+
+                    img{
+                        width: 100%;
                     }
                 }
             }
         }
     }
 
+}
+
+
+/* RESPONSIVE */
+@media screen and (max-width: 1145px) {
+    .page{
+        &.about{
+            .content{
+                width: 80%;
+            }
+        }
+        &.catalogue{
+            margin-top: 60px;
+    
+            .content{
+                .product-list{
+                    gap: 0%;
+    
+                    .product{
+                        flex: 0 0 100%;
+                    }
+                }
+            }
+        }
+    
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .page{
+        width: 80%;
+
+        &.about{
+            .content{
+                width: 100%;
+            }
+        }
+    }
 }

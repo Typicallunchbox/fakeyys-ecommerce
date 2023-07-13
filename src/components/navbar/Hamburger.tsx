@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import { FaBeer } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 const hamburger = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div onClick={() => {setShowMenu(!showMenu)}} className="hamburger">
-      Hamburger
+      {/* Hamburger */}
       {/* Convert links to svgs and add to threeJs plane in order to do wave warp */}
-      <FaBeer />
+      <GiHamburgerMenu />
       {showMenu && <div className="links">
         <Link to='/catalogue'>CATALOGUE</Link>
         <Link to='/about'>ABOUT</Link>

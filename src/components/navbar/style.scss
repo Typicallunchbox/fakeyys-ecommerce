@@ -14,6 +14,13 @@
     }
 
     .hamburger{
+        svg{
+            font-size: 40px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+        
         .links{
             display: flex;
             gap: 40px;
