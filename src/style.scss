@@ -107,6 +107,34 @@ h3 {
     margin: 0 auto;
     border: 2px black solid;
 
+    /* HOME PAGE STYLING */
+    &.home{
+        .cta{
+            position: absolute;
+            right: 7%;
+            bottom: 30%;
+            
+            h3{
+                font-size: 80px;
+            }
+        }
+        .creators{
+            position: absolute;
+            left: 20px;
+            bottom: 0;
+
+            h3{
+                font-size: 35px;
+            }
+        }
+
+        .time{
+            position: absolute;
+            right: 20px;
+            bottom: 0;
+        }
+    }
+
     /* ABOUT PAGE STYLING */
     &.about{
         min-height: 80vh;
