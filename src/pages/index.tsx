@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { Helmet } from 'react-helmet';
 import AnimatedPage from "../AnimatedPage";
+import { Helmet } from 'react-helmet';
+
 
 const index = () => {
 const navigate = useNavigate();
@@ -19,9 +20,9 @@ const sizes = {
 
   };
 
-  function parallax(e){
-    document.querySelectorAll(".cta-shadow").forEach(function(move){
-      var moving_value = move.getAttribute("data-value");
+  function parallax(){
+    document.querySelectorAll(".cta-shadow").forEach(function(move:any){
+      var moving_value:any = move.getAttribute("data-value");
       var x = (cursor.x * moving_value) * 5 ;
       var y = (cursor.y * moving_value) * 5;
 

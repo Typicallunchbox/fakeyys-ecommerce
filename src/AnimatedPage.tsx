@@ -1,5 +1,9 @@
 import { motion } from "framer-motion"
-const AnimatedPage = ({children}) => {
+type AnimatedPageProps = {
+  children: any
+}
+
+const AnimatedPage = (props: AnimatedPageProps) => {
   const animations = {
     initial: {opacity: 0, x: 100},
     animate: {opacity: 1, x: 0},
@@ -13,7 +17,7 @@ const AnimatedPage = ({children}) => {
       exit="exit"
       transition={{duration:1}}
       >
-        {children}
+        {props.children}
     </motion.div>
   )
 }
