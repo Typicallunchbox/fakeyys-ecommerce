@@ -116,6 +116,15 @@ h3 {
 
     /* HOME PAGE STYLING */
     &.home{
+        .ThreeJSImg{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+        }
         .cta{
             position: absolute;
             right: 7%;
@@ -242,6 +251,22 @@ h3 {
 
 
 /* RESPONSIVE */
+@media screen and (max-width: 1520px) {
+    .page{
+        &.home{
+            .cta{
+                h3{
+                    font-size: 60px;
+                }
+            }
+            .cta-shadow{
+                h3{
+                    font-size: 60px;
+                }
+            }
+        }    
+    }
+}
 @media screen and (max-width: 1145px) {
     .page{
         &.about{

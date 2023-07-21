@@ -49,6 +49,7 @@ const sizes = {
           <title>Fakeyys - Homepage</title>
           <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
         </Helmet>
+        <img className="ThreeJSImg" src={'./images/landingMockup.png'} alt="landingMock" />
         <div onClick={() => {navigate("/catalogue")}} className="cta">
           <h3>VIEW CATALOGUE</h3>
         </div>
