@@ -25,15 +25,16 @@ const sizes = {
 
   function parallax(e){
     document.querySelectorAll(".cta-shadow").forEach(function(move){
-      var x = (cursor.x * 50) ;
-      var y = (cursor.y * 50) ;
+      var moving_value = move.getAttribute("data-value");
+      var x = (cursor.x * moving_value) * 10 ;
+      var y = (cursor.y * moving_value) * 10;
 
       const parallaxX = cursor.x
       const parallaxY = - cursor.y
 
       x += (parallaxX - x) * 0.2
       y += (parallaxY - y) * 0.2
-      move.style.transform = "translateX(" +  Math.round(x) + "px) translateY(" +  Math.round(y) + "px)";
+      move.style.transform = "translateX(" +  Math.round(-x) + "px) translateY(" +  Math.round(-y) + "px)";
     });
   }
 
@@ -47,7 +48,10 @@ const sizes = {
       <div className="cta">
         <h3>VIEW CATALOGUE</h3>
       </div>
-      <div id="cta-shadow" className="cta-shadow">
+      <div id="cta-shadow" className="cta-shadow" data-value="5">
+        <h3>VIEW CATALOGUE</h3>
+      </div>
+      <div id="cta-shadow" className="cta-shadow blue" data-value="10">
         <h3>VIEW CATALOGUE</h3>
       </div>
       <div className="creators">
