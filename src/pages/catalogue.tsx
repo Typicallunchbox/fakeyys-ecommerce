@@ -1,3 +1,5 @@
+import AnimatedPage from "../AnimatedPage";
+
 const catalogue = () => {
   const fakeyysProducts = [
     {
@@ -66,29 +68,31 @@ const catalogue = () => {
     }
   ]
   return (
-    <div className="page catalogue">
-      <div className="content">
-        <h2>FAKEYYS GLASSES</h2>
-        <p>CHECKOUT OUR NEW RANGE OF LIMITED EDITION GLASSES.</p>
-        <p>EACH HAND MADE IN GERMANY BY OUR SKILLED CRAFTSMEN.</p>
-        <div className="product-list">
-          {fakeyysProducts.map((item) => {
-            const title = item.title.toUpperCase();
-            return(
-              <div className="product" key={item.id}>
-                <img src={item.cover_image}/>
-                <div>
-                  <p>{title}</p>
-                  <p>${item.price}</p>
-                </div>  
-              </div>
-            )})}
-        <div className="product">
-            <img src={'./images/comingSoon.png'}/>  
-        </div>
+    <AnimatedPage>
+      <div className="page catalogue">
+        <div className="content">
+          <h2>FAKEYYS GLASSES</h2>
+          <p>CHECKOUT OUR NEW RANGE OF LIMITED EDITION GLASSES.</p>
+          <p>EACH HAND MADE IN GERMANY BY OUR SKILLED CRAFTSMEN.</p>
+          <div className="product-list">
+            {fakeyysProducts.map((item) => {
+              const title = item.title.toUpperCase();
+              return(
+                <div className="product" key={item.id}>
+                  <img src={item.cover_image}/>
+                  <div>
+                    <p>{title}</p>
+                    <p>${item.price}</p>
+                  </div>  
+                </div>
+              )})}
+          <div className="product">
+              <img src={'./images/comingSoon.png'}/>  
+          </div>
+          </div>
         </div>
       </div>
-    </div>
+    </AnimatedPage>
   )
 }
 

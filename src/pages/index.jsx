@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Helmet } from 'react-helmet';
+import AnimatedPage from "../AnimatedPage";
 
 const index = () => {
 const navigate = useNavigate();
@@ -39,28 +40,30 @@ const sizes = {
   // };
 
   return (
-    <div className="page home">
-      <Helmet>
-        <title>Fakeyys - Homepage</title>
-        <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
-      </Helmet>
-      <div onClick={() => {navigate("/catalogue")}} className="cta">
-        <h3>VIEW CATALOGUE</h3>
+    <AnimatedPage>
+      <div className="page home">
+        <Helmet>
+          <title>Fakeyys - Homepage</title>
+          <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
+        </Helmet>
+        <div onClick={() => {navigate("/catalogue")}} className="cta">
+          <h3>VIEW CATALOGUE</h3>
+        </div>
+        <div id="cta-shadow" className="cta-shadow" data-value="5">
+          <h3>VIEW CATALOGUE</h3>
+        </div>
+        <div id="cta-shadow" className="cta-shadow blue" data-value="10">
+          <h3>VIEW CATALOGUE</h3>
+        </div>
+        <div className="creators">
+          <h3>GERMAN MADE</h3>
+          <h3>SWISS DESIGNED</h3>
+        </div>
+        <div className="time">
+          <h3>ES 08:52 PM</h3>
+        </div>
       </div>
-      <div id="cta-shadow" className="cta-shadow" data-value="5">
-        <h3>VIEW CATALOGUE</h3>
-      </div>
-      <div id="cta-shadow" className="cta-shadow blue" data-value="10">
-        <h3>VIEW CATALOGUE</h3>
-      </div>
-      <div className="creators">
-        <h3>GERMAN MADE</h3>
-        <h3>SWISS DESIGNED</h3>
-      </div>
-      <div className="time">
-        <h3>ES 08:52 PM</h3>
-      </div>
-    </div>
+    </AnimatedPage>
   )
 }
 
