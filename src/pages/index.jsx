@@ -1,15 +1,10 @@
+import { useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet';
+
 const index = () => {
+const navigate = useNavigate();
 
-  /**
- * Cursor
- */
 const cursor = {x:0, y:0}
-cursor.x = 0
-cursor.y = 0
-
-  /**
- * Sizes
- */
 const sizes = {
   width: window.innerWidth,
   height: window.innerHeight
@@ -26,8 +21,8 @@ const sizes = {
   function parallax(e){
     document.querySelectorAll(".cta-shadow").forEach(function(move){
       var moving_value = move.getAttribute("data-value");
-      var x = (cursor.x * moving_value) * 10 ;
-      var y = (cursor.y * moving_value) * 10;
+      var x = (cursor.x * moving_value) * 5 ;
+      var y = (cursor.y * moving_value) * 5;
 
       const parallaxX = cursor.x
       const parallaxY = - cursor.y
@@ -45,7 +40,11 @@ const sizes = {
 
   return (
     <div className="page home">
-      <div className="cta">
+      <Helmet>
+        <title>Fakeyys - Homepage</title>
+        <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
+      </Helmet>
+      <div onClick={() => {navigate("/catalogue")}} className="cta">
         <h3>VIEW CATALOGUE</h3>
       </div>
       <div id="cta-shadow" className="cta-shadow" data-value="5">

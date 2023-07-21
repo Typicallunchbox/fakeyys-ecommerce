@@ -116,9 +116,14 @@ h3 {
             border: black 2px solid;
             padding: 10px 40px;
             border-radius: 25px;
+            z-index: 1;
+            cursor: pointer;
             
             h3{
                 font-size: 80px;
+                -webkit-user-select: none; /* Safari */
+                -ms-user-select: none; /* IE 10 and IE 11 */
+                user-select: none; /* Standard syntax */
             }
         }
         .cta-shadow{
@@ -138,6 +143,9 @@ h3 {
             
             h3{
                 font-size: 80px;
+                -webkit-user-select: none; /* Safari */
+                -ms-user-select: none; /* IE 10 and IE 11 */
+                user-select: none; /* Standard syntax */
             }
         }
         .creators{
@@ -147,6 +155,7 @@ h3 {
 
             h3{
                 font-size: 35px;
+                line-height: 1em;
             }
         }
 
