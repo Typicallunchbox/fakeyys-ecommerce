@@ -40,6 +40,8 @@ const sizes = {
   //   cursor.y = event.clientY / sizes.height - 0.5
   // };
 
+  //FOR THREEJS BACKGROUND REFER TO BLENDER FILE MOCKUP YOU DID
+
   return (
     <AnimatedPage>
       <div className="page home">
