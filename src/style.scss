@@ -113,6 +113,22 @@ h3 {
             position: absolute;
             right: 7%;
             bottom: 30%;
+            border: black 2px solid;
+            padding: 10px 40px;
+            border-radius: 25px;
+            
+            h3{
+                font-size: 80px;
+            }
+        }
+        .cta-shadow{
+            position: absolute;
+            right: 7%;
+            bottom: 30%;
+            opacity: 10%;
+            border: black 2px solid;
+            padding: 10px 40px;
+            border-radius: 25px;
             
             h3{
                 font-size: 80px;
