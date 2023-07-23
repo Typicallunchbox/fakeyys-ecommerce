@@ -1,10 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { navigate } from "wouter/use-location";
 import AnimatedPage from "../AnimatedPage";
-import { Helmet } from 'react-helmet';
+import {Helmet , HelmetProvider } from 'react-helmet-async';
 
 
 const index = () => {
-const navigate = useNavigate();
 
 const cursor = {x:0, y:0}
 const sizes = {
@@ -43,7 +42,8 @@ const sizes = {
   //FOR THREEJS BACKGROUND REFER TO BLENDER FILE MOCKUP YOU DID
 
   return (
-    <AnimatedPage>
+    // <AnimatedPage>
+    <HelmetProvider>
       <div className="page home">
         <Helmet>
           <title>Fakeyys - Homepage</title>
@@ -67,7 +67,8 @@ const sizes = {
           <h3>ES 08:52 PM</h3>
         </div>
       </div>
-    </AnimatedPage>
+      </HelmetProvider>
+    // </AnimatedPage>
   )
 }
 

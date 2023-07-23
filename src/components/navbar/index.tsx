@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "wouter";
 import Standard from './Standard';
 import Hamburger from './Hamburger';
 import './style.scss';
@@ -10,9 +9,9 @@ const index = () => {
 	const [isStandard, setIsStandard] = useState(false);
 	const [isMobile, setIsMobile] = useState(false);
 	const [isDarkTheme, setIsDarkTheme] = useState(false);
-	
+
 	useEffect(() => {
-		['/','/about'].includes(location.pathname) ? setIsStandard(true) : setIsStandard(false);
+		['/','/about'].includes(location[0]) ? setIsStandard(true) : setIsStandard(false);
 	}, [location])
 
 	useEffect(() => {

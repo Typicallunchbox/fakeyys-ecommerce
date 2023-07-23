@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Link, Route } from "wouter";
 import { AnimatePresence } from "framer-motion";
 import './style.scss';
 
@@ -15,18 +16,14 @@ import Navbar from "./components/navbar/index";
 function App() {
   return (
     <>
-      <Router>
-        <Navbar />
+            <Navbar />
         <AnimatePresence mode='wait'>
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/catalogue" element={<Catalogue />} />
-            <Route path="/catalogue/product/:id" element={<Product />} />
-            <Route path="*" element={<Error />} />
-          </Routes>
+            <Route key={'landing'} path="/" component={Landing} />
+            <Route key={'about'} path="/about" component={About} />
+            <Route key={'catalogue'} path="/catalogue" component={Catalogue} />
+            <Route key={'product'} path="/catalogue/product/:id" component={Product} />
+            <Route key={'error'} path="*" component={Error} />
         </AnimatePresence>
-      </Router>
     </>
   );
 }
