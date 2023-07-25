@@ -17,7 +17,7 @@ function App() {
     <>
       <Router>
         <Navbar />
-        <AnimatePresence mode='wait'>
+        <AnimatePresence initial={false} mode='wait'>
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/about" element={<About />} />

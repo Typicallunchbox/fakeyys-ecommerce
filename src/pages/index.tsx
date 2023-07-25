@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 import { Helmet } from 'react-helmet';
-
+import { motion } from "framer-motion";
 
 const index = () => {
 const navigate = useNavigate();
+const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
 
 const cursor = {x:0, y:0}
 const sizes = {
@@ -50,9 +51,9 @@ const sizes = {
           <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
         </Helmet>
         <img className="ThreeJSImg" src={'./images/landingMockup.png'} alt="landingMock" />
-        <div onClick={() => {navigate("/catalogue")}} className="cta">
+        <motion.div initial={{backgroundColor: 'rgba(255, 255, 255, 0)'}} animate={{ backgroundColor: ['rgba(255, 255, 255, 0)']}} transition={transition} onClick={() => {navigate("/catalogue")}} className="cta">
           <h3>VIEW CATALOGUE</h3>
-        </div>
+        </motion.div>
         <div id="cta-shadow" className="cta-shadow" data-value="5">
           <h3>VIEW CATALOGUE</h3>
         </div>
