@@ -17,13 +17,13 @@ function App() {
     <>
       <Router>
         <Navbar />
-        <AnimatePresence initial={false} mode='wait'>
+        <AnimatePresence initial={false} mode='wait' >
           <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/catalogue" element={<Catalogue />} />
-            <Route path="/catalogue/product/:id" element={<Product />} />
-            <Route path="*" element={<Error />} />
+            <Route key={"/"} path="/" element={<Landing />} />
+            <Route key={"/about"} path="/about" element={<About />} />
+            <Route key={"/catalogue"} path="/catalogue" element={<Catalogue />} />
+            <Route key={"/catalogue/product"} path="/catalogue/product/:id" element={<Product />} />
+            <Route key={"error"} path="*" element={<Error />} />
           </Routes>
         </AnimatePresence>
       </Router>

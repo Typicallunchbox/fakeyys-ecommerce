@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 import { Helmet } from 'react-helmet';
 import { motion } from "framer-motion";
@@ -34,6 +34,19 @@ const sizes = {
       y += (parallaxY - y) * 0.2
       move.style.transform = "translateX(" +  Math.round(-x) + "px) translateY(" +  Math.round(-y) + "px)";
     });
+
+    // document.querySelectorAll(".cta").forEach(function(move:any){
+    //   var moving_value:any = 1;
+    //   var x = (cursor.x * moving_value) * 5 ;
+    //   var y = (cursor.y * moving_value) * 5;
+
+    //   const parallaxX = cursor.x
+    //   const parallaxY = - cursor.y
+
+    //   x += (parallaxX - x) * 0.2
+    //   y += (parallaxY - y) * 0.2
+    //   move.style.transform = "translateX(" +  Math.round(-x) + "px) translateY(" +  Math.round(-y) + "px)";
+    // });
   }
 
   // onresize = (event) => {
@@ -44,16 +57,17 @@ const sizes = {
   //FOR THREEJS BACKGROUND REFER TO BLENDER FILE MOCKUP YOU DID
 
   return (
-    <AnimatedPage>
       <div className="page home">
         <Helmet>
           <title>Fakeyys - Homepage</title>
           <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
         </Helmet>
         <img className="ThreeJSImg" src={'./images/landingMockup.png'} alt="landingMock" />
-        <motion.div initial={{backgroundColor: 'rgba(255, 255, 255, 0)'}} animate={{ backgroundColor: ['rgba(255, 255, 255, 0)']}} transition={transition} onClick={() => {navigate("/catalogue")}} className="cta">
-          <h3>VIEW CATALOGUE</h3>
-        </motion.div>
+        <Link to={`/catalogue`}>
+          <motion.div exit={{opacity: 0}} transition={transition} className="cta">
+            <h3>VIEW CATALOGUE</h3>
+          </motion.div>
+        </Link>
         <div id="cta-shadow" className="cta-shadow" data-value="5">
           <h3>VIEW CATALOGUE</h3>
         </div>
@@ -68,7 +82,6 @@ const sizes = {
           <h3>ES 08:52 PM</h3>
         </div>
       </div>
-    </AnimatedPage>
   )
 }
 
