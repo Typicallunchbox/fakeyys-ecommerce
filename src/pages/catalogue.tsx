@@ -91,8 +91,7 @@ const catalogue = () => {
           </div>
           </div>
         </div>
-      </div>
-      </AnimatedPage>
+      </motion.div>
   )
 }
 
