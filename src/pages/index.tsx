@@ -1,11 +1,31 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 import { Helmet } from 'react-helmet';
-import { motion } from "framer-motion";
+import { motion, useAnimate } from "framer-motion";
 
 const index = () => {
 const navigate = useNavigate();
+const [scope, animate] = useAnimate();
 const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
+
+const ctaAnimation = {
+  initial: {
+    opacity: 1, 
+    scale:1, 
+    backgroundColor: 'rgba(255, 255, 255, 0)',
+  },
+  animate: {
+    opacity: 1
+  },
+  exit: {
+    opacity: 1, 
+    scale:10, 
+    border: 'rgba(255, 255, 255)',
+    backgroundColor: 'rgba(255, 255, 255)', 
+    color: 'rgba(255, 255, 255)'
+  }
+}
 
 const cursor = {x:0, y:0}
 const sizes = {
@@ -43,23 +63,46 @@ const sizes = {
 
   //FOR THREEJS BACKGROUND REFER TO BLENDER FILE MOCKUP YOU DID
 
+  async function myAnimation() {
+    await animate(scope.current, { rotate: -90 });
+    await animate(scope.current, { scale: 1.5 });
+    await animate(scope.current, { rotate: 0 });
+    await animate(scope.current, { scale: 1 });
+    animate(
+      scope.current,
+      {
+        x: 100
+      },
+      {
+        repeat: Infinity,
+        repeatType: "mirror",
+        ease: "easeInOut",
+        duration: 1
+      }
+    );
+  }
+
+  useEffect(() => {
+    myAnimation();
+  }, []);
+
   return (
-    <AnimatedPage>
+    // <AnimatedPage>
       <div className="page home">
         <Helmet>
           <title>Fakeyys - Homepage</title>
           <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
         </Helmet>
         <img className="ThreeJSImg" src={'./images/landingMockup.png'} alt="landingMock" />
-        <motion.div initial={{backgroundColor: 'rgba(255, 255, 255, 0)'}} animate={{ backgroundColor: ['rgba(255, 255, 255, 0)']}} transition={transition} onClick={() => {navigate("/catalogue")}} className="cta">
+        <motion.div ref={scope} variants={ctaAnimation} exit={'exit'} animate={'animate'} initial={'initial'} transition={transition} onClick={() => {navigate("/catalogue")}} className="cta">
           <h3>VIEW CATALOGUE</h3>
         </motion.div>
-        <div id="cta-shadow" className="cta-shadow" data-value="5">
+        <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow" data-value="5">
           <h3>VIEW CATALOGUE</h3>
-        </div>
-        <div id="cta-shadow" className="cta-shadow blue" data-value="10">
+        </motion.div>
+        <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow blue" data-value="10">
           <h3>VIEW CATALOGUE</h3>
-        </div>
+        </motion.div>
         <div className="creators">
           <h3>GERMAN MADE</h3>
           <h3>SWISS DESIGNED</h3>
@@ -68,7 +111,7 @@ const sizes = {
           <h3>ES 08:52 PM</h3>
         </div>
       </div>
-    </AnimatedPage>
+      // </AnimatedPage>
   )
 }
 

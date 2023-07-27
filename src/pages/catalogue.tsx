@@ -92,7 +92,7 @@ const catalogue = () => {
           </div>
         </div>
       </div>
-    </AnimatedPage>
+      </AnimatedPage>
   )
 }
 
