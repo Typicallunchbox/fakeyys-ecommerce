@@ -1,4 +1,5 @@
 import AnimatedPage from "../AnimatedPage";
+import { motion } from "framer-motion";
 
 const catalogue = () => {
   const fakeyysProducts = [
@@ -68,8 +69,7 @@ const catalogue = () => {
     }
   ]
   return (
-    <AnimatedPage>
-      <div className="page catalogue">
+      <motion.div className="page catalogue" initial="initial" animate="animate" exit="exit">
         <div className="content">
           <h2>FAKEYYS GLASSES</h2>
           <p>CHECKOUT OUR NEW RANGE OF LIMITED EDITION GLASSES.</p>

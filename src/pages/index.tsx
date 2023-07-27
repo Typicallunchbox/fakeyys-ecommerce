@@ -54,6 +54,19 @@ const sizes = {
       y += (parallaxY - y) * 0.2
       move.style.transform = "translateX(" +  Math.round(-x) + "px) translateY(" +  Math.round(-y) + "px)";
     });
+
+    // document.querySelectorAll(".cta").forEach(function(move:any){
+    //   var moving_value:any = 1;
+    //   var x = (cursor.x * moving_value) * 5 ;
+    //   var y = (cursor.y * moving_value) * 5;
+
+    //   const parallaxX = cursor.x
+    //   const parallaxY = - cursor.y
+
+    //   x += (parallaxX - x) * 0.2
+    //   y += (parallaxY - y) * 0.2
+    //   move.style.transform = "translateX(" +  Math.round(-x) + "px) translateY(" +  Math.round(-y) + "px)";
+    // });
   }
 
   // onresize = (event) => {
