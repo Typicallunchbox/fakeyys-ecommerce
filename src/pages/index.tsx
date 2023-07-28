@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 import { Helmet } from 'react-helmet';
@@ -8,60 +8,100 @@ const index = () => {
 const navigate = useNavigate();
 const [scope, animate] = useAnimate();
 const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
-
-const ctaAnimation = {
-  initial: {
-    opacity: 1, 
-    scale:1, 
-    backgroundColor: 'rgba(255, 255, 255, 0)',
-  },
-  animate: {
-    opacity: 1
-  },
-  exit: {
-    opacity: 1, 
-    scaleX:10, 
-    scaleY:10, 
-    border: 'rgba(255, 255, 255)',
-    backgroundColor: 'rgba(255, 255, 255)', 
-    color: 'rgba(255, 255, 255)',
-    transition: {
-      
-      color: { duration: 0.2 },
-      border: { duration: 0.2 },
-      backgroundColor: { duration: 0.2 },
-      scaleX: { duration: 2 },
-      scaleY: { duration: 2 },
-    },
-  },
-  // exit: {
-  //   opacity: 0,
-  //   y: -50,
-  //   scale: 1.2,
-  //   backgroundColor: "green", // Color change during exit
-  //   transition: {
-  //     y: { duration: 0.5 },
-  //     scale: { duration: 0.5 },
-  //     backgroundColor: { duration: 0.5 }, // Color change duration
-  //   },
-  // },
-  transition: transition
-}
-
-const customExitAnimation = async () => {
-  return new Promise((resolve: any) => {
-    setTimeout(() => {
-      resolve();
-    }, 300); // Adjust the duration to control the delay between animations
-  });
-};
-
+const [ctaTrigger, setCtatrigger] = useState(false);
 const cursor = {x:0, y:0}
 const sizes = {
   width: window.innerWidth,
   height: window.innerHeight
 }
-  //Mouse move event listener
+
+
+  const ctaAnimation = {
+    initial: {
+      opacity: 1, 
+      scale:1, 
+      backgroundColor: 'rgba(255, 255, 255, 0)',
+    },
+    animate: {
+      opacity: 1
+    },
+    exit: {
+      opacity: 1, 
+      scaleX:10, 
+      scaleY:10, 
+      border: 'rgba(255, 255, 255)',
+      backgroundColor: 'rgba(255, 255, 255)', 
+      color: 'rgba(255, 255, 255)',
+      transition: {
+        
+        color: { duration: 0.2 },
+        border: { duration: 0.2 },
+        backgroundColor: { duration: 0.2 },
+        scaleX: { duration: 2 },
+        scaleY: { duration: 2 },
+      },
+    },
+    // exit: {
+    //   opacity: 0,
+    //   y: -50,
+    //   scale: 1.2,
+    //   backgroundColor: "green", // Color change during exit
+    //   transition: {
+    //     y: { duration: 0.5 },
+    //     scale: { duration: 0.5 },
+    //     backgroundColor: { duration: 0.5 }, // Color change duration
+    //   },
+    // },
+    transition: transition
+  }
+
+  const ctaAnimation2 = {
+    initial: {
+      opacity: 1, 
+      scale:1, 
+      backgroundColor: 'rgba(255, 255, 255, 0)',
+    },
+    animate: {
+      opacity: 1
+    },
+    exit: ctaTrigger ? {
+      opacity: 1, 
+      scaleX:10, 
+      scaleY:10, 
+      border: 'rgba(255, 255, 255)',
+      backgroundColor: 'rgba(255, 255, 255)', 
+      color: 'rgba(255, 255, 255)',
+      transition: {
+        
+        color: { duration: 0.2 },
+        border: { duration: 0.2 },
+        backgroundColor: { duration: 0.2 },
+        scaleX: { duration: 2 },
+        scaleY: { duration: 2 },
+      },
+    }:{},
+    // exit: {
+    //   opacity: 0,
+    //   y: -50,
+    //   scale: 1.2,
+    //   backgroundColor: "green", // Color change during exit
+    //   transition: {
+    //     y: { duration: 0.5 },
+    //     scale: { duration: 0.5 },
+    //     backgroundColor: { duration: 0.5 }, // Color change duration
+    //   },
+    // },
+    transition: transition
+  }
+
+  const customExitAnimation = async () => {
+    return new Promise((resolve: any) => {
+      setTimeout(() => {
+        resolve();
+      }, 300); // Adjust the duration to control the delay between animations
+    });
+  };
+
   onmousemove = (event) => {
     cursor.x = event.clientX / sizes.width - 0.5
     cursor.y = event.clientY / sizes.height - 0.5
@@ -137,7 +177,7 @@ const sizes = {
           <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
         </Helmet>
         <img className="ThreeJSImg" src={'./images/landingMockup.png'} alt="landingMock" />
-        <motion.div ref={scope} {...ctaAnimation} onClick={() => {navigate("/catalogue")}} className="cta">
+        <motion.div {...ctaAnimation} ref={scope}  onClick={() => {navigate("/catalogue")}} className="cta">
           <h3>VIEW CATALOGUE</h3>
         </motion.div>
         <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow" data-value="7">
