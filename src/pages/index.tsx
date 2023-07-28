@@ -20,12 +20,41 @@ const ctaAnimation = {
   },
   exit: {
     opacity: 1, 
-    scale:10, 
+    scaleX:10, 
+    scaleY:10, 
     border: 'rgba(255, 255, 255)',
     backgroundColor: 'rgba(255, 255, 255)', 
-    color: 'rgba(255, 255, 255)'
-  }
+    color: 'rgba(255, 255, 255)',
+    transition: {
+      
+      color: { duration: 0.2 },
+      border: { duration: 0.2 },
+      backgroundColor: { duration: 0.2 },
+      scaleX: { duration: 2 },
+      scaleY: { duration: 2 },
+    },
+  },
+  // exit: {
+  //   opacity: 0,
+  //   y: -50,
+  //   scale: 1.2,
+  //   backgroundColor: "green", // Color change during exit
+  //   transition: {
+  //     y: { duration: 0.5 },
+  //     scale: { duration: 0.5 },
+  //     backgroundColor: { duration: 0.5 }, // Color change duration
+  //   },
+  // },
+  transition: transition
 }
+
+const customExitAnimation = async () => {
+  return new Promise((resolve: any) => {
+    setTimeout(() => {
+      resolve();
+    }, 300); // Adjust the duration to control the delay between animations
+  });
+};
 
 const cursor = {x:0, y:0}
 const sizes = {
@@ -96,18 +125,19 @@ const sizes = {
   }
 
   useEffect(() => {
-    myAnimation();
+    // myAnimation();
   }, []);
+  
 
   return (
-    // <AnimatedPage>
+    <AnimatedPage>
       <div className="page home">
         <Helmet>
           <title>Fakeyys - Homepage</title>
           <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
         </Helmet>
         <img className="ThreeJSImg" src={'./images/landingMockup.png'} alt="landingMock" />
-        <motion.div ref={scope} variants={ctaAnimation} exit={'exit'} animate={'animate'} initial={'initial'} transition={transition} onClick={() => {navigate("/catalogue")}} className="cta">
+        <motion.div ref={scope} {...ctaAnimation} onClick={() => {navigate("/catalogue")}} className="cta">
           <h3>VIEW CATALOGUE</h3>
         </motion.div>
         <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow" data-value="5">
@@ -124,7 +154,7 @@ const sizes = {
           <h3>ES 08:52 PM</h3>
         </div>
       </div>
-      // </AnimatedPage>
+    </AnimatedPage>
   )
 }
 

@@ -69,6 +69,7 @@ const catalogue = () => {
     }
   ]
   return (
+    <AnimatedPage>
       <motion.div className="page catalogue" initial="initial" animate="animate" exit="exit">
         <div className="content">
           <h2>FAKEYYS GLASSES</h2>
@@ -92,6 +93,7 @@ const catalogue = () => {
           </div>
         </div>
       </motion.div>
+    </AnimatedPage>
   )
 }
 
