@@ -84,18 +84,18 @@ const sizes = {
       move.style.transform = "translateX(" +  Math.round(-x) + "px) translateY(" +  Math.round(-y) + "px)";
     });
 
-    // document.querySelectorAll(".cta").forEach(function(move:any){
-    //   var moving_value:any = 1;
-    //   var x = (cursor.x * moving_value) * 5 ;
-    //   var y = (cursor.y * moving_value) * 5;
+    document.querySelectorAll(".cta").forEach(function(move:any){
+      var moving_value:any = 2;
+      var x = (cursor.x * moving_value) * 5 ;
+      var y = (cursor.y * moving_value) * 5;
 
-    //   const parallaxX = cursor.x
-    //   const parallaxY = - cursor.y
+      const parallaxX = cursor.x
+      const parallaxY = - cursor.y
 
-    //   x += (parallaxX - x) * 0.2
-    //   y += (parallaxY - y) * 0.2
-    //   move.style.transform = "translateX(" +  Math.round(-x) + "px) translateY(" +  Math.round(-y) + "px)";
-    // });
+      x += (parallaxX - x) * 0.2
+      y += (parallaxY - y) * 0.2
+      move.style.transform = "translateX(" +  Math.round(-x) + "px) translateY(" +  Math.round(-y) + "px)";
+    });
   }
 
   // onresize = (event) => {
@@ -140,10 +140,10 @@ const sizes = {
         <motion.div ref={scope} {...ctaAnimation} onClick={() => {navigate("/catalogue")}} className="cta">
           <h3>VIEW CATALOGUE</h3>
         </motion.div>
-        <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow" data-value="5">
+        <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow" data-value="7">
           <h3>VIEW CATALOGUE</h3>
         </motion.div>
-        <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow blue" data-value="10">
+        <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow blue" data-value="12">
           <h3>VIEW CATALOGUE</h3>
         </motion.div>
         <div className="creators">
