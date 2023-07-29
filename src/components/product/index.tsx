@@ -24,7 +24,7 @@ const product = (props:Props) => {
   }
   
   return (
-    <motion.div onClick={()=>{setProductId(item.id)}} initial={{width: '50vw', maxWidth:'800px', height:'auto', scale:1, }} animate={isSelected===item.id?{scale:1,top:0, left:'50%', transform:'translateX(-50%)', position: 'absolute'}:''}  className='product'>
+    <motion.div onClick={()=>{setProductId(item.id)}} initial={{width: '50vw', maxWidth:'800px', height:'auto', scale:1, }} animate={isSelected===item.id?{scale:1,top:0, left:'50%', transform:'translateX(-50%)', position: 'fixed'}:''}  className='product'>
         <div className='image-container'>
           <img src={item.cover_image}/>
         </div>

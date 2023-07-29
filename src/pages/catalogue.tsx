@@ -4,7 +4,7 @@ import Product from "../components/product";
 import { useState } from "react";
 
 const catalogue = () => {
-  const [isSelected, setIsSelected] = useState(0)
+  const [isSelected, setIsSelected] = useState(null)
   const fakeyysProducts = [
     {
       id: 0,
@@ -98,13 +98,17 @@ const catalogue = () => {
                 //     </div>
                 // </motion.div>
                 <>
-                <div className="product"></div>
+                <div className="product">
+                <button type="button" onClick={() => setIsSelected(null)}>Back</button>
+
+                </div>
                 <Product setIsSelected={setIsSelected} isSelected={isSelected} item={item} key={item.id} />
                 </>
                 )
               }else{
                 return(
                   <Product setIsSelected={setIsSelected} isSelected={isSelected} item={item} key={item.id} />
+                  // <div></div>  
              )}
              })}
           <div className="product">
