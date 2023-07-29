@@ -1,7 +1,10 @@
 import AnimatedPage from "../AnimatedPage";
 import { motion } from "framer-motion";
+import Product from "../components/product";
+import { useState } from "react";
 
 const catalogue = () => {
+  const [isSelected, setIsSelected] = useState(0)
   const fakeyysProducts = [
     {
       id: 0,
@@ -79,13 +82,7 @@ const catalogue = () => {
             {fakeyysProducts.map((item) => {
               const title = item.title.toUpperCase();
               return(
-                <div className="product" key={item.id}>
-                  <img src={item.cover_image}/>
-                  <div>
-                    <p>{title}</p>
-                    <p>${item.price}</p>
-                  </div>  
-                </div>
+                <Product setIsSelected={setIsSelected} isSelected={isSelected} item={item} key={item.id} />
               )})}
           <div className="product">
               <img src={'./images/comingSoon.png'}/>  

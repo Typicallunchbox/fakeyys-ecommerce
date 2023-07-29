@@ -239,9 +239,11 @@ h3 {
                         font-family: 'Vonique-64-bold', sans-serif;
                     }
                     
-                    >div{
+                    .content{
+                        .head{
                         display: flex;
                         justify-content: space-between;
+                        }
                     }
 
                     img{

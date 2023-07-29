@@ -177,7 +177,7 @@ const sizes = {
           <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
         </Helmet>
         <img className="ThreeJSImg" src={'./images/landingMockup.png'} alt="landingMock" />
-        <motion.div {...ctaAnimation} ref={scope}  onClick={() => {navigate("/catalogue")}} className="cta">
+        <motion.div  ref={scope}  onClick={() => {navigate("/catalogue")}} className="cta">
           <h3>VIEW CATALOGUE</h3>
         </motion.div>
         <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow" data-value="7">
