@@ -8,7 +8,7 @@ const catalogue = () => {
   const fakeyysProducts = [
     {
       id: 0,
-      title: 'Dark Cosmic Purple',
+      title: '0',
       cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
@@ -16,7 +16,7 @@ const catalogue = () => {
     },
     {
       id: 1,
-      title: 'Dark Cosmic Purple',
+      title: '1',
       cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
@@ -81,9 +81,32 @@ const catalogue = () => {
           <div className="product-list">
             {fakeyysProducts.map((item) => {
               const title = item.title.toUpperCase();
-              return(
+              if(item.id === isSelected){
+                return(
+                //   <motion.div className='product'>
+                //     <div className='image-container'>
+                //       <img src={item.cover_image}/>
+                //     </div>
+                //     <div className='content'>
+                //         <div className='head'>
+                //           <p>{title}</p>
+                //           <p>${item.price}</p>
+                //         </div>
+                //         <div className='foot'>
+
+                //         </div>
+                //     </div>
+                // </motion.div>
+                <>
+                <div className="product"></div>
                 <Product setIsSelected={setIsSelected} isSelected={isSelected} item={item} key={item.id} />
-              )})}
+                </>
+                )
+              }else{
+                return(
+                  <Product setIsSelected={setIsSelected} isSelected={isSelected} item={item} key={item.id} />
+             )}
+             })}
           <div className="product">
               <img src={'./images/comingSoon.png'}/>  
           </div>
