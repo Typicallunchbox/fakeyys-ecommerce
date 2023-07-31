@@ -261,9 +261,11 @@ h3 {
 
                 .popup{
                     position: fixed;
-                    left: 30%;
+                    // transform-origin: 50% 50% 0px;
+                    // transform: translate(-50%,0);
+                    left: 30% !important;
                     top: 0 !important;
-                    width: 50vw;
+                    width: 70vw;
                     max-width:800px; 
                     height:auto; 
                     scale:1;
