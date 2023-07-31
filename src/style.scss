@@ -232,6 +232,9 @@ h3 {
                 gap: 6%;
 
                 .product{
+                    position: relative;
+                    left: auto;
+                    top: auto;
                     flex: 0 0 47%;
                     margin-bottom: 60px;
 
@@ -249,7 +252,17 @@ h3 {
                     img{
                         width: 100%;
                     }
+
+
                 }
+
+                .popup{
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    top: 0;
+                }
+                
             }
         }
     }

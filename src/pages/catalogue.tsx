@@ -1,13 +1,15 @@
 import AnimatedPage from "../AnimatedPage";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Product from "../components/product";
 import { useState } from "react";
 
 const catalogue = () => {
   const [isSelected, setIsSelected] = useState(null)
+  const [selectedId, setSelectedId] = useState<string>('')
+  const [selectedProduct, setSelectedProduct] = useState<object>({})
   const fakeyysProducts = [
     {
-      id: 0,
+      id: '0',
       title: '0',
       cover_image: './images/glasses.jpg',
       product_images: '',
@@ -15,7 +17,7 @@ const catalogue = () => {
       description: ''
     },
     {
-      id: 1,
+      id: '1',
       title: '1',
       cover_image: './images/glasses.jpg',
       product_images: '',
@@ -23,7 +25,7 @@ const catalogue = () => {
       description: ''
     },
     {
-      id: 2,
+      id: '2',
       title: 'Dark Cosmic Purple',
       cover_image: './images/glasses.jpg',
       product_images: '',
@@ -31,7 +33,7 @@ const catalogue = () => {
       description: ''
     },
     {
-      id: 3,
+      id: '3',
       title: 'Dark Cosmic Purple',
       cover_image: './images/glasses.jpg',
       product_images: '',
@@ -39,7 +41,7 @@ const catalogue = () => {
       description: ''
     },
     {
-      id: 4,
+      id: '4',
       title: 'Dark Cosmic Purple',
       cover_image: './images/glasses.jpg',
       product_images: '',
@@ -47,7 +49,7 @@ const catalogue = () => {
       description: ''
     },
     {
-      id: 5,
+      id: '5',
       title: 'Dark Cosmic Purple',
       cover_image: './images/glasses.jpg',
       product_images: '',
@@ -55,7 +57,7 @@ const catalogue = () => {
       description: ''
     },
     {
-      id: 6,
+      id: '6',
       title: 'Dark Cosmic Purple',
       cover_image: './images/glasses.jpg',
       product_images: '',
@@ -63,7 +65,7 @@ const catalogue = () => {
       description: ''
     },
     {
-      id: 7,
+      id: '7',
       title: 'Dark Cosmic Purple',
       cover_image: './images/glasses.jpg',
       product_images: '',
@@ -83,26 +85,12 @@ const catalogue = () => {
               const title = item.title.toUpperCase();
               if(item.id === isSelected){
                 return(
-                //   <motion.div className='product'>
-                //     <div className='image-container'>
-                //       <img src={item.cover_image}/>
-                //     </div>
-                //     <div className='content'>
-                //         <div className='head'>
-                //           <p>{title}</p>
-                //           <p>${item.price}</p>
-                //         </div>
-                //         <div className='foot'>
-
-                //         </div>
-                //     </div>
-                // </motion.div>
                 <>
                 <div className="product">
                 <button type="button" onClick={() => setIsSelected(null)}>Back</button>
 
                 </div>
-                <Product setIsSelected={setIsSelected} isSelected={isSelected} item={item} key={item.id} />
+                <Product layoutId={item.id} setIsSelected={setIsSelected} isSelected={isSelected} item={item} key={item.id} />
                 </>
                 )
               }else{
@@ -111,6 +99,50 @@ const catalogue = () => {
                   // <div></div>  
              )}
              })}
+
+            {/* {fakeyysProducts.map(item => (
+              <motion.div className="product" layoutId={item.id} onClick={() => setSelectedId(item.id)}>
+                <motion.h5>{item.description}</motion.h5>
+                <motion.h2>{item.title}</motion.h2>
+              </motion.div>
+            ))} */}
+
+              {/* {fakeyysProducts.map(item => {
+              const title = item.title.toUpperCase()
+
+              return(
+                <motion.div layoutId={item.id} onClick={()=>{setSelectedId(item.id); setSelectedProduct(item)}}  className='product'>
+                    <motion.div className='image-container'>
+                      <motion.img src={item.cover_image}/>
+                    </motion.div>
+                    <motion.div className='content'>
+                        <motion.div className='head'>
+                          <motion.p>{title}</motion.p>
+                          <motion.p>${item.price}</motion.p>
+                        </motion.div>
+                        <motion.div className='foot'>
+            
+                        </motion.div>
+                    </motion.div>
+                </motion.div>
+              )})}
+
+              {selectedId && selectedProduct && (
+                <motion.div layoutId={selectedId} className="popup">
+                  <motion.div className='image-container'>
+                      <motion.img src={selectedProduct.cover_image}/>
+                    </motion.div>
+                    <motion.div className='content'>
+                        <motion.div className='head'>
+                          <motion.p>{selectedProduct.title}</motion.p>
+                          <motion.p>${selectedProduct.price}</motion.p>
+                        </motion.div>
+                        <motion.div className='foot'>
+            
+                        </motion.div>
+                    </motion.div>
+                </motion.div>
+              )} */}
           <div className="product">
               <img src={'./images/comingSoon.png'}/>  
           </div>

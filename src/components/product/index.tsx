@@ -15,28 +15,41 @@ interface Props {
   setIsSelected: number,
 }
 
+
+
 const product = (props:Props) => {
-  const {item, key, isSelected, setIsSelected} = props;
+  const {item, key, isSelected, setIsSelected, layoutId} = props;
   const title = item.title.toUpperCase()
 
   const setProductId = (id:number) => {
     setIsSelected(id)
   }
+const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
+
+
+  const animation = {
+    initial: {
+      width: '50vw', 
+      maxWidth:'800px', 
+      height:'auto', 
+      scale:1,
+    }
+  }
   
   return (
-    <motion.div onClick={()=>{setProductId(item.id)}} initial={{width: '50vw', maxWidth:'800px', height:'auto', scale:1, }} animate={isSelected===item.id?{scale:1,top:0, left:'50%', transform:'translateX(-50%)', position: 'fixed'}:''}  className='product'>
-        <div className='image-container'>
+    <motion.div layoutId={layoutId} onClick={()=>{setProductId(item.id)}} {...animation}  animate={isSelected===item.id?{scale:1,top:0, left:'50%', transform:'translateX(-50%)', position: 'fixed'}:''}  className='product'>
+        <motion.div className='image-container'>
           <img src={item.cover_image}/>
-        </div>
-        <div className='content'>
-            <div className='head'>
-              <p>{title}</p>
-              <p>${item.price}</p>
-            </div>
-            <div className='foot'>
+        </motion.div>
+        <motion.div className='content'>
+            <motion.div className='head'>
+              <motion.p>{title}</motion.p>
+              <motion.p>${item.price}</motion.p>
+            </motion.div>
+            <motion.div className='foot'>
 
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     </motion.div>
   )
 }
