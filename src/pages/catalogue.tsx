@@ -81,33 +81,7 @@ const catalogue = () => {
           <p>CHECKOUT OUR NEW RANGE OF LIMITED EDITION GLASSES.</p>
           <p>EACH HAND MADE IN GERMANY BY OUR SKILLED CRAFTSMEN.</p>
           <div className="product-list">
-            {fakeyysProducts.map((item) => {
-              const title = item.title.toUpperCase();
-              if(item.id === isSelected){
-                return(
-                <>
-                <div className="product">
-                <button type="button" onClick={() => setIsSelected(null)}>Back</button>
-
-                </div>
-                <Product layoutId={item.id} setIsSelected={setIsSelected} isSelected={isSelected} item={item} key={item.id} />
-                </>
-                )
-              }else{
-                return(
-                  <Product setIsSelected={setIsSelected} isSelected={isSelected} item={item} key={item.id} />
-                  // <div></div>  
-             )}
-             })}
-
-            {/* {fakeyysProducts.map(item => (
-              <motion.div className="product" layoutId={item.id} onClick={() => setSelectedId(item.id)}>
-                <motion.h5>{item.description}</motion.h5>
-                <motion.h2>{item.title}</motion.h2>
-              </motion.div>
-            ))} */}
-
-              {/* {fakeyysProducts.map(item => {
+              {fakeyysProducts.map(item => {
               const title = item.title.toUpperCase()
 
               return(
@@ -128,7 +102,7 @@ const catalogue = () => {
               )})}
 
               {selectedId && selectedProduct && (
-                <motion.div layoutId={selectedId} className="popup">
+                <motion.div onClick={()=>{setSelectedId(''); setSelectedProduct({})}} layoutId={selectedId} className="popup">
                   <motion.div className='image-container'>
                       <motion.img src={selectedProduct.cover_image}/>
                     </motion.div>
@@ -142,7 +116,7 @@ const catalogue = () => {
                         </motion.div>
                     </motion.div>
                 </motion.div>
-              )} */}
+              )}
           <div className="product">
               <img src={'./images/comingSoon.png'}/>  
           </div>

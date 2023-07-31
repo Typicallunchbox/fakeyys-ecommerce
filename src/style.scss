@@ -223,6 +223,7 @@ h3 {
     /* CATALOGUE PAGE STYLING */
     &.catalogue{
         margin-top: 200px;
+        position: relative;
 
         .content{
             .product-list{
@@ -237,6 +238,8 @@ h3 {
                     top: auto;
                     flex: 0 0 47%;
                     margin-bottom: 60px;
+                    z-index: 20;
+
 
                     p{
                         font-family: 'Vonique-64-bold', sans-serif;
@@ -257,10 +260,18 @@ h3 {
                 }
 
                 .popup{
-                    position: absolute;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    top: 0;
+                    position: fixed;
+                    left: 30%;
+                    top: 0 !important;
+                    width: 50vw;
+                    max-width:800px; 
+                    height:auto; 
+                    scale:1;
+                    z-index: 20;
+
+                    img{
+                        width: 100%;
+                    }
                 }
                 
             }
