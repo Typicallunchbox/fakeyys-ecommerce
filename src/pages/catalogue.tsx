@@ -1,12 +1,20 @@
 import AnimatedPage from "../AnimatedPage";
 import { motion, AnimatePresence } from "framer-motion";
-import Product from "../components/product";
 import { useState } from "react";
 
+interface Product {
+    id: number,
+    title: string,
+    price: number,
+    description: string,
+    cover_image: string
+}
+
 const catalogue = () => {
-  const [isSelected, setIsSelected] = useState(null)
   const [selectedId, setSelectedId] = useState<string>('')
-  const [selectedProduct, setSelectedProduct] = useState<object>({})
+  const [selectedProduct, setSelectedProduct] = useState<Product | {}>({})
+  const [openModal, setOpenModal] = useState<boolean>(false)
+
   const fakeyysProducts = [
     {
       id: '0',
@@ -85,7 +93,8 @@ const catalogue = () => {
               const title = item.title.toUpperCase()
 
               return(
-                <motion.div layoutId={item.id} onClick={()=>{setSelectedId(item.id); setSelectedProduct(item)}}  className='product'>
+                <>
+                {!openModal && <motion.div layoutId={item.id} onClick={()=>{setSelectedId(item.id); setSelectedProduct(item); setOpenModal(true)}}  className='product'>
                     <motion.div className='image-container'>
                       <motion.img src={item.cover_image}/>
                     </motion.div>
@@ -98,11 +107,12 @@ const catalogue = () => {
             
                         </motion.div>
                     </motion.div>
-                </motion.div>
+                </motion.div>}
+                </>
               )})}
 
               {selectedId && selectedProduct && (
-                <motion.div onClick={()=>{setSelectedId(''); setSelectedProduct({})}} layoutId={selectedId} className="popup">
+                <motion.div onClick={()=>{setSelectedId(''); setSelectedProduct({}); setOpenModal(false)}} layoutId={selectedId} className="popup">
                   <motion.div className='image-container'>
                       <motion.img src={selectedProduct.cover_image}/>
                     </motion.div>
