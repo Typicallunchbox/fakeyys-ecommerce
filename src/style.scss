@@ -337,9 +337,7 @@ h3 {
                 width: 80%;
             }
         }
-        &.catalogue{
-            margin-top: 60px;
-    
+        &.catalogue{    
             .content{
                 .product-list{
                     gap: 0%;
@@ -361,6 +359,20 @@ h3 {
         &.about{
             .content{
                 width: 100%;
+            }
+        }
+
+        &.catalogue{
+            width: 90%;
+    
+            .content{
+                .product-list{
+                    .popup{
+
+                        left: 0 !important;
+                        width: 100vw;
+                    }
+                }
             }
         }
     }
