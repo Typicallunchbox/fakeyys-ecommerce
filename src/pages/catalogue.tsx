@@ -1,6 +1,6 @@
 import AnimatedPage from "../AnimatedPage";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 interface Product {
     id: number,
@@ -23,6 +23,14 @@ const catalogue = () => {
       document.querySelector("body")!.classList.remove('no-scroll');
     }
 }, [lockScroll])
+
+useCallback(
+  () => {
+    const title = selectedProduct.title.toUpperCase()
+    setSelectedProduct({...selectedProduct, title: title})
+  },
+  [selectedProduct],
+)
 
   // Framer Animations
   const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
