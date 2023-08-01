@@ -36,19 +36,12 @@ const catalogue = () => {
     show: {opacity: 0,transition: {duration: 0.5}},
     hide: {opacity: 0,transition: {duration: 0.5}}
   };
-  const variantsBackup = {
-    rotate: { rotate: [0, -30, 0], transition: { duration: 0.5 } },
-    // You can do whatever you want here, if you just want it to stop completely use `rotate: 0`
-    stop: { y: [0, -10, 0], transition: { repeat: Infinity, repeatDelay: 3 } },
-    initial: {opacity: 1},
-    hide: {opacity: 0, transition: transition}
-  };
 
   //Test Payload Data
   const fakeyysProducts = [
     {
       id: '0',
-      title: '0',
+      title: 'Dark Cosmic Red',
       cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
@@ -56,7 +49,7 @@ const catalogue = () => {
     },
     {
       id: '1',
-      title: '1',
+      title: 'Dark Cosmic Blue',
       cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
@@ -64,7 +57,7 @@ const catalogue = () => {
     },
     {
       id: '2',
-      title: 'Dark Cosmic Purple',
+      title: 'Dark Wood Yellow',
       cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
@@ -72,7 +65,7 @@ const catalogue = () => {
     },
     {
       id: '3',
-      title: 'Dark Cosmic Purple',
+      title: 'Dark Wood Cyan',
       cover_image: './images/glasses.jpg',
       product_images: '',
       price: 120.00,
@@ -115,7 +108,12 @@ const catalogue = () => {
     <AnimatedPage>
       <motion.div className="page catalogue" initial="initial" exit="exit">
         <div className="content">
-          <motion.div variants={textVariant} initial={'load'} animate={openModal ? 'hide' : 'start'} className="page-header">
+          <motion.div 
+            variants={textVariant} 
+            initial={'load'} 
+            animate={openModal ? 'hide' : 'start'} 
+            className="page-header"
+            >
             <motion.h2>FAKEYYS GLASSES</motion.h2>
             <motion.p>CHECKOUT OUR NEW RANGE OF LIMITED EDITION GLASSES.</motion.p>
             <motion.p>EACH HAND MADE IN GERMANY BY OUR SKILLED CRAFTSMEN.</motion.p>
