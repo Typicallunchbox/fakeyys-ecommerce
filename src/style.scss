@@ -13,13 +13,9 @@ body{
     margin: 0;
     padding: 0;
 
-    &.no-scroll {
-        overflow-y: hidden;
-    }
-}
-
-.no-scroll{
-    overflow-y: hidden;
+    // &.no-scroll {
+    //     overflow-y: hidden;
+    // }
 }
 
 h1,
@@ -288,7 +284,7 @@ h3 {
                 }
 
                 .backdrop{
-                    position: absolute;
+                    position: fixed;
                     top: 0;
                     left: 0;
                     width: 100%;
