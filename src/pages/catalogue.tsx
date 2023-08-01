@@ -1,6 +1,7 @@
 import AnimatedPage from "../AnimatedPage";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
+import {isEmpty} from 'lodash';
 
 interface Product {
     id: number,
@@ -24,13 +25,16 @@ const catalogue = () => {
     }
 }, [lockScroll])
 
-useCallback(
-  () => {
+useEffect(() => {
+  if(isEmpty(selectedProduct) && !selectedProduct){
     const title = selectedProduct.title.toUpperCase()
     setSelectedProduct({...selectedProduct, title: title})
+    console.log('hit')
+    history.pushState(null,'JavaScript',`'/catalogue/${selectedId}'`);
+  }
   },
-  [selectedProduct],
-)
+  [selectedProduct])
+  
 
   // Framer Animations
   const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
@@ -50,7 +54,7 @@ useCallback(
     {
       id: '0',
       title: 'Dark Cosmic Red',
-      cover_image: './images/glasses.jpg',
+      cover_image: './images/black-white-handbag.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -58,7 +62,7 @@ useCallback(
     {
       id: '1',
       title: 'Dark Cosmic Blue',
-      cover_image: './images/glasses.jpg',
+      cover_image: './images/green-black-handbag.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -66,7 +70,7 @@ useCallback(
     {
       id: '2',
       title: 'Dark Wood Yellow',
-      cover_image: './images/glasses.jpg',
+      cover_image: './images/maroon-white-handbag.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -74,7 +78,7 @@ useCallback(
     {
       id: '3',
       title: 'Dark Wood Cyan',
-      cover_image: './images/glasses.jpg',
+      cover_image: './images/yellow-black-handbagv2.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -82,7 +86,7 @@ useCallback(
     {
       id: '4',
       title: 'Dark Cosmic Purple',
-      cover_image: './images/glasses.jpg',
+      cover_image: './images/red-black-handbagv2.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -90,7 +94,7 @@ useCallback(
     {
       id: '5',
       title: 'Dark Cosmic Purple',
-      cover_image: './images/glasses.jpg',
+      cover_image: './images/yellow-black-handbag.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -98,7 +102,7 @@ useCallback(
     {
       id: '6',
       title: 'Dark Cosmic Purple',
-      cover_image: './images/glasses.jpg',
+      cover_image: './images/orange-black-handbag.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -106,7 +110,7 @@ useCallback(
     {
       id: '7',
       title: 'Dark Cosmic Purple',
-      cover_image: './images/glasses.jpg',
+      cover_image: './images/red-black-handbagv2.jpg',
       product_images: '',
       price: 120.00,
       description: ''
@@ -171,7 +175,8 @@ useCallback(
                             <motion.p>${selectedProduct.price}</motion.p>
                           </motion.div>
                           <motion.div className='foot'>
-              
+                            <motion.p>${selectedProduct.description}</motion.p>
+                            <motion.p>${selectedProduct.price}</motion.p>
                           </motion.div>
                       </motion.div>
                   </motion.div>
