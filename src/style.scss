@@ -231,6 +231,7 @@ h3 {
     /* CATALOGUE PAGE STYLING */
     &.catalogue{
         margin-top: 200px;
+        width: 60%;
 
         .content{
             .product-list{
@@ -246,6 +247,7 @@ h3 {
                     flex: 0 0 47%;
                     margin-bottom: 60px;
                     z-index: 0;
+                    cursor: pointer;
 
 
                     p{

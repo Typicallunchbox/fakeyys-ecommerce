@@ -131,8 +131,8 @@ useCallback(
               const title = item.title.toUpperCase()
 
               return(
-                <>
-                <motion.div 
+                <motion.div
+                key={item.id} 
                 className='product'
                 variants={variants} 
                 animate={openModal ? 'hide' : 'show'} 
@@ -140,7 +140,7 @@ useCallback(
                 onClick={()=>{setSelectedId(item.id); setSelectedProduct(item); setOpenModal(true); setLockScroll(true)}}  
                 >
                     <motion.div className='image-container'>
-                      <motion.img src={item.cover_image}/>
+                        <motion.img src={item.cover_image}/>
                     </motion.div>
                     <motion.div className='content'>
                         <motion.div className='head'>
@@ -152,7 +152,6 @@ useCallback(
                         </motion.div>
                     </motion.div>
                 </motion.div>
-                </>
               )})}
 
               {selectedId && selectedProduct && openModal && (
