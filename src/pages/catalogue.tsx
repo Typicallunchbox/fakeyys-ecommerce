@@ -1,19 +1,20 @@
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import AnimatedPage from "../AnimatedPage";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useCallback } from "react";
-import {isEmpty} from 'lodash';
+import { D2standard } from "../utils/animation-transitions";
+import { textVariant, variants } from "../utils/animation-variants";
 
 interface Product {
-    id: number,
+    id: string,
     title: string,
     price: number,
     description: string,
-    cover_image: string
+    cover_image: string 
 }
 
 const catalogue = () => {
   const [selectedId, setSelectedId] = useState<string>('')
-  const [selectedProduct, setSelectedProduct] = useState<Product | {}>({})
+  const [selectedProduct, setSelectedProduct] = useState<Product>()
   const [openModal, setOpenModal] = useState<boolean>(false)
   const [lockScroll, setLockScroll] = useState<boolean>(false);
 
@@ -26,29 +27,11 @@ const catalogue = () => {
 }, [lockScroll])
 
 useEffect(() => {
-  if(isEmpty(selectedProduct) && !selectedProduct){
-    const title = selectedProduct.title.toUpperCase()
-    setSelectedProduct({...selectedProduct, title: title})
-    console.log('hit')
-    history.pushState(null,'JavaScript',`'/catalogue/${selectedId}'`);
+  if(selectedId){
+    window.history.pushState(null,'JavaScript',`'/catalogue/${selectedId}'`);
   }
-  },
-  [selectedProduct])
+  },[selectedProduct])
   
-
-  // Framer Animations
-  const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
-  const variants = {
-    load: {opacity: 1, transition: {duration: 0.5}},
-    show: {opacity: 1, transition: {duration: 0}},
-    hide: {opacity: 0,transition: {duration: 0.5}}
-  };
-  const textVariant = {
-    initial: {opacity: 1, transition: {duration: 0}},
-    show: {opacity: 0,transition: {duration: 0.5}},
-    hide: {opacity: 0,transition: {duration: 0.5}}
-  };
-
   //Test Payload Data
   const fakeyysProducts = [
     {
@@ -57,7 +40,13 @@ useEffect(() => {
       cover_image: './images/black-white-handbag.jpg',
       product_images: '',
       price: 120.00,
-      description: ''
+      description: `Introducing the epitome of timeless elegance, our black and white fashion handbag effortlessly blends 
+                    sophistication with versatility. Crafted from premium vegan leather, its sleek monochrome design exudes 
+                    class, making it the perfect accessory for any occasion. With ample storage space and a thoughtfully designed 
+                    interior, organizing your essentials becomes a breeze. The bag's detachable shoulder strap adds practicality, 
+                    allowing you to switch effortlessly between a handheld and crossbody style. Whether it's a formal event or a 
+                    casual outing, this handbag complements any ensemble, making a bold statement that transcends seasons and trends. 
+                    Elevate your style with this iconic piece today.`
     },
     {
       id: '1',
@@ -65,7 +54,12 @@ useEffect(() => {
       cover_image: './images/green-black-handbag.jpg',
       product_images: '',
       price: 120.00,
-      description: ''
+      description: `Behold the embodiment of opulence and sophistication – our dark crocodile skin green fashion handbag. 
+                    Meticulously handcrafted from genuine crocodile leather, its rich emerald hue adds a captivating touch to any 
+                    outfit. The exotic texture exudes luxury, while the spacious interior accommodates all your essentials with ease. 
+                    Accentuated with gold-tone hardware and a sturdy handle, this bag showcases unrivaled durability and style. From 
+                    upscale soirees to chic evenings out, this statement piece commands attention and elevates your fashion game. 
+                    Own a piece of timeless allure that embodies the epitome of high-end fashion and artistry.`
     },
     {
       id: '2',
@@ -116,6 +110,7 @@ useEffect(() => {
       description: ''
     }
   ]
+  
   return (
     <AnimatedPage>
       <motion.div className="page catalogue" initial="initial" exit="exit">
@@ -133,7 +128,7 @@ useEffect(() => {
           <div className="product-list">
               {fakeyysProducts.map(item => {
               const title = item.title.toUpperCase()
-
+              
               return(
                 <motion.div
                 key={item.id} 
@@ -163,7 +158,7 @@ useEffect(() => {
                   <div onClick={() => {setOpenModal(false)}} className="backdrop"></div>
                   <motion.div 
                     className="popup"
-                    onClick={()=>{setSelectedId(''); setSelectedProduct({}); setOpenModal(false); setLockScroll(false)}} 
+                    onClick={()=>{setSelectedId(''); setSelectedProduct(undefined); setOpenModal(false); setLockScroll(false)}} 
                     layoutId={selectedId} 
                   >
                     <motion.div className='image-container'>
@@ -171,11 +166,11 @@ useEffect(() => {
                       </motion.div>
                       <motion.div className='content'>
                           <motion.div className='head'>
-                            <motion.p>{selectedProduct.title}</motion.p>
+                            <motion.p className="product-title">{selectedProduct.title}</motion.p>
                             <motion.p>${selectedProduct.price}</motion.p>
                           </motion.div>
-                          <motion.div className='foot'>
-                            <motion.p>${selectedProduct.description}</motion.p>
+                          <motion.div initial={{display:'none'}} animate={{display:'block'}} transition={D2standard} className='foot'>
+                            <motion.p>{selectedProduct.description}</motion.p>
                             <motion.p>${selectedProduct.price}</motion.p>
                           </motion.div>
                       </motion.div>

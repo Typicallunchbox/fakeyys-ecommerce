@@ -280,14 +280,23 @@ h3 {
                     scale:1;
                     z-index: 20;
 
-                    p{
-                        font-family: 'Vonique-64-bold', sans-serif;
-                    }
+                    
                     
                     .content{
                         .head{
-                        display: flex;
-                        justify-content: space-between;
+                            display: flex;
+                            justify-content: space-between;
+
+                            .product-title{
+                                text-transform: uppercase;
+                            }
+                            
+                            p{
+                                font-family: 'Vonique-64-bold', sans-serif;
+                            }
+                        }
+                        .foot{
+                            
                         }
                     }
 
