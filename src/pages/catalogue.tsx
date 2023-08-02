@@ -28,7 +28,9 @@ const catalogue = () => {
 
 useEffect(() => {
   if(selectedId){
-    window.history.pushState(null,'JavaScript',`'/catalogue/${selectedId}'`);
+    window.history.pushState(null,'JavaScript',`/catalogue/${selectedId}`);
+  }else{
+    window.history.pushState(null,'JavaScript',`/catalogue`);
   }
   },[selectedProduct])
   
