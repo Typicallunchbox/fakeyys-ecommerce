@@ -27,6 +27,7 @@ const catalogue = () => {
 }, [lockScroll])
 
 useEffect(() => {
+  console.log(selectedId)
   if(selectedId){
     window.history.pushState(null,'JavaScript',`/catalogue/${selectedId}`);
   }else{
@@ -157,7 +158,7 @@ useEffect(() => {
 
               {selectedId && selectedProduct && openModal && (
                 <>
-                  <div onClick={() => {setOpenModal(false)}} className="backdrop"></div>
+                  <div onClick={() => {setSelectedId(''); setSelectedProduct(undefined); setOpenModal(false); setLockScroll(false)}} className="backdrop"></div>
                   <motion.div 
                     className="popup"
                     onClick={()=>{setSelectedId(''); setSelectedProduct(undefined); setOpenModal(false); setLockScroll(false)}} 
