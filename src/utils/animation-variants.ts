@@ -6,6 +6,10 @@
    hide: {opacity: 0,transition: {duration: 0.5}}
  };
 
+ export const modalVariants = {
+  hide: {opacity: 0,transition: {duration: 0.5, delay: 5}}
+};
+
  export const textVariant = {
    initial: {opacity: 1, transition: {duration: 0}},
    show: {opacity: 0,transition: {duration: 0.5}},

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import AnimatedPage from "../AnimatedPage";
 import { D2standard } from "../utils/animation-transitions";
-import { textVariant, variants } from "../utils/animation-variants";
+import { textVariant, variants, modalVariants } from "../utils/animation-variants";
 
 interface Product {
     id: string,
@@ -113,6 +113,7 @@ useEffect(() => {
       description: ''
     }
   ]
+
   
   return (
     <AnimatedPage>
@@ -162,7 +163,8 @@ useEffect(() => {
                   <motion.div 
                     className="popup"
                     onClick={()=>{setSelectedId(''); setSelectedProduct(undefined); setOpenModal(false); setLockScroll(false)}} 
-                    layoutId={selectedId} 
+                    layoutId={selectedId}
+                    // variants={modalVariants} 
                   >
                     <motion.div className='image-container'>
                         <motion.img src={selectedProduct.cover_image}/>
@@ -172,7 +174,7 @@ useEffect(() => {
                             <motion.p className="product-title">{selectedProduct.title}</motion.p>
                             <motion.p>${selectedProduct.price}</motion.p>
                           </motion.div>
-                          <motion.div initial={{display:'none'}} animate={{display:'block'}} transition={D2standard} className='foot'>
+                          <motion.div initial={{display:'none'}} animate={selectedId ? {display:'block'} : {display:'none'}} transition={selectedId ? D2standard : {}} className='foot'>
                             <motion.p>{selectedProduct.description}</motion.p>
                             <motion.p>${selectedProduct.price}</motion.p>
                           </motion.div>
