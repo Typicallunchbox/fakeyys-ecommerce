@@ -12,7 +12,7 @@ interface Product {
     cover_image: string 
 }
 
-const catalogue = () => {
+const Catalogue = () => {
   const [selectedId, setSelectedId] = useState<string>('')
   const [selectedProduct, setSelectedProduct] = useState<Product>()
   const [openModal, setOpenModal] = useState<boolean>(false)
@@ -164,7 +164,9 @@ useEffect(() => {
                     className="popup"
                     onClick={()=>{setSelectedId(''); setSelectedProduct(undefined); setOpenModal(false); setLockScroll(false)}} 
                     layoutId={selectedId}
-                    // variants={modalVariants} 
+                    variants={modalVariants} 
+                    animate={openModal ? 'hide' : 'hide'} 
+
                   >
                     <motion.div className='image-container'>
                         <motion.img src={selectedProduct.cover_image}/>
@@ -174,7 +176,7 @@ useEffect(() => {
                             <motion.p className="product-title">{selectedProduct.title}</motion.p>
                             <motion.p>${selectedProduct.price}</motion.p>
                           </motion.div>
-                          <motion.div initial={{display:'none'}} animate={selectedId ? {display:'block'} : {display:'none'}} transition={selectedId ? D2standard : {}} className='foot'>
+                          <motion.div initial={{display:'none'}} animate={selectedId ? {display:'block'} : {display:'none'}} transition={D2standard} className='foot'>
                             <motion.p>{selectedProduct.description}</motion.p>
                             <motion.p>${selectedProduct.price}</motion.p>
                           </motion.div>
@@ -192,4 +194,4 @@ useEffect(() => {
   )
 }
 
-export default catalogue
+export default Catalogue

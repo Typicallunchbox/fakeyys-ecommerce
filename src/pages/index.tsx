@@ -4,7 +4,7 @@ import AnimatedPage from "../AnimatedPage";
 import { Helmet } from 'react-helmet';
 import { motion, useAnimate } from "framer-motion";
 
-const index = () => {
+const Index = () => {
 const navigate = useNavigate();
 const [scope, animate] = useAnimate();
 const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
@@ -112,22 +112,22 @@ const sizes = {
 
   function parallax(){
     document.querySelectorAll(".cta-shadow").forEach(function(move:any){
-      var moving_value:any = move.getAttribute("data-value");
-      var x = (cursor.x * moving_value) * 5 ;
-      var y = (cursor.y * moving_value) * 5;
+      const moving_value:number = move.getAttribute("data-value");
+      let x = (cursor.x * moving_value) * 5 ;
+      let y = (cursor.y * moving_value) * 5;
 
       const parallaxX = cursor.x
       const parallaxY = - cursor.y
 
       x += (parallaxX - x) * 0.2
       y += (parallaxY - y) * 0.2
-      move.style.transform = "translateX(" +  Math.round(-x) + "px) translateY(" +  Math.round(-y) + "px)";
+      move.style.transform = "translateX(" +  Math.round(-x).toString() + "px) translateY(" +  Math.round(-y).toString() + "px)";
     });
 
     document.querySelectorAll(".cta").forEach(function(move:any){
-      var moving_value:any = 2;
-      var x = (cursor.x * moving_value) * 5 ;
-      var y = (cursor.y * moving_value) * 5;
+      const moving_value:any = 2;
+      let x = (cursor.x * moving_value) * 5 ;
+      let y = (cursor.y * moving_value) * 5;
 
       const parallaxX = cursor.x
       const parallaxY = - cursor.y
@@ -150,7 +150,7 @@ const sizes = {
     await animate(scope.current, { scale: 1.5 });
     await animate(scope.current, { rotate: 0 });
     await animate(scope.current, { scale: 1 });
-    animate(
+    await animate(
       scope.current,
       {
         x: 100
@@ -198,4 +198,4 @@ const sizes = {
   )
 }
 
-export default index
+export default Index
