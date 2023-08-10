@@ -71,6 +71,7 @@ const sizes = {
       border: 'rgba(255, 255, 255)',
       backgroundColor: 'rgba(255, 255, 255)', 
       color: 'rgba(255, 255, 255)',
+      
       transition: {
         
         color: { duration: 0.2 },
@@ -134,7 +135,7 @@ const sizes = {
 
       x += (parallaxX - x) * 0.2
       y += (parallaxY - y) * 0.2
-      move.style.transform = "translateX(" +  Math.round(-x) + "px) translateY(" +  Math.round(-y) + "px)";
+      move.style.transform = "translateX(" +  Math.round(-x).toString() + "px) translateY(" +  Math.round(-y).toString() + "px)";
     });
   }
 

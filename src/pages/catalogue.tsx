@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import AnimatedPage from "../AnimatedPage";
 import { D2standard } from "../utils/animation-transitions";
 import { textVariant, variants, modalVariants } from "../utils/animation-variants";
+import { delay } from "lodash";
 
 interface Product {
     id: string,
@@ -15,11 +16,12 @@ interface Product {
 const Catalogue = () => {
   const [selectedId, setSelectedId] = useState<string>('')
   const [selectedProduct, setSelectedProduct] = useState<Product>()
-  const [openModal, setOpenModal] = useState<boolean>(false)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [showModalContent, setShowModalContent] = useState<boolean>(false);
   const [lockScroll, setLockScroll] = useState<boolean>(false);
 
   useEffect(() => {
-    if(openModal) {
+    if(isModalOpen) {
       document.querySelector("body")!.classList.add('no-scroll');
     }else{
       document.querySelector("body")!.classList.remove('no-scroll');
@@ -113,6 +115,27 @@ useEffect(() => {
       description: ''
     }
   ]
+  function timeout(ms:number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  const openModal = (item:Product) => {
+    setSelectedId(item.id); 
+    setSelectedProduct(item);
+     setIsModalOpen(true); 
+     setLockScroll(true);
+     setShowModalContent(true);
+  }
+
+  const closeModal = async() => {
+    setShowModalContent(false); 
+    
+    await timeout(1000);
+    setSelectedId(''); 
+    setSelectedProduct(undefined); 
+    setIsModalOpen(false); 
+    setLockScroll(false);
+    return;
+  }
 
   
   return (
@@ -122,7 +145,7 @@ useEffect(() => {
           <motion.div 
             variants={textVariant} 
             initial={'load'} 
-            animate={openModal ? 'hide' : 'start'} 
+            animate={isModalOpen ? 'hide' : 'start'} 
             className="page-header"
             >
             <motion.h2>FAKEYYS GLASSES</motion.h2>
@@ -138,9 +161,9 @@ useEffect(() => {
                 key={item.id} 
                 className='product'
                 variants={variants} 
-                animate={openModal ? 'hide' : 'show'} 
+                animate={isModalOpen ? 'hide' : 'show'} 
                 layoutId={item.id} 
-                onClick={()=>{setSelectedId(item.id); setSelectedProduct(item); setOpenModal(true); setLockScroll(true)}}  
+                onClick={()=> openModal(item)}  
                 >
                     <motion.div className='image-container'>
                         <motion.img src={item.cover_image}/>
@@ -157,15 +180,15 @@ useEffect(() => {
                 </motion.div>
               )})}
 
-              {selectedId && selectedProduct && openModal && (
+              {selectedId && selectedProduct && isModalOpen && (
                 <>
-                  <div onClick={() => {setSelectedId(''); setSelectedProduct(undefined); setOpenModal(false); setLockScroll(false)}} className="backdrop"></div>
+                  <div onClick={() => closeModal()} className="backdrop"></div>
                   <motion.div 
                     className="popup"
-                    onClick={()=>{setSelectedId(''); setSelectedProduct(undefined); setOpenModal(false); setLockScroll(false)}} 
+                    onClick={()=> closeModal()} 
                     layoutId={selectedId}
-                    variants={modalVariants} 
-                    animate={openModal ? 'hide' : 'hide'} 
+                    // variants={modalVariants} 
+                    animate={isModalOpen ? 'hide' : 'hide'} 
 
                   >
                     <motion.div className='image-container'>
@@ -176,7 +199,7 @@ useEffect(() => {
                             <motion.p className="product-title">{selectedProduct.title}</motion.p>
                             <motion.p>${selectedProduct.price}</motion.p>
                           </motion.div>
-                          <motion.div initial={{display:'none'}} animate={selectedId ? {display:'block'} : {display:'none'}} transition={D2standard} className='foot'>
+                          <motion.div initial={{display: 'none', opacity:'0'}} animate={showModalContent ? {display: 'block', opacity:'1'} : {opacity:'0', display: 'none'}}  className='foot'>
                             <motion.p>{selectedProduct.description}</motion.p>
                             <motion.p>${selectedProduct.price}</motion.p>
                           </motion.div>
