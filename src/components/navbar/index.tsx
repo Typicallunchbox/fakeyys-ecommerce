@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Standard from './Standard';
 import Hamburger from './Hamburger';
+import { Example } from '../navbarDemo/Example';
+
 import './style.scss';
 
 const index = () => {
@@ -31,7 +33,8 @@ const index = () => {
 			<div className="title">
 				<Link to='/'>FAKEYYS</Link>
 			</div>
-			{isStandard && !isMobile ? <Standard /> : <Hamburger />}
+			{isStandard && !isMobile ? <Standard /> : <Example />}
+			{/* {isStandard && !isMobile ? <Standard /> : <Hamburger />} */}
 		</div>
 	)
 }

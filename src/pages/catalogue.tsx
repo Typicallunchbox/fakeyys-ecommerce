@@ -148,8 +148,8 @@ useEffect(() => {
             animate={isModalOpen ? 'hide' : 'start'} 
             className="page-header"
             >
-            <motion.h2>FAKEYYS GLASSES</motion.h2>
-            <motion.p>CHECKOUT OUR NEW RANGE OF LIMITED EDITION GLASSES.</motion.p>
+            <motion.h2>FAKEYYS HANDBAGS</motion.h2>
+            <motion.p>CHECKOUT OUR NEW RANGE OF LIMITED EDITION HANDBAGS.</motion.p>
             <motion.p>EACH HAND MADE IN GERMANY BY OUR SKILLED CRAFTSMEN.</motion.p>
           </motion.div>
           <div className="product-list">
