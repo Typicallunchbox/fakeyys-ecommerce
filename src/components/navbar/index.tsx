@@ -33,8 +33,8 @@ const index = () => {
 			<div className="title">
 				<Link to='/'>FAKEYYS</Link>
 			</div>
-			{isStandard && !isMobile ? <Standard /> : <Example />}
-			{/* {isStandard && !isMobile ? <Standard /> : <Hamburger />} */}
+			{/* {isStandard && !isMobile ? <Standard /> : <Example />} */}
+			{isStandard && !isMobile ? <Standard /> : <Hamburger />}
 		</div>
 	)
 }
