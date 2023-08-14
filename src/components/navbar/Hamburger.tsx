@@ -20,7 +20,7 @@ const hamburger = (props:any) => {
     closed: {
       // display: 'none',
       opacity: 1,
-      x: 475,
+      x: 550,
       transition: { staggerChildren: 0.05, staggerDirection: -1 , ...quick}
     }
   };
@@ -29,7 +29,7 @@ const hamburger = (props:any) => {
     <div onClick={() => {setShowMenu(!showMenu)}} className="hamburger">
       {/* Hamburger */}
       {/* Convert links to svgs and add to threeJs plane in order to do wave warp */}
-      <motion.div animate={showMenu? 'open':'closed'} initial={{x:450}} variants={variants} className={`links ${isMobile ? 'mobile' : 'desktop'}`}>
+      <motion.div animate={showMenu? 'open':'closed'} initial={{x:550}} variants={variants} className={`links ${isMobile ? 'mobile' : 'desktop'}`}>
         <Link to='/catalogue'>CATALOGUE</Link>
         <Link to='/about'>ABOUT</Link>
       </motion.div>
