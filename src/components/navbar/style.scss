@@ -33,6 +33,12 @@
             right: 20px;
             top: 50%;
             transform: translateY(-50%);
+            background-color: #000;
+            mix-blend-mode: difference;
+
+            path{
+                color: #efefef;
+            }
         }
         
         .links{
@@ -45,7 +51,7 @@
             
             &.desktop{
                 right: 0;
-                padding: 25px 120px 0px 20px;
+                padding: 25px 120px 0px 50px;
             }
 
             &.mobile{

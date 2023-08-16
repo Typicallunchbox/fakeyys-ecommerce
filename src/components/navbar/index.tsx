@@ -29,13 +29,13 @@ const index = () => {
 	  
 	
 	return (
-		<div className={`navbar ${isMobile ? 'mobile' : ''}`}>
+		<nav className={`navbar ${isMobile ? 'mobile' : ''}`}>
 			<div className="title">
 				<Link to='/'>FAKEYYS</Link>
 			</div>
 			{/* {isStandard && !isMobile ? <Standard /> : <Example />} */}
 			{isStandard && !isMobile ? <Standard /> : <Hamburger isMobile={isMobile}/>}
-		</div>
+		</nav>
 	)
 }
 
