@@ -20,7 +20,7 @@
 
     .hamburger{
         display: flex;
-        position: relative;
+        // position: relative;
 
         svg{
             font-size: 40px;
@@ -33,17 +33,26 @@
         .links{
             background: #222;
             padding-right: 80px;
-            margin-right: -20px;
+            position: absolute;
+            top: 0;
             display: flex;
             gap: 40px;
             
             &.desktop{
-                padding: 10px 120px 0px 20px;
+                right: 0;
+                padding: 25px 120px 0px 20px;
             }
 
             &.mobile{
-                padding: 10px 120px 0px 20px;
+                background: #222;
+                padding: 100px 30px 50px 30px;
+                flex-direction: column;
+                text-align: end;
+                left: 0;
+                gap: 20px;
+                width: 100%;
             }
+            
 
             a{
                 color: white;

@@ -13,23 +13,38 @@ const hamburger = (props:any) => {
   const variants = {
     open: {
       x: 0,
-      opacity: 0,
-      // display: 'block',
+      y: 0,
       transition: { staggerChildren: 0.07, delayChildren: 0.2 , ...quick}
     },
     closed: {
-      // display: 'none',
-      opacity: 1,
       x: 550,
+      y: 0,
+      transition: { staggerChildren: 0.05, staggerDirection: -1 , ...quick}
+    },
+    openMobile: {
+      y: 0,
+      x:0,
+      transition: { staggerChildren: 0.07, delayChildren: 0.2 , ...quick}
+    },
+    closedMobile: {
+      x:0,
+      y: -290,
       transition: { staggerChildren: 0.05, staggerDirection: -1 , ...quick}
     }
   };
+
+  const animateForDevice = () => {
+    if(isMobile){
+      return showMenu ? 'openMobile' : 'closedMobile';
+    }
+      return showMenu ? 'open' : 'closed';
+  }
 
   return (
     <div onClick={() => {setShowMenu(!showMenu)}} className="hamburger">
       {/* Hamburger */}
       {/* Convert links to svgs and add to threeJs plane in order to do wave warp */}
-      <motion.div animate={showMenu? 'open':'closed'} initial={{x:550}} variants={variants} className={`links ${isMobile ? 'mobile' : 'desktop'}`}>
+      <motion.div animate={animateForDevice()} initial={isMobile ? {x:550, y:0}:{x:0, y:-290}} variants={variants} className={`links ${isMobile ? 'mobile' : 'desktop'}`}>
         <Link to='/catalogue'>CATALOGUE</Link>
         <Link to='/about'>ABOUT</Link>
       </motion.div>
