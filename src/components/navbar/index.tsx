@@ -29,7 +29,7 @@ const index = () => {
 	  
 	
 	return (
-		<div className='navbar'>
+		<div className={`navbar ${isMobile ? 'mobile' : ''}`}>
 			<div className="title">
 				<Link to='/'>FAKEYYS</Link>
 			</div>
