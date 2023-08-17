@@ -4,25 +4,18 @@ import { Link } from "react-router-dom";
 import Standard from './Standard';
 import Hamburger from './Hamburger';
 import { Example } from '../navbarDemo/Example';
-import { getDeviceType } from '../../utils/device-size';
-
 import './style.scss';
+import { useDeviceContext } from '../../contexts/device-context';
 
 const index = () => {
 	const location = useLocation();
 	const [isStandard, setIsStandard] = useState(false);
-	const [isMobile, setIsMobile] = useState(false);
 	const [isDarkTheme, setIsDarkTheme] = useState(false);
+	const { isMobile } = useDeviceContext();
 	
 	useEffect(() => {
 		['/','/about'].includes(location.pathname) ? setIsStandard(true) : setIsStandard(false);
 	}, [location])
-
-	useEffect(() => {
-		setIsMobile(getDeviceType());
-	}, [])
-
-	onresize = () => { setIsMobile(getDeviceType());}
 	
 	return (
 		<nav className={`navbar ${isMobile ? 'mobile' : ''}`}>

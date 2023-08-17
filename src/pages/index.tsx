@@ -4,13 +4,14 @@ import AnimatedPage from "../AnimatedPage";
 import { Helmet } from 'react-helmet';
 import { motion, useAnimate } from "framer-motion";
 import { getDeviceType } from "../utils/device-size";
+import { useDeviceContext } from "../contexts/device-context";
 
 const Index = () => {
 const navigate = useNavigate();
 const [scope, animate] = useAnimate();
+const { isMobile } = useDeviceContext();
 const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
 const [ctaTrigger, setCtatrigger] = useState(false);
-const [isMobile, setIsMobile] = useState(false);
 
 const cursor = {x:0, y:0}
 const sizes = {
@@ -196,13 +197,6 @@ const sizes = {
   useEffect(() => {
     // myAnimation();
   }, []);
-
-  useEffect(() => {
-		setIsMobile(getDeviceType());
-	}, [])
-  onresize = () => { setIsMobile(getDeviceType());}
-
-  
 
   return (
     <AnimatedPage>

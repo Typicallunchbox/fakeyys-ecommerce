@@ -8,6 +8,7 @@ import About from "./pages/about";
 import Catalogue from "./pages/catalogue"; 
 import Product from "./pages/product"; 
 import Error from "./pages/error";
+import { DeviceContextProvider } from './contexts/device-context';
 
 //Component imports
 import Navbar from "./components/navbar/index";
@@ -16,6 +17,7 @@ function App() {
   const location = useLocation();
   return (
     <>
+    <DeviceContextProvider>
       <AnimatePresence initial={false} mode='wait'>
         <Navbar />
         <Routes key={location.pathname} location={location}>
@@ -26,6 +28,7 @@ function App() {
           <Route path="*" element={<Error />} />
         </Routes>
       </AnimatePresence>
+    </DeviceContextProvider>
     </>
   );
 }
