@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Standard from './Standard';
 import Hamburger from './Hamburger';
 import { Example } from '../navbarDemo/Example';
+import { getDeviceType, getDeviceTypeEventListner } from '../../utils/device-size';
 
 import './style.scss';
 
@@ -18,15 +19,9 @@ const index = () => {
 	}, [location])
 
 	useEffect(() => {
-		if (isMobile && window.innerWidth >= 992) setIsMobile(false);
-        else if (!isMobile && window.innerWidth <= 991) setIsMobile(true);
+		setIsMobile(getDeviceType());
+		onresize = () => { setIsMobile(getDeviceType());}
 	}, [])
-
-	window.addEventListener("resize", function(){
-        if (isMobile && window.innerWidth >= 992) setIsMobile(false);
-        else if (!isMobile && window.innerWidth <= 991) setIsMobile(true);
-	});
-	  
 	
 	return (
 		<nav className={`navbar ${isMobile ? 'mobile' : ''}`}>

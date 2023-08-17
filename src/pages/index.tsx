@@ -103,12 +103,37 @@ const sizes = {
     });
   };
 
+  let counter = 0;
+  const updateRate = 10;
+  const limit = 45;
+  const tiltable = document.getElementById("tiltable");
+
+  function updateNow() {
+      return counter++ % updateRate === 0;
+  };
+
+  //ATTACH TO MOBILE CTA IN ORDER TO TEST IF ITS WORKING!
+  window.addEventListener("deviceorientation", function(event:any) {
+    if (updateNow()) {
+      let position = Math.round(event.gamma);
+      if (Math.abs(position) > limit) {
+        if (position > limit) {
+              position = limit;
+          } else {
+              position = -limit;
+                  }
+          }
+      position = position / -100;
+      let style = "rotateY(" + position + "deg)";
+      tiltable!.style.transform = style;
+      }
+  });
+
+  
   onmousemove = (event) => {
     cursor.x = event.clientX / sizes.width - 0.5
-    cursor.y = event.clientY / sizes.height - 0.5
-  
-    parallax()
-
+    cursor.y = event.clientY / sizes.height - 0.5  
+    parallax();
   };
 
   function parallax(){
