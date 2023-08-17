@@ -156,7 +156,6 @@ h3 {
             z-index: 1;
             
             h3{
-                font-size: 80px;
                 -webkit-user-select: none; /* Safari */
                 -ms-user-select: none; /* IE 10 and IE 11 */
                 user-select: none; /* Standard syntax */
@@ -166,14 +165,24 @@ h3 {
                 right: 7%;
                 bottom: 30%;
                 border-radius: 25px;
+                
+                h3{
+                    font-size: 80px;
+                }
             }
 
             &.mobile{
-                left: 0;
-                bottom: 0;
+                left: 50%;
+                bottom: 16px;
                 border-radius: 15px;
                 width: 90%;
+                max-width: 500px;
+                text-align: center;
                 transform: translateX(-50%) !important;
+
+                h3{
+                    font-size: 45px;
+                }
             }
         }
         .cta-shadow{
@@ -200,12 +209,33 @@ h3 {
         }
         .creators{
             position: absolute;
-            left: 20px;
-            bottom: 10px;
+            
 
-            h3{
-                font-size: 35px;
-                line-height: 1em;
+            &.desktop{
+                left: 20px;
+                bottom: 10px;
+
+                h3{
+                    font-size: 30px;
+                    line-height: 1em;
+                }
+            }
+            &.mobile{
+                right: 0;
+                bottom: 50%;
+                transform: translateY(-50%);
+                transform: rotate(-90deg);
+                transform-origin: 85%;
+                background: #3689d2;
+                padding: 20px 30px;
+                border-radius: 20px 20px 0 0;
+                color: white;
+                letter-spacing: 1px;
+
+                h3{
+                    font-size: 15px;
+                    line-height: 1em;
+                }
             }
         }
 
@@ -344,12 +374,14 @@ h3 {
 
 
 /* RESPONSIVE */
-@media screen and (max-width: 1520px) {
+@media screen and (max-width: 1600px) {
     .page{
         &.home{
             .cta{
-                h3{
-                    font-size: 60px;
+                &.desktop{                    
+                    h3{
+                        font-size: 60px;
+                    }
                 }
             }
             .cta-shadow{
@@ -385,6 +417,22 @@ h3 {
 @media screen and (max-width: 650px) {
     .page{
         width: 80%;
+
+        &.home{
+            .cta{
+                &.mobile{                    
+                    h3{
+                        font-size: 40px;
+                    }
+                }
+            }
+
+            .creators{
+                &.mobile{
+                    display: none;
+                }
+            }
+        } 
 
         &.about{
             .content{

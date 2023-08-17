@@ -217,13 +217,13 @@ const sizes = {
             <h3>VIEW CATALOGUE</h3>
           </motion.div>
         </>}
-        <div className="creators">
+        <div className={`creators ${isMobile ? 'mobile' : 'desktop'}`}>
           <h3>GERMAN MADE</h3>
           <h3>SWISS DESIGNED</h3>
         </div>
-        <div className="time">
+        {!isMobile && <div className="time">
           <h3>ES 08:52 PM</h3>
-        </div>
+        </div>}
       </div>
     </AnimatedPage>
   )

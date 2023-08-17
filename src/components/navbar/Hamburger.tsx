@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { motion } from "framer-motion";
 import { quick } from "../../utils/animation-transitions";
+import { useDeviceContext } from "../../contexts/device-context";
 
 
 const hamburger = (props:any) => {
-  const { isMobile } = props;
+	const { isMobile } = useDeviceContext();
   const [showMenu, setShowMenu] = useState(false);
 
 
