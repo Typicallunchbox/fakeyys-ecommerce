@@ -372,6 +372,13 @@ h3 {
 
 }
 
+.fixed-playground{
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
 
 /* RESPONSIVE */
 @media screen and (max-width: 1600px) {
