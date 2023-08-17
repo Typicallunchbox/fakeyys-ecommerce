@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Standard from './Standard';
 import Hamburger from './Hamburger';
 import { Example } from '../navbarDemo/Example';
-import { getDeviceType, getDeviceTypeEventListner } from '../../utils/device-size';
+import { getDeviceType } from '../../utils/device-size';
 
 import './style.scss';
 
@@ -20,8 +20,9 @@ const index = () => {
 
 	useEffect(() => {
 		setIsMobile(getDeviceType());
-		onresize = () => { setIsMobile(getDeviceType());}
 	}, [])
+
+	onresize = () => { setIsMobile(getDeviceType());}
 	
 	return (
 		<nav className={`navbar ${isMobile ? 'mobile' : ''}`}>

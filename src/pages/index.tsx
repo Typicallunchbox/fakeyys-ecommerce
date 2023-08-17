@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 import { Helmet } from 'react-helmet';
 import { motion, useAnimate } from "framer-motion";
+import { getDeviceType } from "../utils/device-size";
 
 const Index = () => {
 const navigate = useNavigate();
 const [scope, animate] = useAnimate();
 const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
 const [ctaTrigger, setCtatrigger] = useState(false);
+const [isMobile, setIsMobile] = useState(false);
+
 const cursor = {x:0, y:0}
 const sizes = {
   width: window.innerWidth,
@@ -193,6 +196,12 @@ const sizes = {
   useEffect(() => {
     // myAnimation();
   }, []);
+
+  useEffect(() => {
+		setIsMobile(getDeviceType());
+	}, [])
+  onresize = () => { setIsMobile(getDeviceType());}
+
   
 
   return (
@@ -203,15 +212,17 @@ const sizes = {
           <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
         </Helmet>
         <img className="ThreeJSImg" src={'./images/landingMockup.png'} alt="landingMock" />
-        <motion.div  ref={scope}  onClick={() => {navigate("/catalogue")}} className="cta">
+        <motion.div  ref={scope}  onClick={() => {navigate("/catalogue")}} className={`cta ${isMobile ? 'mobile' : 'desktop'}`}>
           <h3>VIEW CATALOGUE</h3>
         </motion.div>
-        <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow" data-value="7">
-          <h3>VIEW CATALOGUE</h3>
-        </motion.div>
-        <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow blue" data-value="12">
-          <h3>VIEW CATALOGUE</h3>
-        </motion.div>
+        {!isMobile && <>
+          <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow" data-value="7">
+            <h3>VIEW CATALOGUE</h3>
+          </motion.div>
+          <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow blue" data-value="12">
+            <h3>VIEW CATALOGUE</h3>
+          </motion.div>
+        </>}
         <div className="creators">
           <h3>GERMAN MADE</h3>
           <h3>SWISS DESIGNED</h3>

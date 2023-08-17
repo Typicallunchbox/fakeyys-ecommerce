@@ -150,19 +150,29 @@ h3 {
         }
         .cta{
             position: absolute;
-            right: 7%;
-            bottom: 30%;
-            border: black 2px solid;
             padding: 10px 40px;
-            border-radius: 25px;
-            z-index: 1;
+            border: black 2px solid;
             cursor: pointer;
+            z-index: 1;
             
             h3{
                 font-size: 80px;
                 -webkit-user-select: none; /* Safari */
                 -ms-user-select: none; /* IE 10 and IE 11 */
                 user-select: none; /* Standard syntax */
+            }
+
+            &.desktop{
+                right: 7%;
+                bottom: 30%;
+                border-radius: 25px;
+            }
+
+            &.mobile{
+                right: 0;
+                bottom: 0;
+                border-radius: 15px;
+                width: 90%;
             }
         }
         .cta-shadow{
