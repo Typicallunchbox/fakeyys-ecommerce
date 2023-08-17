@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const ImagePopup = () => {
+import ismage from '../../../public/images/black-white-handbag.jpg'
+
+type ImagePopupProps = {
+    image: string
+}
+
+const ImagePopup = ({image}:ImagePopupProps) => {
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
@@ -29,7 +35,7 @@ const ImagePopup = () => {
     borderRadius: '20px',
     // filter: ' blur(20px)',
     backgroundColor: 'rgb(255, 67, 75)',
-    backgroundImage: 'linear-gradient(#43d9ad, #4d5bce)',
+    backgroundImage: `url('./images/${image}')`,
     opacity: 0.6,
     zIndex: 2,
   };

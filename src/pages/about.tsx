@@ -7,15 +7,22 @@ import { motion } from "framer-motion";
 
 const about = () => {
   const [showImage, setShowImage]= useState(false);
+  const [image, setImage]= useState<string>('');
 
   const variants = {
     show: {opacity: 1,transition: {duration: 0.5}},
     hide: {opacity: 0,transition: {duration: 0.25}}
   }
+
+  const loadImage = (image:string) => {
+    setImage(image);
+    setShowImage(true);
+  }
+
   return (
     <AnimatedPage>
       <motion.div variants={variants} animate={showImage ? 'show' : 'hide'} initial={{opacity:0}} exit={{opacity:0}}>
-        <ImagePopup />
+        <ImagePopup image={image} />
       </motion.div>
       <div className="page about">
         <div className="content">
@@ -24,8 +31,8 @@ const about = () => {
           <br />
           <p>INSPIRATION FOR THIS PROJECT COMES FROM:</p>
           <div className="inspirations">
-            <motion.a onHoverEnd={() => setShowImage(false)} onHoverStart={() => setShowImage(true)} href="https://mubien.com/" target="_blank">MUBIEN.COM</motion.a>
-            <motion.a onHoverEnd={() => setShowImage(false)} onHoverStart={() => setShowImage(true)} href="http://taotajima.jp" target="_blank">TAOTAJIMA.JP</motion.a>
+            <motion.a onHoverEnd={() => setShowImage(false)} onHoverStart={() => loadImage('green-black-handbag.jpg')} href="https://mubien.com/" target="_blank">MUBIEN.COM</motion.a>
+            <motion.a onHoverEnd={() => setShowImage(false)} onHoverStart={() => loadImage('maroon-white-handbag.jpg')} href="http://taotajima.jp" target="_blank">TAOTAJIMA.JP</motion.a>
           </div>
         </div>
       </div>
