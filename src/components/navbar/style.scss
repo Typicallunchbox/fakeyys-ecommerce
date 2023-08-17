@@ -9,7 +9,8 @@
     z-index: 1;
 
     &.mobile{
-        background-image: linear-gradient(white 85px, transparent);
+        // background-image: linear-gradient(white 85px, transparent);
+        background-color: white;
     }
 
     .title a{

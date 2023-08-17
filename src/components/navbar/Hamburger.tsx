@@ -44,7 +44,7 @@ const hamburger = (props:any) => {
     <div onClick={() => {setShowMenu(!showMenu)}} className="hamburger">
       {/* Hamburger */}
       {/* Convert links to svgs and add to threeJs plane in order to do wave warp */}
-      <motion.div animate={animateForDevice()} initial={{x:1000, y:-550}} variants={variants} className={`links ${isMobile ? 'mobile' : 'desktop'}`}>
+      <motion.div animate={animateForDevice()} initial={{x:1000, y:-550}} exit={isMobile ?{x:0, y:-290}:{x:550, y:0}} variants={variants} className={`links ${isMobile ? 'mobile' : 'desktop'}`}>
         <Link to='/catalogue'>CATALOGUE</Link>
         <Link to='/about'>ABOUT</Link>
       </motion.div>
