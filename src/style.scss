@@ -258,10 +258,22 @@ h3 {
             h2{
                 margin-bottom: 20px;
             }
+            
+            a{
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                text-decoration: underline;
+                font-size: 20px;
+                margin-left: 6px;
+                font-family: 'SourceSansPro-semibold-italic';
+                margin-top: 10px;
+            }
 
             span{
                 font-family: 'SourceSansPro-semibold-italic';
                 text-decoration: underline;
+                display: inline-block;
             }
 
             .inspirations{
@@ -269,11 +281,8 @@ h3 {
                 flex-direction: column;
                 margin-top: 16px;
 
-                a{
-                    text-decoration: underline;
-                    font-size: 20px;
-                    margin-left: 6px;
-                    font-family: 'SourceSansPro-semibold-italic';
+                &.mobile{
+                    margin-top: 50px;
                 }
             }
         }

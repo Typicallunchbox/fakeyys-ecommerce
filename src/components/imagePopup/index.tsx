@@ -36,7 +36,7 @@ const ImagePopup = ({image}:ImagePopupProps) => {
     // filter: ' blur(20px)',
     backgroundColor: 'rgb(255, 67, 75)',
     backgroundImage: `url('./images/${image}')`,
-    opacity: 0.6,
+    opacity: 0.8,
     zIndex: 2,
   };
 
