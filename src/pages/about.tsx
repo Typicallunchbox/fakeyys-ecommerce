@@ -32,7 +32,7 @@ const about = () => {
           <p>INSPIRATION FOR THIS PROJECT COMES FROM:</p>
           <div className="inspirations">
             <motion.a onHoverEnd={() => setShowImage(false)} onHoverStart={() => loadImage('green-black-handbag.jpg')} href="https://mubien.com/" target="_blank">MUBIEN.COM</motion.a>
-            <motion.a onHoverEnd={() => setShowImage(false)} onHoverStart={() => loadImage('maroon-white-handbag.jpg')} href="http://taotajima.jp" target="_blank">TAOTAJIMA.JP</motion.a>
+            <motion.a onHoverEnd={() => setShowImage(false)} onHoverStart={() => loadImage('maroon-white-handbag.jpg')} href="https://webxr-sneakers.lusion.co/" target="_blank">WEBXR-SNEAKERS.LUSION.CO</motion.a>
           </div>
         </div>
       </div>
