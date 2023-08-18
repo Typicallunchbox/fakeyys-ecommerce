@@ -47,13 +47,16 @@ const Catalogue = () => {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
   
-  const openModal = (item:Product) => {
+  const openModal = async(item:Product) => {
+    
     setViewProduct(true);
     setSelectedId(item.id); 
     setSelectedProduct(item);
-     setIsModalOpen(true); 
-     setLockScroll(true);
-     setShowModalContent(true);
+    setIsModalOpen(true); 
+    setLockScroll(true);
+
+    await timeout(1000);
+    setShowModalContent(true);
   }
 
   const closeModal = async() => {
