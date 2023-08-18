@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-import ismage from '../../../public/images/black-white-handbag.jpg'
-
 type ImagePopupProps = {
     image: string
 }
@@ -14,7 +12,7 @@ const ImagePopup = ({image}:ImagePopupProps) => {
   });
 
   useEffect(() => {
-    const updateMousePosition = (e) => {
+    const updateMousePosition = (e:any) => {
       setMousePosition({
         x: e.clientX,
         y: e.clientY,

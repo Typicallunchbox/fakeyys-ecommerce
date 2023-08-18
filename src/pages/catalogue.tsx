@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import AnimatedPage from "../AnimatedPage";
-import { D2standard } from "../utils/animation-transitions";
-import { textVariant, variants, modalVariants } from "../utils/animation-variants";
-import { delay } from "lodash";
+import { textVariant, variants } from "../utils/animation-variants";
+import { fakeyysProducts } from "../static/product-list";
 
 interface Product {
     id: string,
@@ -14,13 +13,17 @@ interface Product {
 }
 
 const Catalogue = () => {
-  const [selectedId, setSelectedId] = useState<string>('')
-  const [selectedProduct, setSelectedProduct] = useState<Product>()
+  const [selectedId, setSelectedId] = useState<string>('');
+  const [productList, setProductList] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState<Product>();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [showModalContent, setShowModalContent] = useState<boolean>(false);
   const [lockScroll, setLockScroll] = useState<boolean>(false);
 
   useEffect(() => {
+    if(fakeyysProducts && fakeyysProducts.length > 0){
+      setProductList(fakeyysProducts)
+    }
     if(isModalOpen) {
       document.querySelector("body")!.classList.add('no-scroll');
     }else{
@@ -28,96 +31,19 @@ const Catalogue = () => {
     }
 }, [lockScroll])
 
-useEffect(() => {
-  console.log(selectedId)
-  if(selectedId){
-    window.history.pushState(null,'JavaScript',`/catalogue/${selectedId}`);
-  }else{
-    window.history.pushState(null,'JavaScript',`/catalogue`);
-  }
+  useEffect(() => {
+    if(selectedId){
+      window.history.pushState(null,'JavaScript',`/catalogue/${selectedId}`);
+    }else{
+      window.history.pushState(null,'JavaScript',`/catalogue`);
+    }
   },[selectedProduct])
   
-  //Test Payload Data
-  const fakeyysProducts = [
-    {
-      id: '0',
-      title: 'Dark Cosmic Red',
-      cover_image: './images/black-white-handbag.jpg',
-      product_images: '',
-      price: 120.00,
-      description: `Introducing the epitome of timeless elegance, our black and white fashion handbag effortlessly blends 
-                    sophistication with versatility. Crafted from premium vegan leather, its sleek monochrome design exudes 
-                    class, making it the perfect accessory for any occasion. With ample storage space and a thoughtfully designed 
-                    interior, organizing your essentials becomes a breeze. The bag's detachable shoulder strap adds practicality, 
-                    allowing you to switch effortlessly between a handheld and crossbody style. Whether it's a formal event or a 
-                    casual outing, this handbag complements any ensemble, making a bold statement that transcends seasons and trends. 
-                    Elevate your style with this iconic piece today.`
-    },
-    {
-      id: '1',
-      title: 'Dark Cosmic Blue',
-      cover_image: './images/green-black-handbag.jpg',
-      product_images: '',
-      price: 120.00,
-      description: `Behold the embodiment of opulence and sophistication – our dark crocodile skin green fashion handbag. 
-                    Meticulously handcrafted from genuine crocodile leather, its rich emerald hue adds a captivating touch to any 
-                    outfit. The exotic texture exudes luxury, while the spacious interior accommodates all your essentials with ease. 
-                    Accentuated with gold-tone hardware and a sturdy handle, this bag showcases unrivaled durability and style. From 
-                    upscale soirees to chic evenings out, this statement piece commands attention and elevates your fashion game. 
-                    Own a piece of timeless allure that embodies the epitome of high-end fashion and artistry.`
-    },
-    {
-      id: '2',
-      title: 'Dark Wood Yellow',
-      cover_image: './images/maroon-white-handbag.jpg',
-      product_images: '',
-      price: 120.00,
-      description: ''
-    },
-    {
-      id: '3',
-      title: 'Dark Wood Cyan',
-      cover_image: './images/yellow-black-handbagv2.jpg',
-      product_images: '',
-      price: 120.00,
-      description: ''
-    },
-    {
-      id: '4',
-      title: 'Dark Cosmic Purple',
-      cover_image: './images/red-black-handbagv2.jpg',
-      product_images: '',
-      price: 120.00,
-      description: ''
-    },
-    {
-      id: '5',
-      title: 'Dark Cosmic Purple',
-      cover_image: './images/yellow-black-handbag.jpg',
-      product_images: '',
-      price: 120.00,
-      description: ''
-    },
-    {
-      id: '6',
-      title: 'Dark Cosmic Purple',
-      cover_image: './images/orange-black-handbag.jpg',
-      product_images: '',
-      price: 120.00,
-      description: ''
-    },
-    {
-      id: '7',
-      title: 'Dark Cosmic Purple',
-      cover_image: './images/red-black-handbagv2.jpg',
-      product_images: '',
-      price: 120.00,
-      description: ''
-    }
-  ]
+ 
   function timeout(ms:number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+  
   const openModal = (item:Product) => {
     setSelectedId(item.id); 
     setSelectedProduct(item);
@@ -152,8 +78,8 @@ useEffect(() => {
             <motion.p>CHECKOUT OUR NEW RANGE OF LIMITED EDITION HANDBAGS.</motion.p>
             <motion.p>EACH HAND MADE IN GERMANY BY OUR SKILLED CRAFTSMEN.</motion.p>
           </motion.div>
-          <div className="product-list">
-              {fakeyysProducts.map(item => {
+          {productList && <motion.div initial={{opacity:0}} animate={{opacity:1, transition:{delay:0.25}}} className="product-list">
+              {productList.map(item => {
               const title = item.title.toUpperCase()
               
               return(
@@ -210,7 +136,7 @@ useEffect(() => {
           <div className="product">
               <img src={'./images/comingSoon.png'}/>  
           </div>
-          </div>
+          </motion.div>}
         </div>
       </motion.div>
     </AnimatedPage>

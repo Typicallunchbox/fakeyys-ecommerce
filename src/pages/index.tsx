@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 import { Helmet } from 'react-helmet';
 import { motion, useAnimate } from "framer-motion";
-import { getDeviceType } from "../utils/device-size";
 import { useDeviceContext } from "../contexts/device-context";
 
 const Index = () => {

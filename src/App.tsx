@@ -18,7 +18,7 @@ function App() {
   return (
     <>
     <DeviceContextProvider>
-      <AnimatePresence initial={false} mode='wait'>
+      <AnimatePresence initial={true} mode='wait'>
         <Navbar />
         <Routes key={location.pathname} location={location}>
           <Route path="/" element={<Landing />} />
