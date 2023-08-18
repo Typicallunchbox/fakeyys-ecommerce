@@ -55,7 +55,7 @@ const Catalogue = () => {
     setIsModalOpen(true); 
     setLockScroll(true);
 
-    await timeout(1000);
+    await timeout(600);
     setShowModalContent(true);
   }
 
@@ -64,7 +64,7 @@ const Catalogue = () => {
     setViewProduct(false);
 
     
-    await timeout(1000);
+    await timeout(600);
     setSelectedId(''); 
     setSelectedProduct(undefined); 
     setIsModalOpen(false); 
