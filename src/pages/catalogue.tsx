@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import AnimatedPage from "../AnimatedPage";
 import { textVariant, variants } from "../utils/animation-variants";
 import { fakeyysProducts } from "../static/product-list";
+import { useProductContext } from "../contexts/product-context";
+import { BsArrowLeft } from 'react-icons/bs';
 
 interface Product {
     id: string,
@@ -19,6 +21,7 @@ const Catalogue = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [showModalContent, setShowModalContent] = useState<boolean>(false);
   const [lockScroll, setLockScroll] = useState<boolean>(false);
+  const { viewProduct, setViewProduct } = useProductContext();
 
   useEffect(() => {
     if(fakeyysProducts && fakeyysProducts.length > 0){
@@ -45,6 +48,7 @@ const Catalogue = () => {
   }
   
   const openModal = (item:Product) => {
+    setViewProduct(true);
     setSelectedId(item.id); 
     setSelectedProduct(item);
      setIsModalOpen(true); 
@@ -54,6 +58,8 @@ const Catalogue = () => {
 
   const closeModal = async() => {
     setShowModalContent(false); 
+    setViewProduct(false);
+
     
     await timeout(1000);
     setSelectedId(''); 
@@ -108,7 +114,9 @@ const Catalogue = () => {
 
               {selectedId && selectedProduct && isModalOpen && (
                 <>
-                  <div onClick={() => closeModal()} className="backdrop"></div>
+                  <div onClick={() => closeModal()} className="backdrop">
+                      {viewProduct && <BsArrowLeft className='back-arrow' />}
+                  </div>
                   <motion.div 
                     className="popup"
                     onClick={()=> closeModal()} 

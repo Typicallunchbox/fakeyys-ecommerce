@@ -12,22 +12,25 @@ import { DeviceContextProvider } from './contexts/device-context';
 
 //Component imports
 import Navbar from "./components/navbar/index";
+import { ProductContextProvider } from "./contexts/product-context";
 
 function App() {
   const location = useLocation();
   return (
     <>
     <DeviceContextProvider>
-      <AnimatePresence initial={true} mode='wait'>
-        <Navbar />
-        <Routes key={location.pathname} location={location}>
-          <Route path="/" element={<Landing />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/catalogue" element={<Catalogue />} />
-          <Route path="/catalogue/product/:id" element={<Product />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
-      </AnimatePresence>
+      <ProductContextProvider>
+        <AnimatePresence initial={true} mode='wait'>
+          <Navbar />
+          <Routes key={location.pathname} location={location}>
+            <Route path="/" element={<Landing />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/catalogue" element={<Catalogue />} />
+            <Route path="/catalogue/product/:id" element={<Product />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </AnimatePresence>
+      </ProductContextProvider>
     </DeviceContextProvider>
     </>
   );
