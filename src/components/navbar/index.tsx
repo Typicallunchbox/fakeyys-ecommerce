@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { useDeviceContext } from '../../contexts/device-context';
 import { useProductContext } from '../../contexts/product-context';
 
-const index = () => {
+const Index = () => {
 	const location = useLocation();
 	const [isStandard, setIsStandard] = useState(false);
 	const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -33,4 +33,4 @@ const index = () => {
 	)
 }
 
-export default index
+export default Index
