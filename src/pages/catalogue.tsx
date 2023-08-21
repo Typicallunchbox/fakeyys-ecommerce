@@ -76,6 +76,7 @@ const Catalogue = () => {
   return (
     <AnimatedPage>
       <motion.div className="page catalogue" initial="initial" exit="exit">
+        <BsArrowLeft onClick={() => closeModal()} className={`back-arrow ${viewProduct ? 'show' : 'hide'}`} />
         <div className="content">
           <motion.div 
             variants={textVariant} 
@@ -117,15 +118,15 @@ const Catalogue = () => {
 
               {selectedId && selectedProduct && isModalOpen && (
                 <>
-                  <div onClick={() => closeModal()} className="backdrop">
-                      {viewProduct && <BsArrowLeft className='back-arrow' />}
-                  </div>
+                  <div onClick={() => closeModal()} className="backdrop"></div>
                   <motion.div 
                     className="popup"
-                    onClick={()=> closeModal()} 
+                    // onClick={()=> closeModal()} 
                     layoutId={selectedId}
+                    initial={{translateX: '50% !important'}}
+                    // style={{left: '50%', transformOrigin: 'none'}}
                     // variants={modalVariants} 
-                    animate={isModalOpen ? 'hide' : 'hide'} 
+                    // animate={isModalOpen ? 'hide' : 'hide'} 
 
                   >
                     <motion.div className='image-container'>
