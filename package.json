@@ -25,6 +25,7 @@
     "three": "^0.154.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.22.11",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@types/react-helmet": "^6.1.6",
@@ -32,6 +33,7 @@
     "@typescript-eslint/parser": "^5.61.0",
     "@vitejs/plugin-react": "^4.0.1",
     "babel-plugin-glsl": "^1.0.0",
+    "babel-plugin-macros": "^3.1.0",
     "eslint": "^8.44.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.1",
