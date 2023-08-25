@@ -293,6 +293,12 @@ h3 {
         margin-top: 200px;
         width: 60%;
 
+        .canvas{
+            position: absolute !important;
+            left: 0;
+            top: 0;
+        }
+
         
         .back-arrow{
             position: fixed;

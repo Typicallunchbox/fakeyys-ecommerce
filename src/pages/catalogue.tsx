@@ -5,6 +5,8 @@ import { textVariant, variants } from "../utils/animation-variants";
 import { fakeyysProducts } from "../static/product-list";
 import { useProductContext } from "../contexts/product-context";
 import { BsArrowLeft } from 'react-icons/bs';
+import { Canvas } from "@react-three/fiber";
+import Scene from '../components/canvas/catalogue-canvas'
 
 interface Product {
     id: string,
@@ -15,6 +17,7 @@ interface Product {
 }
 
 const Catalogue = () => {
+  //page variables
   const [selectedId, setSelectedId] = useState<string>('');
   const [productList, setProductList] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState<Product>();
@@ -76,6 +79,7 @@ const Catalogue = () => {
   return (
     <AnimatedPage>
       <motion.div className="page catalogue" initial="initial" exit="exit">
+        <Scene />
         <BsArrowLeft onClick={() => closeModal()} className={`back-arrow ${viewProduct ? 'show' : 'hide'}`} />
         <div className="content">
           <motion.div 
