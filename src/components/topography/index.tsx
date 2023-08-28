@@ -1,11 +1,32 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import * as THREE from "three";
 import glsl from "babel-plugin-glsl/macro";
 import * as dat from 'dat.gui';
 
-const topography = () => {
+type TopologyProps = {
+  hoveredProduct: Product
+}
 
+interface Product {
+  id: string,
+  title: string,
+  price: number,
+  description: string,
+  cover_image: string,
+  color_accents: {
+    primary: Array<number>,
+    secondary: Array<number>
+  } 
+}
+const Topography = ({hoveredProduct}:TopologyProps) => {
+
+  const [product, setProduct] = useState<Product>(hoveredProduct || {})
+
+  useEffect(() => {
+    setProduct(hoveredProduct);
+  }, [hoveredProduct])
+  
 
 useEffect(() => {
   let container;
@@ -23,6 +44,7 @@ function onResize() {
 
 function setup() {
 	container = document.getElementById('demoTest');
+  console.log(typeof container)
 	scene = new THREE.Scene();
 
 	const { offsetWidth: width, offsetHeight: height } = container;
@@ -38,13 +60,14 @@ function setup() {
 	});
 
 	renderer.setSize(width, height);
-	renderer.setClearColor(0x000000, 0);
+	renderer.setClearColor(0x00000, 0);
+  console.log('hoveredProduct:"', hoveredProduct)
 
 	container.appendChild(renderer.domElement);
 
 	window.addEventListener('resize', onResize);
 
-	const geometry = new THREE.PlaneGeometry(20, 20, 100, 100);
+	const geometry = new THREE.PlaneGeometry(12, 12, 135, 135);
 	material = new THREE.ShaderMaterial({
 		side: THREE.DoubleSide,
 		transparent: true,
@@ -56,7 +79,8 @@ function setup() {
 			waveAmplitude: { type: 'f', value: 0.17 },
 
 			topoDefinition: { type: 'f', value: 30 },
-			topoColor: { type: 'c', value: new THREE.Color(52/255, 57/255, 124/255) }
+      //COLOR IS HERE
+			topoColor: { type: 'c', value: new THREE.Color(product.color_accents && 225 || 0/255, 0/255, 0/255) }
 		},
 		vertexShader: 
     glsl`
@@ -155,7 +179,7 @@ function setup() {
         float line = abs(fract(coord - 0.1) - 0.5) / fwidth(coord);
         line /= 1.1;
 
-        gl_FragColor = vec4(topoColor, 1.0 - line);
+        gl_FragColor = vec4(topoColor, 2.0 - line);
       }
     `
 	});
@@ -204,4 +228,4 @@ setup();
   )
 }
 
-export default topography
+export default Topography

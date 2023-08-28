@@ -19,6 +19,10 @@ export const fakeyysProducts = [
       cover_image: './images/green-black-handbag.jpg',
       product_images: '',
       price: 120.00,
+      color_accents: {
+        "primary": [125, 255 , 0],
+        "secondary": [0, 0, 0]
+      },
       description: `Behold the embodiment of opulence and sophistication – our dark crocodile skin green fashion handbag. 
                     Meticulously handcrafted from genuine crocodile leather, its rich emerald hue adds a captivating touch to any 
                     outfit. The exotic texture exudes luxury, while the spacious interior accommodates all your essentials with ease. 

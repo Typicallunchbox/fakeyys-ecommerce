@@ -15,7 +15,8 @@ interface Product {
     title: string,
     price: number,
     description: string,
-    cover_image: string 
+    cover_image: string,
+    color_accents: object 
 }
 
 const Catalogue = () => {
@@ -26,6 +27,7 @@ const Catalogue = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [showModalContent, setShowModalContent] = useState<boolean>(false);
   const [lockScroll, setLockScroll] = useState<boolean>(false);
+  const [hoveredProduct, setHoveredProduct] = useState<Product>();
   const { viewProduct, setViewProduct } = useProductContext();
 
   useEffect(() => {
@@ -83,7 +85,7 @@ const Catalogue = () => {
       <motion.div className="page catalogue" initial="initial" exit="exit">
         <div className="viewport"></div>
         {/* <Scene /> */}
-        <Canvas2 />
+        <Canvas2 hoveredProduct={hoveredProduct} />
         <BsArrowLeft onClick={() => closeModal()} className={`back-arrow ${viewProduct ? 'show' : 'hide'}`} />
         <div className="content">
           <motion.div 
@@ -110,7 +112,7 @@ const Catalogue = () => {
                 onClick={()=> openModal(item)}  
                 >
                     <motion.div className='image-container'>
-                        <motion.img src={item.cover_image}/>
+                        <motion.img onHoverStart={() => {setHoveredProduct(item); console.log(item)}} src={item.cover_image}/>
                     </motion.div>
                     <motion.div className='content'>
                         <motion.div className='head'>
