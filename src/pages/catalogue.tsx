@@ -5,6 +5,7 @@ import { textVariant, variants } from "../utils/animation-variants";
 import { fakeyysProducts } from "../static/product-list";
 import { useProductContext } from "../contexts/product-context";
 import { BsArrowLeft } from 'react-icons/bs';
+import Canvas2 from '../components/topography'
 import { Canvas } from "@react-three/fiber";
 // import Scene from '../components/canvas/catalogue-canvas'
 import Scene from '../components/canvas/demo'
@@ -80,7 +81,9 @@ const Catalogue = () => {
   return (
     <AnimatedPage>
       <motion.div className="page catalogue" initial="initial" exit="exit">
-        <Scene />
+        <div className="viewport"></div>
+        {/* <Scene /> */}
+        <Canvas2 />
         <BsArrowLeft onClick={() => closeModal()} className={`back-arrow ${viewProduct ? 'show' : 'hide'}`} />
         <div className="content">
           <motion.div 
