@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from "react-router-dom";
 import * as THREE from "three";
+import glsl from "babel-plugin-glsl/macro";
 import * as dat from 'dat.gui';
 
 const topography = () => {
@@ -23,15 +24,13 @@ function onResize() {
 function setup() {
 	container = document.getElementById('demoTest');
 	scene = new THREE.Scene();
-  console.log('container:', container)
-
 
 	const { offsetWidth: width, offsetHeight: height } = container;
-  console.log('offsetWidth:', width)
-  console.log('offsetHeight:', height)
-
 	camera = new THREE.PerspectiveCamera(45, width / height, 1, 100);
-	camera.position.z = 4;
+	camera.position.x = 0;
+	camera.position.y = 5;
+	camera.position.z = 5;
+  camera.lookAt(0,0,0)
 
 	renderer = new THREE.WebGLRenderer({
 		alpha: true,
@@ -45,13 +44,13 @@ function setup() {
 
 	window.addEventListener('resize', onResize);
 
-	const geometry = new THREE.PlaneGeometry(3, 3, 100, 100);
+	const geometry = new THREE.PlaneGeometry(20, 20, 100, 100);
 	material = new THREE.ShaderMaterial({
 		side: THREE.DoubleSide,
 		transparent: true,
 		uniforms: {
-			time: { type: 'f', value: 0.2 },
-			speed: { type: 'f', value: 0.0017 },
+			time: { type: 'f', value: 0.1 },
+			speed: { type: 'f', value: 0.0005 },
 
 			waveDefinition: { type: 'f', value: 1.5 },
 			waveAmplitude: { type: 'f', value: 0.17 },
@@ -59,7 +58,8 @@ function setup() {
 			topoDefinition: { type: 'f', value: 30 },
 			topoColor: { type: 'c', value: new THREE.Color(52/255, 57/255, 124/255) }
 		},
-		vertexShader: `
+		vertexShader: 
+    glsl`
       vec3 mod289(vec3 x) {
         return x - floor(x * (1.0 / 289.0)) * 289.0;
       }
@@ -137,7 +137,8 @@ function setup() {
         gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
       }
     `,
-		fragmentShader: `
+		fragmentShader: 
+    glsl`
       float map(float value, float inMin, float inMax, float outMin, float outMax) {
         return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
       }

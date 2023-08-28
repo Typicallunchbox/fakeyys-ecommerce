@@ -295,8 +295,11 @@ h3 {
 
         #demoTest{
             // background-color: red;
-            height: 500px;
-            width: 800px;
+            height: 100%;
+            width: 100%;
+            position: fixed !important;
+            left: 0;
+            top: 0;
         }
 
         .canvas{
