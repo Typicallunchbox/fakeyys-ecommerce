@@ -19,9 +19,7 @@ const WaveShaderMaterial = shaderMaterial(
     waveAmplitude: { type: 'f', value: 0.17 },
 
     topoDefinition: { type: 'f', value: 30 },
-    // topoColor: { type: 'c', value: new THREE.Color(0/255, 0/255, 0/255) },
-
-    // topoColor: { type: 'c', value: new Float32Array([17, -45.3])},
+    // topoColor: new THREE.Color(0/255, 0/255, 0/255) ,
   },
   // Vertex Shader
   glsl`
@@ -128,8 +126,6 @@ const WaveShaderMaterial = shaderMaterial(
 extend({ WaveShaderMaterial });
 
 const Wave = () => {
-    const newColor = new THREE.Color(0/255, 0/255, 0/255);
-    console.log('newColor:', newColor)
   const ref = useRef();
   useFrame(({ clock }) => (ref.current.uTime = clock.getElapsedTime()));
 
@@ -147,7 +143,7 @@ const Wave = () => {
 
 const Scene = () => {
   return (
-    <Canvas className="canvas" camera={{ fov: 12, position: [0, 0, 5] }}>
+    <Canvas id="demoTest" className="canvas" camera={{ fov: 12, position: [0, 0, 5] }}>
       <Suspense fallback={null}>
         <Wave />
       </Suspense>
