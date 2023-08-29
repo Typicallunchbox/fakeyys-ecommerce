@@ -112,7 +112,7 @@ const Catalogue = () => {
                 onClick={()=> openModal(item)}  
                 >
                     <motion.div className='image-container'>
-                        <motion.img onHoverStart={() => {setHoveredProduct(item); console.log(item)}} src={item.cover_image}/>
+                        <motion.img onHoverEnd={() => {setHoveredProduct(null);}} onHoverStart={() => {setHoveredProduct(item);}} src={item.cover_image}/>
                     </motion.div>
                     <motion.div className='content'>
                         <motion.div className='head'>
