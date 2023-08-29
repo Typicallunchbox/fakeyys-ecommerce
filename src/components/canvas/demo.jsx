@@ -12,13 +12,13 @@ const WaveShaderMaterial = shaderMaterial(
     uColor: new THREE.Color(0.0, 0.0, 0.0),
     uTexture: new THREE.Texture(),
 
-    time: { type: 'f', value: 0.1 },
-    speed: { type: 'f', value: 0.0005 },
+    time: 0.1 ,
+    speed:  0.0005 ,
 
-    waveDefinition: { type: 'f', value: 1.5 },
-    waveAmplitude: { type: 'f', value: 0.17 },
+    waveDefinition: 1.5 ,
+    waveAmplitude:  0.17 ,
 
-    topoDefinition: { type: 'f', value: 30 },
+    topoDefinition: 30 ,
     topoColor: new THREE.Color(0/255, 0/255, 0/255) ,
   },
   // Vertex Shader
@@ -127,7 +127,10 @@ extend({ WaveShaderMaterial });
 
 const Wave = () => {
   const ref = useRef();
-  useFrame(({ clock }) => (ref.current.uTime = clock.getElapsedTime()));
+  useFrame(({ clock }) => (
+    ref.current.uTime = clock.getElapsedTime()
+    
+    ));
 
   const [image] = useLoader(THREE.TextureLoader, [
     "https://images.unsplash.com/photo-1604011092346-0b4346ed714e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80"
