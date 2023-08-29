@@ -1,5 +1,7 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, Suspense } from 'react'
 import * as THREE from "three";
+import { Canvas, extend, useFrame, useLoader } from "@react-three/fiber";
+import { shaderMaterial } from "@react-three/drei";
 import glsl from "babel-plugin-glsl/macro";
 
 type TopologyProps = {
@@ -186,7 +188,7 @@ const Topography = ({hoveredProduct}:TopologyProps) => {
 
   // TweenMax.to(mesh.rotation, 10, { z: 2 * Math.PI, ease: Linear.easeOut, repeat: -1 });
   material.uniforms.topoColor.value.setHex(0xFF0000);
-  console.log('VALUE HEX:', material.uniforms.topoColor.value)
+
   draw();
   }
 
