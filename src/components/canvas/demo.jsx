@@ -19,7 +19,7 @@ const WaveShaderMaterial = shaderMaterial(
     waveAmplitude: { type: 'f', value: 0.17 },
 
     topoDefinition: { type: 'f', value: 30 },
-    // topoColor: new THREE.Color(0/255, 0/255, 0/255) ,
+    topoColor: new THREE.Color(0/255, 0/255, 0/255) ,
   },
   // Vertex Shader
   glsl`
@@ -135,7 +135,7 @@ const Wave = () => {
 
   return (
     <mesh>
-      <planeGeometry args={[0.4, 0.6, 16, 16]} />
+      <planeGeometry args={[12, 12, 100, 100]} />
       <waveShaderMaterial uColor={"hotpink"} ref={ref} uTexture={image} />
     </mesh>
   );
