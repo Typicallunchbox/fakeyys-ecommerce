@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react'
-import { Link } from "react-router-dom";
+import { useEffect, useState, useRef } from 'react'
 import * as THREE from "three";
 import glsl from "babel-plugin-glsl/macro";
-import * as dat from 'dat.gui';
 
 type TopologyProps = {
   hoveredProduct: Product
@@ -20,69 +18,65 @@ interface Product {
   } 
 }
 const Topography = ({hoveredProduct}:TopologyProps) => {
-
   const [product, setProduct] = useState<Product>(hoveredProduct || {})
 
   useEffect(() => {
+    console.log('hoveredProduct:', hoveredProduct)
     setProduct(hoveredProduct);
   }, [hoveredProduct])
   
 
-useEffect(() => {
-  let container;
-  let scene;
-  let camera;
-  let renderer;
-  let material;
-function onResize() {
-	const { offsetWidth: width, offsetHeight: height } = container;
+  useEffect(() => {
+  let container:any;
+  let scene:any;
+  let camera:any;
+  let renderer:any;
+  let material:any;
 
-	camera.aspect = width / height;
+  function onResize() {
+  const { offsetWidth: width, offsetHeight: height } = container;
+  camera.aspect = width / height;
   camera.updateProjectionMatrix();
   renderer.setSize(width, height);
-}
+  }
 
-function setup() {
-	container = document.getElementById('demoTest');
-  console.log(typeof container)
-	scene = new THREE.Scene();
+  function setup() {
+  container = document.getElementById('demoTest');
+  scene = new THREE.Scene();
 
-	const { offsetWidth: width, offsetHeight: height } = container;
-	camera = new THREE.PerspectiveCamera(45, width / height, 1, 100);
-	camera.position.x = 0;
-	camera.position.y = 5;
-	camera.position.z = 5;
+  const { offsetWidth: width, offsetHeight: height } = container;
+  camera = new THREE.PerspectiveCamera(30, width / height, 1, 100);
+  camera.position.x = 0;
+  camera.position.y = 5;
+  camera.position.z = 5;
   camera.lookAt(0,0,0)
 
-	renderer = new THREE.WebGLRenderer({
-		alpha: true,
-		antialias: false
-	});
+  renderer = new THREE.WebGLRenderer({
+    alpha: true,
+    antialias: false
+  });
 
-	renderer.setSize(width, height);
-	renderer.setClearColor(0x00000, 0);
-  console.log('hoveredProduct:"', hoveredProduct)
+  renderer.setSize(width, height);
+  renderer.setClearColor(0x00000, 0);
+  container.appendChild(renderer.domElement);
+  window.addEventListener('resize', onResize);
 
-	container.appendChild(renderer.domElement);
+  const geometry = new THREE.PlaneGeometry(12, 12, 100, 100);
+  material = new THREE.ShaderMaterial({
+    side: THREE.DoubleSide,
+    transparent: true,
+    uniforms: {
+      time: { type: 'f', value: 0.1 },
+      speed: { type: 'f', value: 0.0005 },
 
-	window.addEventListener('resize', onResize);
+      waveDefinition: { type: 'f', value: 1.5 },
+      waveAmplitude: { type: 'f', value: 0.17 },
 
-	const geometry = new THREE.PlaneGeometry(12, 12, 135, 135);
-	material = new THREE.ShaderMaterial({
-		side: THREE.DoubleSide,
-		transparent: true,
-		uniforms: {
-			time: { type: 'f', value: 0.1 },
-			speed: { type: 'f', value: 0.0005 },
-
-			waveDefinition: { type: 'f', value: 1.5 },
-			waveAmplitude: { type: 'f', value: 0.17 },
-
-			topoDefinition: { type: 'f', value: 30 },
+      topoDefinition: { type: 'f', value: 30 },
       //COLOR IS HERE
-			topoColor: { type: 'c', value: new THREE.Color(product.color_accents && 225 || 0/255, 0/255, 0/255) }
-		},
-		vertexShader: 
+      topoColor: { type: 'c', value: new THREE.Color(0/255, 0/255, 0/255) },
+    },
+    vertexShader: 
     glsl`
       vec3 mod289(vec3 x) {
         return x - floor(x * (1.0 / 289.0)) * 289.0;
@@ -161,7 +155,7 @@ function setup() {
         gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
       }
     `,
-		fragmentShader: 
+    fragmentShader: 
     glsl`
       float map(float value, float inMin, float inMax, float outMin, float outMax) {
         return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
@@ -182,46 +176,28 @@ function setup() {
         gl_FragColor = vec4(topoColor, 2.0 - line);
       }
     `
-	});
+  });
   material.extensions.derivatives = true;
-	const mesh = new THREE.Mesh(geometry, material);
+
+  const mesh = new THREE.Mesh(geometry, material);
   mesh.position.y += 0.3;
-	mesh.rotation.x = -Math.PI / 4;
-	scene.add(mesh);
+  mesh.rotation.x = -Math.PI / 4;
+  scene.add(mesh);
 
-	// TweenMax.to(mesh.rotation, 10, { z: 2 * Math.PI, ease: Linear.easeOut, repeat: -1 });
+  // TweenMax.to(mesh.rotation, 10, { z: 2 * Math.PI, ease: Linear.easeOut, repeat: -1 });
+  material.uniforms.topoColor.value.setHex(0xFF0000);
 
-	const gui = new dat.GUI();
-  gui.close();
+  draw();
+  }
 
-	const general = gui.addFolder('General');
-	general.open();
-	general.add(material.uniforms.speed, 'value', 0, 0.01).name('Speed')
+  function draw() {
+    renderer.render(scene, camera);
+    requestAnimationFrame(draw);
+    material.uniforms.time.value += material.uniforms.speed.value;
+  }
 
-	const wave = gui.addFolder('Wave');
-	wave.open();
-	wave.add(material.uniforms.waveDefinition, 'value', 0, 6).name('Definition');
-	wave.add(material.uniforms.waveAmplitude, 'value', 0, 1).name('Amplitude');
-
-	const topography = gui.addFolder('Topography');
-	topography.open();
-	topography.add(material.uniforms.topoDefinition, 'value', 0, 30).name('Definition');
-	topography.addColor({ color: material.uniforms.topoColor.value.getHex() }, 'color')
-		.name('Color')
-		.onChange(v => material.uniforms.topoColor.value.setHex(v));
-
-	draw();
-}
-
-function draw() {
-	renderer.render(scene, camera);
-	requestAnimationFrame(draw);
-
-	material.uniforms.time.value += material.uniforms.speed.value;
-}
-
-setup();
-}, [])
+  setup();
+  }, [])
 
   return (
     <div id='demoTest' className="viewport"></div>
