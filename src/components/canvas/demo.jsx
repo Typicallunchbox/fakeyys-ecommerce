@@ -128,7 +128,8 @@ extend({ WaveShaderMaterial });
 const Wave = () => {
   const ref = useRef();
   useFrame(({ clock }) => (
-    ref.current.uTime = clock.getElapsedTime()
+    // ref.current.uTime = clock.getElapsedTime()
+    ref.current.time += ref.current.speed
     
     ));
 
@@ -157,7 +158,6 @@ const Scene = () => {
 const App = () => {
   return (
     <>
-      <h1>POMADA MODELADORA</h1>
       <Scene />
     </>
   );
