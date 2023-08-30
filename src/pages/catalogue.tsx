@@ -5,7 +5,7 @@ import { textVariant, variants } from "../utils/animation-variants";
 import { fakeyysProducts } from "../static/product-list";
 import { useProductContext } from "../contexts/product-context";
 import { BsArrowLeft } from 'react-icons/bs';
-import Scene from '../components/canvas/demo';
+import Scene from '../components/canvas/catalogue-canvas';
 import { Product } from '../typings/index';
 
 const Catalogue = () => {
