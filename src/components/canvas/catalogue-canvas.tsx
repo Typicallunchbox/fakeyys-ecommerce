@@ -17,7 +17,7 @@ const WaveShaderMaterial = shaderMaterial(
     speed:  0.0001 ,
     waveDefinition: 1.5 ,
     waveAmplitude:  0.17 ,
-    topoDefinition: 30 ,
+    topoDefinition: 20 ,
     topoColor: new THREE.Color(0/255, 0/255, 0/255) ,
   },
   // Vertex Shader
@@ -117,7 +117,7 @@ const WaveShaderMaterial = shaderMaterial(
         float line = abs(fract(coord - 0.1) - 0.5) / fwidth(coord);
         line /= 1.1;
 
-        gl_FragColor = vec4(topoColor, 10.0 - line);
+        gl_FragColor = vec4(topoColor, 8.5 - line);
       }
     `
 );
@@ -136,6 +136,12 @@ const Wave = ({product}:TopologyProps) => {
     if(reference === product){
       ref.current.time += ref.current.speed*5;
 
+      //Initial hover fast for a feb seconds then slow 
+      // setTimeout(function(){
+      //   console.log('hit')
+      //   ref.current.time += ref.current.speed/5;
+      // }, 1000)
+
       return
     }else{
       ref.current.time += ref.current.speed;
@@ -146,7 +152,7 @@ const Wave = ({product}:TopologyProps) => {
       ref.current.topoColor = new THREE.Color(colours[0]/255, colours[1]/255, colours[2]/255)
       reference = product;
     }else{
-      ref.current.topoColor = new THREE.Color(170/255, 170/255, 170/255)
+      ref.current.topoColor = new THREE.Color(220/255, 220/255, 220/255)
     }
   })
 

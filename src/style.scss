@@ -302,6 +302,7 @@ h3 {
             top: 0;
             z-index: -1;
             opacity: 100%;
+            background: white;
         }
 
         .canvas{
@@ -337,6 +338,13 @@ h3 {
         }
 
         .content{
+            .page-header{
+                h2{
+                    font-size: 50px;
+                    mix-blend-mode: difference;
+                    color: white;
+                }
+            }
             .product-list{
                 margin-top: 60px;
                 display: flex;
