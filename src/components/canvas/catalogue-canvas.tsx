@@ -14,7 +14,7 @@ const WaveShaderMaterial = shaderMaterial(
   // Uniform
   {
     time: 0.1 ,
-    speed:  0.0005 ,
+    speed:  0.0001 ,
     waveDefinition: 1.5 ,
     waveAmplitude:  0.17 ,
     topoDefinition: 30 ,
@@ -133,9 +133,13 @@ const Wave = ({product}:TopologyProps) => {
   let reference:object = {};
 
   useFrame(() => {
-    ref.current.time += ref.current.speed;
     if(reference === product){
+      ref.current.time += ref.current.speed*5;
+
       return
+    }else{
+      ref.current.time += ref.current.speed;
+      
     }
     if(product && product.color_accents){
       let colours = product.color_accents.primary;
