@@ -1,18 +1,9 @@
 import * as THREE from "three";
-import React, { useRef, useState, useEffect, Suspense } from "react";
+import { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas, extend, useFrame, useLoader } from "@react-three/fiber";
 import { shaderMaterial } from "@react-three/drei";
 import glsl from "babel-plugin-glsl/macro";
-// import "./styles.scss";
-
-interface Product {
-  id: string,
-  title: string,
-  price: number,
-  description: string,
-  cover_image: string,
-  color_accents: object 
-}
+import { Product } from '../../typings/index'
 
 type TopologyProps = {
   hoveredProduct: Product,
@@ -24,10 +15,8 @@ const WaveShaderMaterial = shaderMaterial(
   {
     time: 0.1 ,
     speed:  0.0005 ,
-
     waveDefinition: 1.5 ,
     waveAmplitude:  0.17 ,
-
     topoDefinition: 30 ,
     topoColor: new THREE.Color(0/255, 0/255, 0/255) ,
   },
@@ -135,38 +124,37 @@ const WaveShaderMaterial = shaderMaterial(
 
 extend({ WaveShaderMaterial });
 
-const Wave = ({product}:Product) => {
-  const ref = useRef();
-  let reference = null;
+const Wave = ({product}:TopologyProps) => {
+  const ref = useRef({
+    time:0,
+    speed:0,
+    topoColor:{}
+  });
+  let reference:object = {};
 
-    useFrame((clock) => {
-      ref.current.time += ref.current.speed;
-      if(reference === product){
-        return
-      }
-      if(product && product.color_accents){
-        let colours = product.color_accents.primary;
-        ref.current.topoColor = new THREE.Color(colours[0]/255, colours[1]/255, colours[2]/255)
-        reference = product;
-      }else{
-        ref.current.topoColor = new THREE.Color(0/255, 0/255, 0/255)
-      }
-    })
-
-  const [image] = useLoader(THREE.TextureLoader, [
-    "https://images.unsplash.com/photo-1604011092346-0b4346ed714e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80"
-  ]);
+  useFrame(() => {
+    ref.current.time += ref.current.speed;
+    if(reference === product){
+      return
+    }
+    if(product && product.color_accents){
+      let colours = product.color_accents.primary;
+      ref.current.topoColor = new THREE.Color(colours[0]/255, colours[1]/255, colours[2]/255)
+      reference = product;
+    }else{
+      ref.current.topoColor = new THREE.Color(0/255, 0/255, 0/255)
+    }
+  })
 
   return (
     <mesh>
       <planeGeometry args={[12, 12, 120, 120]} />
-      <waveShaderMaterial uColor={"hotpink"} ref={ref} uTexture={image} />
+      <waveShaderMaterial ref={ref} />
     </mesh>
   );
 };
 
 const Scene = ({hoveredProduct}:TopologyProps) => {
-
   const [product, setProduct] = useState<Product>(hoveredProduct || {})
 
   useEffect(() => {
