@@ -5,6 +5,10 @@ export const fakeyysProducts = [
       cover_image: './images/black-white-handbag.jpg',
       product_images: '',
       price: 120.00,
+      color_accents: {
+        "primary": [10, 125, 0],
+        "secondary": [0, 0, 0]
+      },
       description: `Introducing the epitome of timeless elegance, our black and white fashion handbag effortlessly blends 
                     sophistication with versatility. Crafted from premium vegan leather, its sleek monochrome design exudes 
                     class, making it the perfect accessory for any occasion. With ample storage space and a thoughtfully designed 
@@ -20,7 +24,7 @@ export const fakeyysProducts = [
       product_images: '',
       price: 120.00,
       color_accents: {
-        "primary": [125, 255 , 0],
+        "primary": [125, 0 , 0],
         "secondary": [0, 0, 0]
       },
       description: `Behold the embodiment of opulence and sophistication – our dark crocodile skin green fashion handbag. 

@@ -22,10 +22,6 @@ type TopologyProps = {
 const WaveShaderMaterial = shaderMaterial(
   // Uniform
   {
-    uTime: 0,
-    uColor: new THREE.Color(0.0, 0.0, 0.0),
-    uTexture: new THREE.Texture(),
-
     time: 0.1 ,
     speed:  0.0005 ,
 
@@ -141,21 +137,19 @@ extend({ WaveShaderMaterial });
 
 const Wave = ({product}:Product) => {
   const ref = useRef();
-  // useFrame(({ clock }) => (
-  //   // ref.current.uTime = clock.getElapsedTime()
-  //   ref.current.time += ref.current.speed;
-  //   ref.current.color = 0xFF0000
-
- 
-  //   ));
+  let reference = null;
 
     useFrame((clock) => {
       ref.current.time += ref.current.speed;
-      if(product){
-        ref.current.topoColor = new THREE.Color(150/255, 0/255, 0/255)
+      if(reference === product){
+        return
+      }
+      if(product && product.color_accents){
+        let colours = product.color_accents.primary;
+        ref.current.topoColor = new THREE.Color(colours[0]/255, colours[1]/255, colours[2]/255)
+        reference = product;
       }else{
         ref.current.topoColor = new THREE.Color(0/255, 0/255, 0/255)
-
       }
     })
 
@@ -176,7 +170,6 @@ const Scene = ({hoveredProduct}:TopologyProps) => {
   const [product, setProduct] = useState<Product>(hoveredProduct || {})
 
   useEffect(() => {
-    console.log('hoveredProduct:', hoveredProduct)
     setProduct(hoveredProduct);
   }, [hoveredProduct])
 
