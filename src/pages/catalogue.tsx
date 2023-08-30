@@ -87,7 +87,7 @@ const Catalogue = () => {
             <motion.p>EACH HAND MADE IN GERMANY BY OUR SKILLED CRAFTSMEN.</motion.p>
           </motion.div>
           {productList && <motion.div initial={{opacity:0}} animate={{opacity:1, transition:{delay:0.25}}} className="product-list">
-              {productList.map(item => {
+              {productList.map((item:Product) => {
               const title = item.title.toUpperCase()
               
               return(

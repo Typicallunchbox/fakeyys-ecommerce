@@ -6,7 +6,7 @@ export const fakeyysProducts = [
       product_images: '',
       price: 120.00,
       color_accents: {
-        "primary": [10, 125, 0],
+        "primary": [74, 72, 73],
         "secondary": [0, 0, 0]
       },
       description: `Introducing the epitome of timeless elegance, our black and white fashion handbag effortlessly blends 
@@ -24,7 +24,7 @@ export const fakeyysProducts = [
       product_images: '',
       price: 120.00,
       color_accents: {
-        "primary": [125, 0 , 0],
+        "primary": [45, 74, 54],
         "secondary": [0, 0, 0]
       },
       description: `Behold the embodiment of opulence and sophistication – our dark crocodile skin green fashion handbag. 
@@ -40,6 +40,10 @@ export const fakeyysProducts = [
       cover_image: './images/maroon-white-handbag.jpg',
       product_images: '',
       price: 120.00,
+      color_accents: {
+        "primary": [174, 65, 58],
+        "secondary": [0, 0, 0]
+      },
       description: ''
     },
     {
@@ -48,6 +52,10 @@ export const fakeyysProducts = [
       cover_image: './images/yellow-black-handbagv2.jpg',
       product_images: '',
       price: 120.00,
+      color_accents: {
+        "primary": [255, 210, 69],
+        "secondary": [0, 0, 0]
+      },
       description: ''
     },
     {
@@ -56,6 +64,10 @@ export const fakeyysProducts = [
       cover_image: './images/red-black-handbagv2.jpg',
       product_images: '',
       price: 120.00,
+      color_accents: {
+        "primary": [74, 72, 73],
+        "secondary": [0, 0, 0]
+      },
       description: ''
     },
     {
@@ -64,6 +76,10 @@ export const fakeyysProducts = [
       cover_image: './images/yellow-black-handbag.jpg',
       product_images: '',
       price: 120.00,
+      color_accents: {
+        "primary": [74, 72, 73],
+        "secondary": [0, 0, 0]
+      },
       description: ''
     },
     {
@@ -72,6 +88,10 @@ export const fakeyysProducts = [
       cover_image: './images/orange-black-handbag.jpg',
       product_images: '',
       price: 120.00,
+      color_accents: {
+        "primary": [74, 72, 73],
+        "secondary": [0, 0, 0]
+      },
       description: ''
     },
     {
@@ -80,6 +100,10 @@ export const fakeyysProducts = [
       cover_image: './images/red-black-handbagv2.jpg',
       product_images: '',
       price: 120.00,
+      color_accents: {
+        "primary": [74, 72, 73],
+        "secondary": [0, 0, 0]
+      },
       description: ''
     }
   ]

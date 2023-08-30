@@ -117,7 +117,7 @@ const WaveShaderMaterial = shaderMaterial(
         float line = abs(fract(coord - 0.1) - 0.5) / fwidth(coord);
         line /= 1.1;
 
-        gl_FragColor = vec4(topoColor, 2.0 - line);
+        gl_FragColor = vec4(topoColor, 10.0 - line);
       }
     `
 );
@@ -152,7 +152,7 @@ const Wave = ({product}:TopologyProps) => {
 
   return (
     <mesh>
-      <planeGeometry args={[12, 12, 120, 120]} />
+      <planeGeometry args={[13, 13, 120, 120]} />
       <waveShaderMaterial ref={ref} />
     </mesh>
   );
