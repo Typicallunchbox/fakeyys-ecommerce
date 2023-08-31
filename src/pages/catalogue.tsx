@@ -73,7 +73,7 @@ const Catalogue = () => {
     <AnimatedPage>
       <motion.div className="page catalogue" initial="initial" exit="exit">
         <div className="viewport"></div>
-        <Scene hoveredProduct={hoveredProduct}/>
+        <Scene selectedProduct={selectedProduct} hoveredProduct={hoveredProduct}/>
         <BsArrowLeft onClick={() => closeModal()} className={`back-arrow ${viewProduct ? 'show' : 'hide'}`} />
         <div className="content">
           <motion.div 

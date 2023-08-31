@@ -7,7 +7,8 @@ import { Product } from '../../typings/index'
 
 type TopologyProps = {
   hoveredProduct: Product,
-  product: Product
+  product: Product,
+  selectedProduct: Product
 }
 
 const WaveShaderMaterial = shaderMaterial(
@@ -124,7 +125,7 @@ const WaveShaderMaterial = shaderMaterial(
 
 extend({ WaveShaderMaterial });
 
-const Wave = ({product}:TopologyProps) => {
+const Wave = ({product, selectedProduct}:TopologyProps) => {
   const ref = useRef({
     time:0,
     speed:0,
@@ -145,13 +146,19 @@ const Wave = ({product}:TopologyProps) => {
       return
     }else{
       ref.current.time += ref.current.speed;
-      
     }
+
     if(product && product.color_accents){
       let colours = product.color_accents.primary;
       ref.current.topoColor = new THREE.Color(colours[0]/255, colours[1]/255, colours[2]/255)
       reference = product;
-    }else{
+    }else if (selectedProduct) {
+      let colours = selectedProduct.color_accents.primary;
+      ref.current.topoColor = new THREE.Color(colours[0]/255, colours[1]/255, colours[2]/255)
+      reference = selectedProduct;
+    }
+    else{
+      console.log('HIT!')
       ref.current.topoColor = new THREE.Color(225/255, 225/255, 225/255)
     }
   })
@@ -164,7 +171,7 @@ const Wave = ({product}:TopologyProps) => {
   );
 };
 
-const Scene = ({hoveredProduct}:TopologyProps) => {
+const Scene = ({hoveredProduct,selectedProduct}:TopologyProps) => {
   const [product, setProduct] = useState<Product>(hoveredProduct || {})
 
   useEffect(() => {
@@ -174,7 +181,7 @@ const Scene = ({hoveredProduct}:TopologyProps) => {
   return (
     <Canvas id="demoTest" className="canvas" camera={{ fov: 60, position: [0, 0, 5] }}>
       <Suspense fallback={null}>
-        <Wave product={product} />
+        <Wave product={product} selectedProduct={selectedProduct} />
       </Suspense>
     </Canvas>
   );
