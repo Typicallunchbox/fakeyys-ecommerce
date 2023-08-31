@@ -50,7 +50,6 @@ const hamburger = (props:any) => {
         <Link to='/about'>ABOUT</Link>
       </motion.div>
       <GiHamburgerMenu />
-
     </div>
   )
 }
