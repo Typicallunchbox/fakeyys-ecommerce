@@ -152,7 +152,7 @@ const Wave = ({product}:TopologyProps) => {
       ref.current.topoColor = new THREE.Color(colours[0]/255, colours[1]/255, colours[2]/255)
       reference = product;
     }else{
-      ref.current.topoColor = new THREE.Color(220/255, 220/255, 220/255)
+      ref.current.topoColor = new THREE.Color(225/255, 225/255, 225/255)
     }
   })
 
