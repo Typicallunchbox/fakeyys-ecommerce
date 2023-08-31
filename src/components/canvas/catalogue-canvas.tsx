@@ -145,7 +145,7 @@ const Wave = ({product, selectedProduct}:TopologyProps) => {
 
       return
     }else{
-      ref.current.time += ref.current.speed;
+      ref.current.time += ref.current.speed*2;
     }
 
     if(product && product.color_accents){
