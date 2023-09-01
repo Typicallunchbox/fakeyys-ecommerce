@@ -98,9 +98,10 @@ const Catalogue = () => {
                 animate={isModalOpen ? 'hide' : 'show'} 
                 layoutId={item.id} 
                 onClick={()=> {openModal(item); setHoveredProduct(item)}}
+                onHoverEnd={() => {setHoveredProduct(null);}} onHoverStart={() => {setHoveredProduct(item);}}
                 >
                     <motion.div className='image-container'>
-                        <motion.img onHoverEnd={() => {setHoveredProduct(null);}} onHoverStart={() => {setHoveredProduct(item);}} src={item.cover_image}/>
+                        <motion.img src={item.cover_image}/>
                     </motion.div>
                     <motion.div className='content' animate={hoveredProduct?.id === item.id ? {background: `rgb(40,40,40)`, color: 'white'} : {background: `transparent`, color: 'black'}}>
                         <motion.div className='head' initial={{opacity:1}} animate={hoveredProduct?.id === item.id ? {scale: 1.0} : !hoveredProduct ? {opacity:1} : {opacity:0}}>
