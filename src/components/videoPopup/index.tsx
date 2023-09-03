@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import video from './videos/mubien_clip.webm'
 
-type ImagePopupProps = {
-    image: string
+type VideoPopupProps = {
+    video: string
 }
 
-const ImagePopup = ({image}:ImagePopupProps) => {
+const VideoPopup = ({video}:VideoPopupProps) => {
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
@@ -34,8 +35,8 @@ const ImagePopup = ({image}:ImagePopupProps) => {
     left: '180px',
     top: '80px',
     // filter: ' blur(20px)',
-    backgroundColor: 'rgb(255, 67, 75)',
-    backgroundImage: `url('./images/${image}')`,
+    // backgroundColor: 'rgb(255, 67, 75)',
+    // backgroundImage: `url('./images/${video}')`,
     opacity: 0.8,
     zIndex: 2,
   };
@@ -77,9 +78,11 @@ const ImagePopup = ({image}:ImagePopupProps) => {
           repeat: Infinity,
         },
       }}
-    ></motion.div>
+    >
+      <video src={`./videos/${video}`} controls autoPlay muted loop></video> 
+    </motion.div>
   );
 };
 
 
-export default ImagePopup;
+export default VideoPopup;

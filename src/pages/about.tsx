@@ -2,6 +2,7 @@
 import { useState } from "react";
 import AnimatedPage from "../AnimatedPage";
 import ImagePopup from '../components/imagePopup';
+import VideoPopup from '../components/videoPopup';
 import { motion } from "framer-motion";
 import { useDeviceContext } from "../contexts/device-context";
 import { AiFillLinkedin, AiOutlineLink } from 'react-icons/ai';
@@ -31,7 +32,8 @@ const about = () => {
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}
       >
-        <ImagePopup image={image} />
+        {/* <ImagePopup image={image} /> */}
+        <VideoPopup video={image} />
       </motion.div>
       <div className="page about">
         <div className="content">
@@ -53,7 +55,7 @@ const about = () => {
             <p>INSPIRATION FOR THIS PROJECT COMES FROM:</p>
             <motion.a
               onHoverEnd={() => setShowImage(false)}
-              onHoverStart={() => loadImage("green-black-handbag.jpg")}
+              onHoverStart={() => loadImage("mubien_clip.webm")}
               href="https://mubien.com/"
               target="_blank"
             >
@@ -61,7 +63,7 @@ const about = () => {
             </motion.a>
             <motion.a
               onHoverEnd={() => setShowImage(false)}
-              onHoverStart={() => loadImage("maroon-white-handbag.jpg")}
+              onHoverStart={() => loadImage("arfake_sneakers_clip.webm")}
               href="https://webxr-sneakers.lusion.co/"
               target="_blank"
             >

@@ -468,6 +468,11 @@ h3 {
     top: 0;
     left: 0;
     pointer-events: none;
+
+    video{
+        width: 100%;
+        aspect-ratio: 16/9;
+    }
 }
 
 
