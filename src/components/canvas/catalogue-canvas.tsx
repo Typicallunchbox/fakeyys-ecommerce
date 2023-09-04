@@ -4,7 +4,8 @@ import { Canvas, extend, useFrame, useLoader } from "@react-three/fiber";
 import { shaderMaterial } from "@react-three/drei";
 import glsl from "babel-plugin-glsl/macro";
 import { Product } from '../../typings/index';
-import { Stats } from '@react-three/drei'
+import { Stats } from '@react-three/drei';
+import { Perf } from 'r3f-perf'
 
 type TopologyProps = {
   hoveredProduct: Product,
@@ -185,7 +186,7 @@ const Scene = ({hoveredProduct,selectedProduct}:TopologyProps) => {
       <Suspense fallback={null}>
         <Wave product={product} selectedProduct={selectedProduct} />
       </Suspense>
-      <Stats />
+      <Perf position="top-left" />
     </Canvas>
   );
 };
