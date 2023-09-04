@@ -3,7 +3,8 @@ import { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas, extend, useFrame, useLoader } from "@react-three/fiber";
 import { shaderMaterial } from "@react-three/drei";
 import glsl from "babel-plugin-glsl/macro";
-import { Product } from '../../typings/index'
+import { Product } from '../../typings/index';
+import { Stats } from '@react-three/drei'
 
 type TopologyProps = {
   hoveredProduct: Product,
@@ -178,11 +179,13 @@ const Scene = ({hoveredProduct,selectedProduct}:TopologyProps) => {
     setProduct(hoveredProduct);
   }, [hoveredProduct])
 
+
   return (
     <Canvas id="demoTest" className="canvas" camera={{ fov: 60, position: [0, 0, 5] }}>
       <Suspense fallback={null}>
         <Wave product={product} selectedProduct={selectedProduct} />
       </Suspense>
+      <Stats />
     </Canvas>
   );
 };
