@@ -37,6 +37,15 @@ a {
     padding: 0;
 }
 
+h1,
+h2,
+h3,
+p {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 @font-face {
     font-family: 'Vonique-92';
     src: url(./assets/fonts/Vonique-92.otf);
