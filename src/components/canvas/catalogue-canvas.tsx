@@ -167,7 +167,7 @@ const Wave = ({product, selectedProduct}:TopologyProps) => {
 
   return (
     <mesh>
-      <planeGeometry args={[13, 13, 120, 120]} />
+      <planeGeometry args={[13, 13, 100, 100]} />
       <waveShaderMaterial ref={ref} />
     </mesh>
   );
