@@ -180,7 +180,8 @@ const Scene = ({hoveredProduct,selectedProduct}:TopologyProps) => {
     setProduct(hoveredProduct);
   }, [hoveredProduct])
 
-
+  //ADD PARALLAX EFFECT
+  //https://sbcode.net/react-three-fiber/lerp/
   return (
     <Canvas id="demoTest" className="canvas" camera={{ fov: 60, position: [0, 0, 5] }}>
       <Suspense fallback={null}>
