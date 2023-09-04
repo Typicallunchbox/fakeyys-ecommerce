@@ -58,6 +58,7 @@ const Catalogue = () => {
   const closeModal = async() => {
     setShowModalContent(false); 
     setViewProduct(false);
+    setHoveredProduct(null);
 
     
     await timeout(600);
