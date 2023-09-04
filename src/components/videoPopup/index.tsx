@@ -28,16 +28,11 @@ const VideoPopup = ({video}:VideoPopupProps) => {
   }, []);
 
   const style = {
-    // transform: 'translate(-50%, -50%)',
-    height: '285px',
     width: '450px',
-    borderRadius: '20px',
     left: '180px',
     top: '80px',
-    // filter: ' blur(20px)',
-    // backgroundColor: 'rgb(255, 67, 75)',
-    // backgroundImage: `url('./images/${video}')`,
-    opacity: 0.8,
+    overflow: 'hidden',
+    opacity: 0.9,
     zIndex: 2,
   };
 

@@ -43,7 +43,7 @@ const about = () => {
             IS A WEB DEVELOPMENT PORTFOLIO PIECE BY:
             <motion.a
               onHoverEnd={() => setShowImage(false)}
-              onHoverStart={() => setShowImage(true)}
+              onHoverStart={() => loadImage("arfake_sneakers_clip.webm")}
               href="https://www.linkedin.com/in/keegan-launspach/"
               target="_blank"
             >
