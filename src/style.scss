@@ -135,6 +135,13 @@ h3 {
     color: inherit;
 }
 
+.divider{
+    border: 0;
+    border-bottom: 1px solid rgb(172, 172, 172);
+    width: 100%;
+    margin: 0 auto;
+}
+
 /* DEFAULT PAGE LOGIC */
 .page{
     width: 70%;

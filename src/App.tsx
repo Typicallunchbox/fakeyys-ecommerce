@@ -12,6 +12,7 @@ import { DeviceContextProvider } from './contexts/device-context';
 
 //Component imports
 import Navbar from "./components/navbar/index";
+import Cart from "./components/cart/index";
 import { ProductContextProvider } from "./contexts/product-context";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <ProductContextProvider>
         <AnimatePresence initial={true} mode='wait'>
           <Navbar />
+          <Cart />
           <Routes key={location.pathname} location={location}>
             <Route path="/" element={<Landing />} />
             <Route path="/about" element={<About />} />
