@@ -135,6 +135,24 @@ h3 {
     color: inherit;
 }
 
+.btn{
+    border-radius: 15px;
+    min-width: 200px;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    cursor: pointer;
+    background-color: #3689d2;
+    transition: all ease-in-out .20s;
+    font-family: 'SourceSansPro-light', sans-serif;
+}
+
+.btn:hover{
+    background-color: #386e9c;
+}
+
 .divider{
     border: 0;
     border-bottom: 1px solid rgb(172, 172, 172);

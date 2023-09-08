@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, Fragment } from 'react'
 import { RxCross1  } from 'react-icons/rx';
 
 type CartItemProps = {
@@ -61,9 +61,19 @@ const Window = () => {
         <p>1 item</p>
         <p>Clear all</p>
       </div>
-      {cartItems.length > 0 && cartItems.map((item) => (
-        <CartItem {...item}/>
-      ))}
+      <div className='cart-content'>
+        {cartItems.length > 0 && cartItems.map((item) => (
+          <Fragment key={item.id}>
+            <CartItem {...item}/>
+            <hr className='item-divider' />
+          </Fragment>
+        ))}
+      </div>
+      <div className='total'>
+        <p>Total price</p>
+        <p>$345</p>
+      </div>
+      <button className='btn'>Check out</button>
     </div>
   )
 }
