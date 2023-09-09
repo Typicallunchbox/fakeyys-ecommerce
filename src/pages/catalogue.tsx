@@ -119,34 +119,36 @@ const Catalogue = () => {
               {selectedId && selectedProduct && isModalOpen && (
                 <>
                   <div onClick={() => closeModal()} className="backdrop"></div>
-                  <motion.div 
-                    className="popup"
-                    // onClick={()=> closeModal()} 
-                    layoutId={selectedId}
-                    initial={{translateX: '50% !important'}}
-                    // style={{left: '50%', transformOrigin: 'none'}}
-                    // variants={modalVariants} 
-                    // animate={isModalOpen ? 'hide' : 'hide'} 
+                  <motion.div className="popup-container">
+                    <motion.div 
+                      className="popup"
+                      // onClick={()=> closeModal()} 
+                      layoutId={selectedId}
+                      initial={{translateX: '50% !important'}}
+                      // style={{left: '50%', transformOrigin: 'none'}}
+                      // variants={modalVariants} 
+                      // animate={isModalOpen ? 'hide' : 'hide'} 
 
-                  >
-                    <motion.div className='image-container'>
-                        <motion.img src={selectedProduct.cover_image}/>
-                      </motion.div>
-                      <motion.div className='content'>
-                          <motion.div className='head'>
-                            <motion.p className="product-title">{selectedProduct.title}</motion.p>
-                            <motion.p>${selectedProduct.price}</motion.p>
-                          </motion.div>
-                          <motion.div initial={{display: 'none', opacity:'0'}} animate={showModalContent ? {display: 'flex', opacity:'1'} : {opacity:'0', display: 'none'}}  className='foot'>
-                            <motion.p>{selectedProduct.description}</motion.p>
-                            {/* Add fabric texture animation on hover of button */}
-                            <motion.button>ADD TO CART</motion.button>
-                          </motion.div>
-                      </motion.div>
+                    >
+                      <motion.div className='image-container'>
+                          <motion.img src={selectedProduct.cover_image}/>
+                        </motion.div>
+                        <motion.div className='content'>
+                            <motion.div className='head'>
+                              <motion.p className="product-title">{selectedProduct.title}</motion.p>
+                              <motion.p>${selectedProduct.price}</motion.p>
+                            </motion.div>
+                            <motion.div initial={{display: 'none', opacity:'0'}} animate={showModalContent ? {display: 'flex', opacity:'1'} : {opacity:'0', display: 'none'}}  className='foot'>
+                              <motion.p>{selectedProduct.description}</motion.p>
+                              {/* Add fabric texture animation on hover of button */}
+                              <motion.button>ADD TO CART</motion.button>
+                            </motion.div>
+                        </motion.div>
+                    </motion.div>
                   </motion.div>
                 </>
               )}
-          {isModalOpen && <div className="product">
+          {!isModalOpen && <div className="product">
               <img src={'./images/comingSoon.png'}/>  
           </div>}
           </motion.div>}

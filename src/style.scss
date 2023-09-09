@@ -13,9 +13,9 @@ body{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    // &.no-scroll {
-    //     overflow-y: hidden;
-    // }
+    &.no-scroll {
+        overflow-y: hidden;
+    }
 }
 
 .wrapper {
@@ -299,7 +299,7 @@ h3 {
 
     /* CATALOGUE PAGE STYLING */
     &.catalogue{
-        margin-top: 200px;
+        padding-top: 200px;
         width: 60%;
 
         #demoTest{
@@ -395,67 +395,79 @@ h3 {
 
                 }
 
-                .popup{
-                    position: fixed;
-                    // transform-origin: 50% 50% 0px;
-                    transform: translateX(-50%) !important;
-                    left: 50% !important;
-                    top: 0 !important;
+                .popup-container{
                     width: 70vw;
-                    max-width:800px; 
-                    height:auto; 
-                    scale:1;
+                    max-width: 800px;
+                    margin: auto;
+                    position: fixed;
+                    top: 0;
+                    left: 50%;
+                    height: 100vh;
                     z-index: 2;
 
-                    
-                    
-                    .content{
-                        margin: 20px 0;
-
-                        .head{
-                            display: flex;
-                            justify-content: space-between;
-
-                            .product-title{
-                                text-transform: uppercase;
+                    .popup{
+                        // position: fixed;
+                        // transform-origin: 50% 50% 0px;
+                        transform: translateX(-50%) !important;
+                        left: 50% !important;
+                        top: 0 !important;
+                        height: auto;
+                        overflow-y: auto; 
+                        scale:1;
+                        
+    
+                        
+                        
+                        .content{
+                            margin: 20px 0;
+    
+                            .head{
+                                display: flex;
+                                justify-content: space-between;
+    
+                                .product-title{
+                                    text-transform: uppercase;
+                                }
+                                
+                                p{
+                                    font-family: 'Vonique-64-bold', sans-serif;
+                                }
                             }
-                            
-                            p{
-                                font-family: 'Vonique-64-bold', sans-serif;
+                            .foot{
+                                display: flex;
+                                flex-direction: row;
+                                gap: 60px;
+                                align-items: end;
+                                margin-top: 20px;
+                                
+    
+                                button{
+                                    min-width: fit-content;
+                                    padding: 20px;
+                                    background: transparent;
+                                    border: 2px black solid;
+                                    font-family: 'SourceSansPro-semibold', sans-serif;
+                                    font-size: 20px;
+                                    cursor: pointer;
+                                    transition: all .25s ease-in;
+                                    mix-blend-mode: difference;
+                                    color: var(--fakeyys-black);
+                                }
+    
+                                button:hover{
+                                    background: rgb(226, 46, 46);
+                                    color: var(--fakeyys-white);
+                                    border: 2px var(--fakeyys-white) solid;
+                                }
                             }
                         }
-                        .foot{
-                            display: flex;
-                            flex-direction: row;
-                            gap: 60px;
-                            align-items: end;
-                            margin-top: 20px;
-
-                            button{
-                                min-width: fit-content;
-                                padding: 20px;
-                                background: transparent;
-                                border: 2px black solid;
-                                font-family: 'SourceSansPro-semibold', sans-serif;
-                                font-size: 20px;
-                                cursor: pointer;
-                                transition: all .25s ease-in;
-                                mix-blend-mode: difference;
-                                color: var(--fakeyys-black);
-                            }
-
-                            button:hover{
-                                background: rgb(226, 46, 46);
-                                color: var(--fakeyys-white);
-                                border: 2px var(--fakeyys-white) solid;
-                            }
+    
+                        img{
+                            width: 100%;
                         }
-                    }
-
-                    img{
-                        width: 100%;
                     }
                 }
+                
 
                 .backdrop{
                     position: fixed;
@@ -564,16 +576,22 @@ h3 {
     
             .content{
                 .product-list{
-                    .popup{
+                    .popup-container{
+                        .popup{
+                            width: 100vw;
 
-                        // left: 0 !important;
-                        width: 100vw;
+                            .content{
+                                width: 90%;
+                                margin: 0 auto;
 
-                        .content{
-                            width: 90%;
-                            margin: 0 auto;
+                                .foot{
+                                    flex-direction: column-reverse;
+                                }
+                            }
                         }
                     }
+
+                    
                 }
             }
         }
