@@ -1,6 +1,8 @@
 import { useState, Fragment } from 'react'
 import { RxCross1  } from 'react-icons/rx';
 import { motion } from "framer-motion";
+import { useProductContext } from '../../contexts/product-context';
+
 
 
 type CartItemProps = {
@@ -31,31 +33,32 @@ const variants = {
 };
 
 const Window = ({showCart, setShowCart}:any) => {
+	const { cartItems, setCartItems } = useProductContext();
   const [cartProducts, setCartProducts] = useState([])
-  const cartItems = [
-    {
-      id: 0,
-      image: './images/black-white-handbag.jpg',
-      name:"Super Clean Cotton Red Socks",
-      tag:"Everyones Favourite",
-      price: 120
-    },
-    {
-      id: 1,
-      image: './images/green-black-handbag.jpg',
-      name:"Gucci Black Handbag",
-      tag:"Mysterious like.",
-      price: 182
-    },
-    {
-      id: 2,
-      image: './images/maroon-white-handbag.jpg',
-      name:"Dark Red Velvet Purse",
-      tag:"For the bold",
-      price: 99
-    },
+  // const cartItems = [
+  //   {
+  //     id: 0,
+  //     image: './images/black-white-handbag.jpg',
+  //     name:"Super Clean Cotton Red Socks",
+  //     tag:"Everyones Favourite",
+  //     price: 120
+  //   },
+  //   {
+  //     id: 1,
+  //     image: './images/green-black-handbag.jpg',
+  //     name:"Gucci Black Handbag",
+  //     tag:"Mysterious like.",
+  //     price: 182
+  //   },
+  //   {
+  //     id: 2,
+  //     image: './images/maroon-white-handbag.jpg',
+  //     name:"Dark Red Velvet Purse",
+  //     tag:"For the bold",
+  //     price: 99
+  //   },
     
-  ];
+  // ];
 
   return (
     <motion.div variants={variants} initial={'hide'} animate={showCart ? 'show' : 'hide'} className='cart window'>
@@ -66,15 +69,20 @@ const Window = ({showCart, setShowCart}:any) => {
       <hr className='divider'/>
       <div className='sub-head'>
         <p>1 item</p>
-        <p>Clear all</p>
+        <p className='clear'>Clear all</p>
       </div>
       <div className='cart-content'>
-        {cartItems.length > 0 && cartItems.map((item) => (
+        {cartItems.length > 0 ? cartItems.map((item) => (
           <Fragment key={item.id}>
             <CartItem {...item}/>
             <hr className='item-divider' />
           </Fragment>
-        ))}
+        )) 
+        : 
+        <div>
+          <p>No items in cart...</p>
+        </div>}
+       
       </div>
       <div className='total'>
         <p>Total price</p>

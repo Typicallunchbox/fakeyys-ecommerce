@@ -8,6 +8,7 @@ import { BsArrowLeft } from 'react-icons/bs';
 import Scene from '../components/canvas/catalogue-canvas';
 import { Product } from '../typings/index';
 
+
 const Catalogue = () => {
   //page variables
   const [selectedId, setSelectedId] = useState<string>('');
@@ -17,7 +18,7 @@ const Catalogue = () => {
   const [showModalContent, setShowModalContent] = useState<boolean>(false);
   const [lockScroll, setLockScroll] = useState<boolean>(false);
   const [hoveredProduct, setHoveredProduct] = useState<Product>();
-  const { viewProduct, setViewProduct } = useProductContext();
+  const { viewProduct, setViewProduct, setCartItems } = useProductContext();
 
   useEffect(() => {
     if(fakeyysProducts && fakeyysProducts.length > 0){
@@ -67,6 +68,10 @@ const Catalogue = () => {
     setIsModalOpen(false); 
     setLockScroll(false);
     return;
+  }
+
+  const addItem = (item) => {
+    setCartItems(item);
   }
 
   
@@ -140,7 +145,7 @@ const Catalogue = () => {
                           <motion.div initial={{display: 'none', opacity:'0'}} animate={showModalContent ? {display: 'flex', opacity:'1'} : {opacity:'0', display: 'none'}}  className='foot'>
                             <motion.p>{selectedProduct.description}</motion.p>
                             {/* Add fabric texture animation on hover of button */}
-                            <motion.button>ADD TO CART</motion.button>
+                            <motion.button onClick={() => {addItem(selectedProduct)}}>ADD TO CART</motion.button>
                           </motion.div>
                       </motion.div>
                   </motion.div>

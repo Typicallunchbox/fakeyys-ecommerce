@@ -6,7 +6,9 @@ type ProductContextProviderProps = {
 
 type ProductContext = {
     viewProduct: boolean,  
-    setViewProduct: any
+    setViewProduct: any,
+    cartItems: Array<object>,
+    setCartItems: any,
 }
 
 export const ProductContext = createContext<ProductContext | null>(null);
@@ -15,9 +17,10 @@ export const ProductContext = createContext<ProductContext | null>(null);
 
 export function ProductContextProvider({ children } : ProductContextProviderProps){
     const [viewProduct, setViewProduct] = useState(false);
+    const [cartItems, setCartItems] = useState([]);
 
     return (
-        <ProductContext.Provider value={{viewProduct, setViewProduct}}>
+        <ProductContext.Provider value={{viewProduct, setViewProduct, cartItems, setCartItems}}>
             {children}
         </ProductContext.Provider>
     )
