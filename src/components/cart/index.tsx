@@ -9,7 +9,7 @@ const Index = () => {
 	return (
 		<>
 			<Button showCart={showCart} setShowCart={setShowCart}/>
-			<Window showCart={showCart}/>
+			<Window showCart={showCart} setShowCart={setShowCart}/>
 		</>
 	)
 }

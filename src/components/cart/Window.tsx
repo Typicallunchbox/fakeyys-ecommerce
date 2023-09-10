@@ -30,7 +30,7 @@ const variants = {
   hide: {opacity: 0, x:400,transition: {duration: 1}}
 };
 
-const Window = ({showCart}:any) => {
+const Window = ({showCart, setShowCart}:any) => {
   const [cartProducts, setCartProducts] = useState([])
   const cartItems = [
     {
@@ -61,7 +61,7 @@ const Window = ({showCart}:any) => {
     <motion.div variants={variants} initial={'hide'} animate={showCart ? 'show' : 'hide'} className='cart window'>
       <div className='head'>
         <h3>Your Cart</h3>
-        <RxCross1 />
+        <div onClick={() => setShowCart(false)}><RxCross1 /></div>
       </div>
       <hr className='divider'/>
       <div className='sub-head'>

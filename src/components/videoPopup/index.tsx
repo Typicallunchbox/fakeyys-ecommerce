@@ -74,7 +74,7 @@ const VideoPopup = ({video}:VideoPopupProps) => {
         },
       }}
     >
-      <video src={`./videos/${video}`} controls autoPlay muted loop></video> 
+      <video src={`./videos/${video}`} controls={false} autoPlay muted loop></video> 
     </motion.div>
   );
 };
