@@ -7,10 +7,10 @@
         position: fixed;
         bottom: 20px;
         right: 20px;
-        padding: 25px;
-        background: #3689d2;
-        border-radius: 50%;
-        transition: background ease-in 4s;
+        padding: 20px;
+        background: #d2ae36;
+        border-radius: 20%;
+        transition: background ease-in .25s;
         cursor: pointer;
         z-index: 4;
 
@@ -25,8 +25,8 @@
         }
     }
 
-    .button:hover{
-        background: #3aac1e;
+    &.button:hover{
+        background: #f5cd48;
     }
 
     &.window{
