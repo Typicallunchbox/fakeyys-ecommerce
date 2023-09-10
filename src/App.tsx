@@ -22,8 +22,8 @@ function App() {
     <DeviceContextProvider>
       <ProductContextProvider>
         <AnimatePresence initial={true} mode='wait'>
-          <Navbar />
-          <Cart />
+          <Navbar key={"nav"}/>
+          <Cart key={"cart"} />
           <Routes key={location.pathname} location={location}>
             <Route path="/" element={<Landing />} />
             <Route path="/about" element={<About />} />

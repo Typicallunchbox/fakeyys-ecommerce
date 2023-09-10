@@ -1,8 +1,8 @@
 import { AiOutlineShoppingCart  } from 'react-icons/ai';
 
-const Button = () => {
+const Button = ({showCart, setShowCart}:any) => {
   return (
-    <div className='button'>
+    <div className='cart button' onClick={() => setShowCart(!showCart)}>
       <AiOutlineShoppingCart />
     </div>
   )

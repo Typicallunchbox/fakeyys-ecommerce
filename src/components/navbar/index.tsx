@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { useDeviceContext } from '../../contexts/device-context';
 import { useProductContext } from '../../contexts/product-context';
 
-const index = () => {
+const Index = () => {
 	const location = useLocation();
 	const [isStandard, setIsStandard] = useState(false);
 	const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -24,7 +24,7 @@ const index = () => {
 	}, [location])
 	
 	return (
-		<motion.nav variants={variants} animate={viewProduct ? 'hide' : 'show'} className={`navbar ${isMobile ? 'mobile' : ''}`}>
+		<motion.nav  className={`navbar ${isMobile ? 'mobile' : ''}`}>
 			<motion.div className="title">
 				<Link to='/'>FAKEYYS</Link>
 			</motion.div>
@@ -33,4 +33,4 @@ const index = () => {
 	)
 }
 
-export default index
+export default Index

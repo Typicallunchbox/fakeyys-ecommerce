@@ -1,14 +1,16 @@
+import { useState } from 'react';
 import Button from './Button';
 import Window from './Window';
-import { motion } from "framer-motion";
 import './style.scss'
 
 const Index = () => {
+	const [showCart, setShowCart] = useState(false);
+
 	return (
-		<motion.div className='cart'>
-			<Button />
-			<Window />
-		</motion.div>
+		<>
+			<Button showCart={showCart} setShowCart={setShowCart}/>
+			<Window showCart={showCart}/>
+		</>
 	)
 }
 

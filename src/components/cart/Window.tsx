@@ -1,5 +1,7 @@
 import { useState, Fragment } from 'react'
 import { RxCross1  } from 'react-icons/rx';
+import { motion } from "framer-motion";
+
 
 type CartItemProps = {
   image: string,
@@ -23,7 +25,12 @@ const CartItem = ({image, name, tag, price}:CartItemProps) => {
   )
 }
 
-const Window = () => {
+const variants = {
+  show: {opacity: 1, x:0, transition: {duration: 1}},
+  hide: {opacity: 0, x:400,transition: {duration: 1}}
+};
+
+const Window = ({showCart}:any) => {
   const [cartProducts, setCartProducts] = useState([])
   const cartItems = [
     {
@@ -51,7 +58,7 @@ const Window = () => {
   ];
 
   return (
-    <div className='window'>
+    <motion.div variants={variants} initial={'hide'} animate={showCart ? 'show' : 'hide'} className='cart window'>
       <div className='head'>
         <h3>Your Cart</h3>
         <RxCross1 />
@@ -74,7 +81,7 @@ const Window = () => {
         <p>$345</p>
       </div>
       <button className='btn'>Check out</button>
-    </div>
+    </motion.div>
   )
 }
 
