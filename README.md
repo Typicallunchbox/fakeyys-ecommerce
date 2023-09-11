@@ -2,11 +2,8 @@
  A sleak and stylish frontend eccomerce design combining framer-motion and React
 ##### Note: Application is hosted on heroku, please give the application a few extra seconds to spin up from non-activity mode.
 
-#### View Raidenn Site : ???
+#### View Fakeyys Site : ???
 #### View Figma Design : ???
-
-
-
 
 <br />
 <br />
@@ -31,7 +28,8 @@ Fakeyys is a portfolio project which was built to further improve the author's s
     * [React-three/drei](https://github.com/pmndrs/drei)
     * [Three](https://threejs.org/)
  
-
+<br />
+<br />
  
 ## Getting Started
 If you are interested in cloning and understanding this project you will need the below requirements to get started:
