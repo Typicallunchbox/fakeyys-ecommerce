@@ -5,7 +5,7 @@
         bottom: 20px;
         right: 20px;
         padding: 20px;
-        background: #d2ae36;
+        background: #000000;
         border-radius: 20%;
         transition: background ease-in .25s;
         cursor: pointer;
@@ -23,7 +23,7 @@
     }
 
     &.button:hover{
-        background: #f5cd48;
+        background: #5a5a5a;
     }
 
     &.window{
@@ -52,6 +52,11 @@
 
         .head svg:hover{
             color: rgb(247, 75, 75);
+        }
+
+        .cart-content{
+            max-height: 60dvh;
+            overflow: auto;
         }
 
         .sub-head{

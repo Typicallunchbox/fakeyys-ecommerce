@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { RxCross1  } from 'react-icons/rx';
 import { motion } from "framer-motion";
 import { useProductContext } from '../../contexts/product-context';
@@ -6,18 +6,18 @@ import { useProductContext } from '../../contexts/product-context';
 
 
 type CartItemProps = {
-  image: string,
-  name: string,
+  cover_image: string,
+  title: string,
   tag: string,
   price: number
 }
 
-const CartItem = ({image, name, tag, price}:CartItemProps) => {
+const CartItem = ({cover_image, title, tag, price}:CartItemProps) => {
   return (
     <div className='cart-item'>
-      <img src={image}/>
+      <img src={cover_image}/>
       <div className='info'>
-        <p>{name}</p>
+        <p>{title}</p>
         <p className='tag'>{tag}</p>
       </div>
       <div className='price'>
@@ -34,7 +34,8 @@ const variants = {
 
 const Window = ({showCart, setShowCart}:any) => {
 	const { cartItems, setCartItems } = useProductContext();
-  const [cartProducts, setCartProducts] = useState([])
+
+  const [cartProducts, setCartProducts] = useState(cartItems || [])
   // const cartItems = [
   //   {
   //     id: 0,
@@ -60,6 +61,11 @@ const Window = ({showCart, setShowCart}:any) => {
     
   // ];
 
+  useEffect(() => {
+    setCartProducts(cartItems);
+  }, [cartItems])
+  
+
   return (
     <motion.div variants={variants} initial={'hide'} animate={showCart ? 'show' : 'hide'} className='cart window'>
       <div className='head'>
@@ -72,7 +78,7 @@ const Window = ({showCart, setShowCart}:any) => {
         <p className='clear'>Clear all</p>
       </div>
       <div className='cart-content'>
-        {cartItems.length > 0 ? cartItems.map((item) => (
+        {cartProducts.length > 0 ? cartProducts.map((item) => (
           <Fragment key={item.id}>
             <CartItem {...item}/>
             <hr className='item-divider' />

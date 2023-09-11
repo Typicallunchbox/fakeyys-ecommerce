@@ -18,7 +18,7 @@ const Catalogue = () => {
   const [showModalContent, setShowModalContent] = useState<boolean>(false);
   const [lockScroll, setLockScroll] = useState<boolean>(false);
   const [hoveredProduct, setHoveredProduct] = useState<Product>();
-  const { viewProduct, setViewProduct, setCartItems } = useProductContext();
+  const { viewProduct, setViewProduct, setItems } = useProductContext();
 
   useEffect(() => {
     if(fakeyysProducts && fakeyysProducts.length > 0){
@@ -71,7 +71,8 @@ const Catalogue = () => {
   }
 
   const addItem = (item) => {
-    setCartItems(item);
+    // console.log('item:', item)
+    setItems(item);
   }
 
   
