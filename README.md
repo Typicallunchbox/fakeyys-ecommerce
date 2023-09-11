@@ -21,7 +21,7 @@
 
 ## Summary
 
-Fakeyys is a portfolio project which was built to further improve the author's skills. This project can be thought of as a guide to a developer interested in building a React site which makes use of framer-motion for a better user experience.
+Fakeyys is a portfolio project which was built to further improve the author's skills. This project can be thought of as a guide to a developer interested in building a React site which makes use of framer-motion for a better user experience. This project is only front facing and does not contain any backend components, it is purely frontend focused. The project structure was created using [Vite](https://vitejs.dev/), a powerful frontend project generation tool.
 
 * Main Frontend dependencies:
     * [React](https://react.dev/)
