@@ -32,6 +32,7 @@ export function ProductContextProvider({ children } : ProductContextProviderProp
         tempArray = [...cartItems];
 
         const isObjectPresent = cartItems.find((o:iCartItem) => o.id === item.id);
+        console.log(isObjectPresent)
         if (!isObjectPresent) {  
             tempArray.push({...item, count: 1});
             setCartItems(tempArray)
@@ -40,6 +41,7 @@ export function ProductContextProvider({ children } : ProductContextProviderProp
             for (let index = 0; index < tempArray.length; index++) {
                 const product = tempArray[index];
                 if(countDirection === '+'){
+                    console.log('HI!')
                     if(product.id === item.id){
                         product.count = product.count + 1;
                         setCartItems(tempArray);

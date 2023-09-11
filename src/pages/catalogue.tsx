@@ -72,7 +72,7 @@ const Catalogue = () => {
 
   const addItem = (item) => {
     // console.log('item:', item)
-    setItems(item);
+    setItems({item});
   }
 
   
