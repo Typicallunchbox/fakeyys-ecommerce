@@ -1,21 +1,25 @@
 import { useState, useEffect, Fragment } from 'react'
 import { RxCross1  } from 'react-icons/rx';
-import { motion } from "framer-motion";
+import { BiSolidLeftArrow, BiSolidRightArrow  } from 'react-icons/bi';
+import { motion, usePresence } from "framer-motion";
 import { useProductContext } from '../../contexts/product-context';
+import { iCartItem } from '../../typings/index';
 
 
-
-type CartItemProps = {
-  cover_image: string,
-  title: string,
-  tag: string,
-  price: number
-}
-
-const CartItem = ({cover_image, title, tag, price}:CartItemProps) => {
+const CartItem = ({cover_image, title, tag, price, count}:iCartItem) => {
   return (
     <div className='cart-item'>
-      <img src={cover_image}/>
+      <div className='delete-item'>
+        <RxCross1 />
+      </div>
+      <div>
+        <img src={cover_image}/>
+        <div className='quantity'>
+        <BiSolidLeftArrow />
+        <p>{`x${count}`}</p>
+        <BiSolidRightArrow />
+        </div>
+      </div>
       <div className='info'>
         <p>{title}</p>
         <p className='tag'>{tag}</p>
@@ -27,45 +31,19 @@ const CartItem = ({cover_image, title, tag, price}:CartItemProps) => {
   )
 }
 
-const variants = {
-  show: {opacity: 1, x:0, transition: {duration: 1}},
-  hide: {opacity: 0, x:400,transition: {duration: 1}}
-};
 
 const Window = ({showCart, setShowCart}:any) => {
-	const { cartItems, setCartItems } = useProductContext();
+	const { cartItems, removeItems } = useProductContext();
 
-  const [cartProducts, setCartProducts] = useState(cartItems || [])
-  // const cartItems = [
-  //   {
-  //     id: 0,
-  //     image: './images/black-white-handbag.jpg',
-  //     name:"Super Clean Cotton Red Socks",
-  //     tag:"Everyones Favourite",
-  //     price: 120
-  //   },
-  //   {
-  //     id: 1,
-  //     image: './images/green-black-handbag.jpg',
-  //     name:"Gucci Black Handbag",
-  //     tag:"Mysterious like.",
-  //     price: 182
-  //   },
-  //   {
-  //     id: 2,
-  //     image: './images/maroon-white-handbag.jpg',
-  //     name:"Dark Red Velvet Purse",
-  //     tag:"For the bold",
-  //     price: 99
-  //   },
-    
-  // ];
+  const removeSelf = (n:any) => {
+    removeItems(n);
+  }
 
-  useEffect(() => {
-    setCartProducts(cartItems);
-  }, [cartItems])
+  const variants = {
+    show: {opacity: 1, x:0, transition: {duration: 1}},
+    hide: {opacity: 0, x:400,transition: {duration: 1}}
+  };
   
-
   return (
     <motion.div variants={variants} initial={'hide'} animate={showCart ? 'show' : 'hide'} className='cart window'>
       <div className='head'>
@@ -78,17 +56,18 @@ const Window = ({showCart, setShowCart}:any) => {
         <p className='clear'>Clear all</p>
       </div>
       <div className='cart-content'>
-        {cartProducts.length > 0 ? cartProducts.map((item) => (
+        {cartItems.length > 0 ? 
+        cartItems.map((item) => (
           <Fragment key={item.id}>
             <CartItem {...item}/>
             <hr className='item-divider' />
           </Fragment>
-        )) 
+        ))
         : 
         <div>
           <p>No items in cart...</p>
-        </div>}
-       
+        </div>
+        }
       </div>
       <div className='total'>
         <p>Total price</p>
