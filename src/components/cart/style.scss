@@ -9,7 +9,7 @@
         border-radius: 20%;
         transition: background ease-in .25s;
         cursor: pointer;
-        z-index: 4;
+        z-index: 5;
 
 
 
@@ -37,7 +37,7 @@
         top: 0;
         right: 0;
         background: rgb(245, 245, 245);
-        z-index: 3;
+        z-index: 4;
 
         .head, .sub-head, .total{
             display: flex;
@@ -57,6 +57,8 @@
         .cart-content{
             max-height: 60dvh;
             overflow: auto;
+            margin-bottom: 20px;
+            padding: 0 20px;
         }
 
         .sub-head{
@@ -64,6 +66,11 @@
             p{
                 font-size: 16px;
                 font-weight: 700;
+            }
+
+            .clear:hover{
+                cursor: pointer;
+                color: #5a5a5a;
             }
         }
 

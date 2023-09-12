@@ -6,26 +6,27 @@ import { useProductContext } from '../../contexts/product-context';
 import { iCartItem } from '../../typings/index';
 
 
-const CartItem = ({cover_image, title, tag, price, count}:iCartItem) => {
+const CartItem = ({item}) => {
+	const { setItems, removeItems } = useProductContext();
   return (
     <div className='cart-item'>
-      <div className='delete-item'>
+      <div className='delete-item' onClick={() => removeItems(item.id)}>
         <RxCross1 />
       </div>
       <div>
-        <img src={cover_image}/>
+        <img src={item.cover_image}/>
         <div className='quantity'>
-        <BiSolidLeftArrow />
-        <p>{`x${count}`}</p>
-        <BiSolidRightArrow />
+        <div onClick={() => setItems({item, countDirection:'-'})}><BiSolidLeftArrow /></div>
+        <p>{`x${item.count}`}</p>
+        <div onClick={() => setItems({item, countDirection:'+'})}><BiSolidRightArrow /></div>
         </div>
       </div>
       <div className='info'>
-        <p>{title}</p>
-        <p className='tag'>{tag}</p>
+        <p>{item.title}</p>
+        <p className='tag'>{item.tag}</p>
       </div>
       <div className='price'>
-        <p>${price}</p>
+        <p>${item.price}</p>
       </div>
     </div>
   )
@@ -33,12 +34,7 @@ const CartItem = ({cover_image, title, tag, price, count}:iCartItem) => {
 
 
 const Window = ({showCart, setShowCart}:any) => {
-	const { cartItems, removeItems } = useProductContext();
-
-  const removeSelf = (n:any) => {
-    removeItems(n);
-  }
-
+	const { totalPrice, cartItems, cartCount, clearCart } = useProductContext();
   const variants = {
     show: {opacity: 1, x:0, transition: {duration: 1}},
     hide: {opacity: 0, x:400,transition: {duration: 1}}
@@ -52,14 +48,14 @@ const Window = ({showCart, setShowCart}:any) => {
       </div>
       <hr className='divider'/>
       <div className='sub-head'>
-        <p>1 item</p>
-        <p className='clear'>Clear all</p>
+        <p>{cartCount} item/s</p>
+        <p className='clear' onClick={() => cartCount > 0 ? clearCart() : null}>Clear all</p>
       </div>
       <div className='cart-content'>
         {cartItems.length > 0 ? 
         cartItems.map((item) => (
-          <Fragment key={item.id}>
-            <CartItem {...item}/>
+          <Fragment key={item?.id}>
+            <CartItem item={item}/>
             <hr className='item-divider' />
           </Fragment>
         ))
@@ -71,7 +67,7 @@ const Window = ({showCart, setShowCart}:any) => {
       </div>
       <div className='total'>
         <p>Total price</p>
-        <p>$345</p>
+        <p>${totalPrice > 0 ? totalPrice : '0'}</p>
       </div>
       <button className='btn'>Check out</button>
     </motion.div>

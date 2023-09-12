@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import { iCartItem } from "../typings";
 
 type ProductContextProviderProps = {
@@ -11,6 +11,9 @@ type ProductContext = {
     cartItems: Array<object>,
     setItems: any,
     removeItems: any,
+    cartCount: number,
+    clearCart: Function,
+    totalPrice: number
 }
 
 type CartProps = {
@@ -25,6 +28,39 @@ export const ProductContext = createContext<ProductContext | null>(null);
 export function ProductContextProvider({ children } : ProductContextProviderProps){
     const [viewProduct, setViewProduct] = useState(false);
     const [cartItems, setCartItems] = useState([]);
+    const [cartCount, setCartCount] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const MIN_CART_LIMIT = 1;
+    const MAX_CART_LIMIT = 10;
+
+    const cartItemsCount = () => {
+        let count = 0;
+        if(cartItems.length > 0){
+            for (let index = 0; index < cartItems.length; index++) {
+                const item:iCartItem = cartItems[index];
+                count += item.count || 0
+            }
+        }
+        setCartCount(count);
+    }
+
+    const setCartTotal = () => {
+        let price = 0;
+        if(cartItems.length > 0){
+            for (let index = 0; index < cartItems.length; index++) {
+                const item:iCartItem = cartItems[index];
+                
+                price += item.price * item.count
+            }
+        }
+        setTotalPrice(price);
+    }
+
+    useEffect(() => {
+        cartItemsCount();
+        setCartTotal();
+    }, [cartItems])
+    
 
     const setItems = ({item, countDirection}: CartProps) => {
         countDirection = countDirection || '+'
@@ -32,44 +68,44 @@ export function ProductContextProvider({ children } : ProductContextProviderProp
         tempArray = [...cartItems];
 
         const isObjectPresent = cartItems.find((o:iCartItem) => o.id === item.id);
-        console.log(isObjectPresent)
         if (!isObjectPresent) {  
             tempArray.push({...item, count: 1});
-            setCartItems(tempArray)
+            setCartItems(tempArray);
 
         }else{
             for (let index = 0; index < tempArray.length; index++) {
                 const product = tempArray[index];
                 if(countDirection === '+'){
-                    console.log('HI!')
+
                     if(product.id === item.id){
+                        if(product.count === MAX_CART_LIMIT) return;
                         product.count = product.count + 1;
                         setCartItems(tempArray);
                         return;
                     }
                 }else{
                     if(product.id === item.id){
+                        if(product.count === MIN_CART_LIMIT) return;
                         product.count = product.count - 1;
                         setCartItems(tempArray);
                         return;
                     }
                 }
-                
             }
         }
-
-        
     }
 
     const removeItems = (itemId:any) => {
-        console.log('remove id:', itemId)
-        let newArray = [...cartItems.filter((product) => product.id !== itemId)]
-        console.log('newArray:', newArray)
+        let newArray = [...cartItems.filter((product: iCartItem) => product.id !== itemId)]
         setCartItems(newArray)
     }
 
+    const clearCart = () => {
+        setCartItems([]);
+    }
+
     return (
-        <ProductContext.Provider value={{viewProduct, setViewProduct, cartItems, setItems, removeItems}}>
+        <ProductContext.Provider value={{viewProduct, setViewProduct, cartItems, setItems, removeItems, cartCount, clearCart, totalPrice}}>
             {children}
         </ProductContext.Provider>
     )
