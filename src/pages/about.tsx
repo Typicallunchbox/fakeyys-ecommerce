@@ -39,7 +39,7 @@ const about = () => {
         <div className="content">
           <h2>FAKEYYS ORIGIN</h2>
           <p>
-            FAKEEYS IS A FAKE ECOMMERCE STORE CREATED WITH A MODERN DESIGN. THIS
+            FAKEEYS IS A FAKE ECOMMERCE STORE CREATED WITH A MODERN DESIGN IN MIND. THIS
             IS A WEB DEVELOPMENT PORTFOLIO PIECE BY:
             <motion.a
               onHoverEnd={() => setShowImage(false)}

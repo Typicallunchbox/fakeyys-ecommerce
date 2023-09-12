@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from 'react'
 import { RxCross1  } from 'react-icons/rx';
 import { BiSolidLeftArrow, BiSolidRightArrow  } from 'react-icons/bi';
+import { LiaShoppingCartSolid  } from 'react-icons/lia';
 import { motion, usePresence } from "framer-motion";
 import { useProductContext } from '../../contexts/product-context';
 import { iCartItem } from '../../typings/index';
@@ -47,10 +48,10 @@ const Window = ({showCart, setShowCart}:any) => {
         <div onClick={() => setShowCart(false)}><RxCross1 /></div>
       </div>
       <hr className='divider'/>
-      <div className='sub-head'>
+      {cartCount > 0 && <div className='sub-head'>
         <p>{cartCount} item/s</p>
         <p className='clear' onClick={() => cartCount > 0 ? clearCart() : null}>Clear all</p>
-      </div>
+      </div>}
       <div className='cart-content'>
         {cartItems.length > 0 ? 
         cartItems.map((item) => (
@@ -60,7 +61,8 @@ const Window = ({showCart, setShowCart}:any) => {
           </Fragment>
         ))
         : 
-        <div>
+        <div className='no-items'>
+          <LiaShoppingCartSolid />
           <p>No items in cart...</p>
         </div>
         }
@@ -69,7 +71,7 @@ const Window = ({showCart, setShowCart}:any) => {
         <p>Total price</p>
         <p>${totalPrice > 0 ? totalPrice : '0'}</p>
       </div>
-      <button className='btn'>Check out</button>
+      <button onClick={() => console.log('wow')} disabled={cartCount > 0 ? false : true} className={`btn ${cartCount === 0 ? 'disabled' : ''}`}>Check out</button>
     </motion.div>
   )
 }

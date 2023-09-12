@@ -59,6 +59,18 @@
             overflow: auto;
             margin-bottom: 20px;
             padding: 0 20px;
+
+            .no-items{
+                margin: 40px 0;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+
+                svg{
+                    width: 20px;
+                    height: 20px;
+                }
+            }
         }
 
         .sub-head{
@@ -75,12 +87,20 @@
         }
 
         .total{
-            font-weight: 900;
+            p{            
+                font-weight: 900;
+                font-size: 18px;
+            }
         }
 
         .btn{
             width: 100%;
-            margin-top: 40px;
+            margin-top: 20px;
+
+            &.disabled{
+                pointer-events: none;
+                opacity: 0.5;
+            }
         }
 
         .cart-item{
