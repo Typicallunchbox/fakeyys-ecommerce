@@ -9,11 +9,12 @@ import { iCartItem } from '../../typings/index';
 
 const CartItem = ({item}) => {
 	const { setItems, removeItems } = useProductContext();
+  const [showControl, setShowControl] = useState(false);
   return (
-    <div className='cart-item'>
-      <div className='delete-item' onClick={() => removeItems(item.id)}>
+    <motion.div onHoverEnd={() => setShowControl(false)} onHoverStart={() => setShowControl(true)} className='cart-item'>
+      <motion.div initial={{opacity:0}} animate={showControl ? {opacity:1}:{opacity:0}} className='delete-item' onClick={() => removeItems(item.id)}>
         <RxCross1 />
-      </div>
+      </motion.div>
       <div>
         <img src={item.cover_image}/>
         <div className='quantity'>
@@ -29,17 +30,25 @@ const CartItem = ({item}) => {
       <div className='price'>
         <p>${item.price}</p>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
 
 const Window = ({showCart, setShowCart}:any) => {
 	const { totalPrice, cartItems, cartCount, clearCart } = useProductContext();
+  const [checkoutMessage, setCheckoutMessage] = useState('');
+
   const variants = {
     show: {opacity: 1, x:0, transition: {duration: 1}},
     hide: {opacity: 0, x:400,transition: {duration: 1}}
   };
+
+  const checkout = () => {
+    clearCart();
+    setCheckoutMessage('This is not an actual checkout process. Thanks for viewing my site :)')
+    
+  }
   
   return (
     <motion.div variants={variants} initial={'hide'} animate={showCart ? 'show' : 'hide'} className='cart window'>
@@ -71,7 +80,8 @@ const Window = ({showCart, setShowCart}:any) => {
         <p>Total price</p>
         <p>${totalPrice > 0 ? totalPrice : '0'}</p>
       </div>
-      <button onClick={() => console.log('wow')} disabled={cartCount > 0 ? false : true} className={`btn ${cartCount === 0 ? 'disabled' : ''}`}>Check out</button>
+      <button onClick={() => checkout()} disabled={cartCount > 0 ? false : true} className={`btn ${cartCount === 0 ? 'disabled' : ''}`}>Check out</button>
+      <p className='checkout-message'>{checkoutMessage}</p>
     </motion.div>
   )
 }

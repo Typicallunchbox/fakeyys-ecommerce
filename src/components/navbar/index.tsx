@@ -26,7 +26,7 @@ const Index = () => {
 	return (
 		<motion.nav  className={`navbar ${isMobile ? 'mobile' : ''}`}>
 			<motion.div className="title">
-				<Link to='/'>FAKEYYS</Link>
+				<motion.div initial={{opacity:1}} animate={viewProduct ? {opacity: 0}:{opacity: 1}}><Link to='/'>FAKEYYS</Link></motion.div>
 			</motion.div>
 			{isStandard && !isMobile ? <Standard /> : <Hamburger />}
 		</motion.nav>
