@@ -1,14 +1,13 @@
-import * as THREE from "three";
-import { useRef, useState, useEffect, Suspense } from "react";
-import { Canvas, extend, useFrame, useLoader } from "@react-three/fiber";
 import { shaderMaterial } from "@react-three/drei";
+import { Canvas, extend, useFrame } from "@react-three/fiber";
 import glsl from "babel-plugin-glsl/macro";
+import { Perf } from 'r3f-perf';
+import { Suspense, useEffect, useRef, useState } from "react";
+import * as THREE from "three";
 import { Product } from '../../typings/index';
-import { Stats } from '@react-three/drei';
-import { Perf } from 'r3f-perf'
 
 type TopologyProps = {
-  hoveredProduct: Product,
+  hoveredProduct? : Product,
   product: Product,
   selectedProduct: Product
 }
@@ -127,7 +126,7 @@ const WaveShaderMaterial = shaderMaterial(
 
 extend({ WaveShaderMaterial });
 
-const Wave = ({product, selectedProduct}:TopologyProps) => {
+const Wave = ({product, selectedProduct,}:TopologyProps) => {
   const ref = useRef({
     time:0,
     speed:0,

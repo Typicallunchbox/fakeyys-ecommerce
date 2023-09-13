@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import AnimatedPage from "../AnimatedPage";
-import ImagePopup from '../components/imagePopup';
+// import ImagePopup from '../components/imagePopup';
 import VideoPopup from '../components/videoPopup';
 import { motion } from "framer-motion";
 import { useDeviceContext } from "../contexts/device-context";

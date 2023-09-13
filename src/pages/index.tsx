@@ -10,7 +10,7 @@ const navigate = useNavigate();
 const [scope, animate] = useAnimate();
 const { isMobile } = useDeviceContext();
 const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
-const [ctaTrigger, setCtatrigger] = useState(false);
+// const [ctaTrigger, setCtatrigger] = useState(false);
 
 const cursor = {x:0, y:0}
 const sizes = {
@@ -19,92 +19,92 @@ const sizes = {
 }
 
 
-  const ctaAnimation = {
-    initial: {
-      opacity: 1, 
-      scale:1, 
-      backgroundColor: 'rgba(255, 255, 255, 0)',
-    },
-    animate: {
-      opacity: 1
-    },
-    exit: {
-      opacity: 1, 
-      scaleX:10, 
-      scaleY:10, 
-      border: 'rgba(255, 255, 255)',
-      backgroundColor: 'rgba(255, 255, 255)', 
-      color: 'rgba(255, 255, 255)',
-      transition: {
+  // const ctaAnimation = {
+  //   initial: {
+  //     opacity: 1, 
+  //     scale:1, 
+  //     backgroundColor: 'rgba(255, 255, 255, 0)',
+  //   },
+  //   animate: {
+  //     opacity: 1
+  //   },
+  //   exit: {
+  //     opacity: 1, 
+  //     scaleX:10, 
+  //     scaleY:10, 
+  //     border: 'rgba(255, 255, 255)',
+  //     backgroundColor: 'rgba(255, 255, 255)', 
+  //     color: 'rgba(255, 255, 255)',
+  //     transition: {
         
-        color: { duration: 0.2 },
-        border: { duration: 0.2 },
-        backgroundColor: { duration: 0.2 },
-        scaleX: { duration: 2 },
-        scaleY: { duration: 2 },
-      },
-    },
-    // exit: {
-    //   opacity: 0,
-    //   y: -50,
-    //   scale: 1.2,
-    //   backgroundColor: "green", // Color change during exit
-    //   transition: {
-    //     y: { duration: 0.5 },
-    //     scale: { duration: 0.5 },
-    //     backgroundColor: { duration: 0.5 }, // Color change duration
-    //   },
-    // },
-    transition: transition
-  }
+  //       color: { duration: 0.2 },
+  //       border: { duration: 0.2 },
+  //       backgroundColor: { duration: 0.2 },
+  //       scaleX: { duration: 2 },
+  //       scaleY: { duration: 2 },
+  //     },
+  //   },
+  //   // exit: {
+  //   //   opacity: 0,
+  //   //   y: -50,
+  //   //   scale: 1.2,
+  //   //   backgroundColor: "green", // Color change during exit
+  //   //   transition: {
+  //   //     y: { duration: 0.5 },
+  //   //     scale: { duration: 0.5 },
+  //   //     backgroundColor: { duration: 0.5 }, // Color change duration
+  //   //   },
+  //   // },
+  //   transition: transition
+  // }
 
-  const ctaAnimation2 = {
-    initial: {
-      opacity: 1, 
-      scale:1, 
-      backgroundColor: 'rgba(255, 255, 255, 0)',
-    },
-    animate: {
-      opacity: 1
-    },
-    exit: ctaTrigger ? {
-      opacity: 1, 
-      scaleX:10, 
-      scaleY:10, 
-      border: 'rgba(255, 255, 255)',
-      backgroundColor: 'rgba(255, 255, 255)', 
-      color: 'rgba(255, 255, 255)',
+  // const ctaAnimation2 = {
+  //   initial: {
+  //     opacity: 1, 
+  //     scale:1, 
+  //     backgroundColor: 'rgba(255, 255, 255, 0)',
+  //   },
+  //   animate: {
+  //     opacity: 1
+  //   },
+  //   exit: ctaTrigger ? {
+  //     opacity: 1, 
+  //     scaleX:10, 
+  //     scaleY:10, 
+  //     border: 'rgba(255, 255, 255)',
+  //     backgroundColor: 'rgba(255, 255, 255)', 
+  //     color: 'rgba(255, 255, 255)',
       
-      transition: {
+  //     transition: {
         
-        color: { duration: 0.2 },
-        border: { duration: 0.2 },
-        backgroundColor: { duration: 0.2 },
-        scaleX: { duration: 2 },
-        scaleY: { duration: 2 },
-      },
-    }:{},
-    // exit: {
-    //   opacity: 0,
-    //   y: -50,
-    //   scale: 1.2,
-    //   backgroundColor: "green", // Color change during exit
-    //   transition: {
-    //     y: { duration: 0.5 },
-    //     scale: { duration: 0.5 },
-    //     backgroundColor: { duration: 0.5 }, // Color change duration
-    //   },
-    // },
-    transition: transition
-  }
+  //       color: { duration: 0.2 },
+  //       border: { duration: 0.2 },
+  //       backgroundColor: { duration: 0.2 },
+  //       scaleX: { duration: 2 },
+  //       scaleY: { duration: 2 },
+  //     },
+  //   }:{},
+  //   // exit: {
+  //   //   opacity: 0,
+  //   //   y: -50,
+  //   //   scale: 1.2,
+  //   //   backgroundColor: "green", // Color change during exit
+  //   //   transition: {
+  //   //     y: { duration: 0.5 },
+  //   //     scale: { duration: 0.5 },
+  //   //     backgroundColor: { duration: 0.5 }, // Color change duration
+  //   //   },
+  //   // },
+  //   transition: transition
+  // }
 
-  const customExitAnimation = async () => {
-    return new Promise((resolve: any) => {
-      setTimeout(() => {
-        resolve();
-      }, 300); // Adjust the duration to control the delay between animations
-    });
-  };
+  // const customExitAnimation = async () => {
+  //   return new Promise((resolve: any) => {
+  //     setTimeout(() => {
+  //       resolve();
+  //     }, 300); // Adjust the duration to control the delay between animations
+  //   });
+  // };
 
   let counter = 0;
   const updateRate = 10;
@@ -174,24 +174,24 @@ const sizes = {
 
   //FOR THREEJS BACKGROUND REFER TO BLENDER FILE MOCKUP YOU DID
 
-  async function myAnimation() {
-    await animate(scope.current, { rotate: -90 });
-    await animate(scope.current, { scale: 1.5 });
-    await animate(scope.current, { rotate: 0 });
-    await animate(scope.current, { scale: 1 });
-    await animate(
-      scope.current,
-      {
-        x: 100
-      },
-      {
-        repeat: Infinity,
-        repeatType: "mirror",
-        ease: "easeInOut",
-        duration: 1
-      }
-    );
-  }
+  // async function myAnimation() {
+  //   await animate(scope.current, { rotate: -90 });
+  //   await animate(scope.current, { scale: 1.5 });
+  //   await animate(scope.current, { rotate: 0 });
+  //   await animate(scope.current, { scale: 1 });
+  //   await animate(
+  //     scope.current,
+  //     {
+  //       x: 100
+  //     },
+  //     {
+  //       repeat: Infinity,
+  //       repeatType: "mirror",
+  //       ease: "easeInOut",
+  //       duration: 1
+  //     }
+  //   );
+  // }
 
   useEffect(() => {
     // myAnimation();

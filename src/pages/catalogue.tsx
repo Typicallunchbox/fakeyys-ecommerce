@@ -12,7 +12,7 @@ import { Product } from '../typings/index';
 const Catalogue = () => {
   //page variables
   const [selectedId, setSelectedId] = useState<string>('');
-  const [productList, setProductList] = useState([]);
+  const [productList, setProductList] = useState<Array<Product>>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product>();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [showModalContent, setShowModalContent] = useState<boolean>(false);
@@ -59,7 +59,7 @@ const Catalogue = () => {
   const closeModal = async() => {
     setShowModalContent(false); 
     setViewProduct(false);
-    setHoveredProduct(null);
+    setHoveredProduct(undefined);
 
     
     await timeout(600);
@@ -70,8 +70,7 @@ const Catalogue = () => {
     return;
   }
 
-  const addItem = (item) => {
-    // console.log('item:', item)
+  const addItem = (item:Product) => {
     setItems({item});
   }
 
