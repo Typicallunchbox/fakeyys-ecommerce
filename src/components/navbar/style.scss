@@ -22,6 +22,10 @@
         justify-content: end;
         gap: 60px;
         width: fit-content;
+
+        >a:hover{
+            text-decoration: underline solid 2px;
+        }
     }
 
     .hamburger{
@@ -37,11 +41,14 @@
             background-color: #000;
             mix-blend-mode: difference;
             padding: 2px;
+            cursor: pointer;
+            border-radius: 10%;
 
             path{
                 color: #efefef;
             }
         }
+        
         
         .links{
             background: #222;

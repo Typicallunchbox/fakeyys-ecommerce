@@ -15,22 +15,26 @@ const hamburger = (props:any) => {
     open: {
       x: 0,
       y: 0,
-      transition: { staggerChildren: 0.07, delayChildren: 0.2 , ...quick}
+      opacity:1,
+      transition: { opacity:{delay: 0}, staggerChildren: 0.07, delayChildren: 0.2 , ...quick}
     },
     closed: {
       x: 550,
       y: 0,
-      transition: { staggerChildren: 0.05, staggerDirection: -1 , ...quick}
+      opacity:0,
+      transition: { opacity:{delay: 1}, staggerChildren: 0.05, staggerDirection: -1 , ...quick}
     },
     openMobile: {
       y: 0,
       x:0,
+      opacity:1,
       transition: { staggerChildren: 0.07, delayChildren: 0.2 , ...quick}
     },
     closedMobile: {
       x:0,
       y: -290,
-      transition: { staggerChildren: 0.05, staggerDirection: -1 , ...quick}
+      opacity:0,
+      transition: { opacity:{delay: 1}, staggerChildren: 0.05, staggerDirection: -1 , ...quick}
     }
   };
 
@@ -45,12 +49,11 @@ const hamburger = (props:any) => {
     <div onClick={() => {setShowMenu(!showMenu)}} className="hamburger">
       {/* Hamburger */}
       {/* Convert links to svgs and add to threeJs plane in order to do wave warp */}
-      <motion.div animate={animateForDevice()} initial={{x:1000, y:-550}} exit={isMobile ?{x:0, y:-290}:{x:550, y:0}} variants={variants} className={`links ${isMobile ? 'mobile' : 'desktop'}`}>
+      <motion.div  initial={{x:1000, y:-550, opacity:0}} animate={animateForDevice()} exit={isMobile ?{x:0, y:-290, opacity:0}:{x:550, y:0, opacity:0}} variants={variants} className={`links ${isMobile ? 'mobile' : 'desktop'}`}>
         <Link to='/catalogue'>CATALOGUE</Link>
         <Link to='/about'>ABOUT</Link>
       </motion.div>
       <GiHamburgerMenu />
-
     </div>
   )
 }
