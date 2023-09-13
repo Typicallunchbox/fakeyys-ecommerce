@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { getDeviceType } from "../utils/device-size";
+
 type DeviceContextProviderProps = {
     children: React.ReactNode
 }
@@ -10,8 +11,6 @@ type DeviceContext = {
 
 export const DeviceContext = createContext<DeviceContext | null>(null);
 
-
-
 export function DeviceContextProvider({ children } : DeviceContextProviderProps){
     const [isMobile, setIsMobile] = useState(false);
 
@@ -20,7 +19,7 @@ export function DeviceContextProvider({ children } : DeviceContextProviderProps)
 	}, [])
 
     let counter = 0;
-    const updateRate = 20;
+    const updateRate = 10;
   
     window.addEventListener("resize", () => {
         if(counter++ % updateRate === 0){
