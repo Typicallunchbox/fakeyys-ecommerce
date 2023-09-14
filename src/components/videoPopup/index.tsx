@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import video from './videos/mubien_clip.webm'
+import { useEffect, useState } from 'react';
 
 type VideoPopupProps = {
     video: string

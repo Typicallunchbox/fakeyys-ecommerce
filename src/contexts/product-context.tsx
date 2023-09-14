@@ -27,7 +27,7 @@ export const ProductContext = createContext<ProductContext | null>(null);
 
 export function ProductContextProvider({ children } : ProductContextProviderProps){
     const [viewProduct, setViewProduct] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState<Array<iCartItem>>([]);
     const [cartCount, setCartCount] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const MIN_CART_LIMIT = 1;

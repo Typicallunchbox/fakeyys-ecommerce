@@ -1,13 +1,12 @@
-import { useState, useEffect, Fragment } from 'react'
-import { RxCross1  } from 'react-icons/rx';
-import { BiSolidLeftArrow, BiSolidRightArrow  } from 'react-icons/bi';
-import { LiaShoppingCartSolid  } from 'react-icons/lia';
-import { motion, usePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { Fragment, useState } from 'react';
+import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
+import { LiaShoppingCartSolid } from 'react-icons/lia';
+import { RxCross1 } from 'react-icons/rx';
 import { useProductContext } from '../../contexts/product-context';
-import { iCartItem } from '../../typings/index';
 
 
-const CartItem = ({item}) => {
+const CartItem = ({item}:any) => {
 	const { setItems, removeItems } = useProductContext();
   const [showControl, setShowControl] = useState(false);
   return (
@@ -63,8 +62,8 @@ const Window = ({showCart, setShowCart}:any) => {
       </div>}
       <div className='cart-content'>
         {cartItems.length > 0 ? 
-        cartItems.map((item) => (
-          <Fragment key={item?.id}>
+        cartItems.map((item:any) => (
+          <Fragment key={item.id}>
             <CartItem item={item}/>
             <hr className='item-divider' />
           </Fragment>
