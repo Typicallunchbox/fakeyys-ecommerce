@@ -6,6 +6,7 @@ import { Products } from "../static/product-list";
 import { useProductContext } from "../contexts/product-context";
 import { BsArrowLeft } from 'react-icons/bs';
 import Scene from '../components/canvas/catalogue-canvas';
+import { useDeviceContext } from "../contexts/device-context";
 import { Product } from '../typings/index';
 
 
@@ -20,6 +21,8 @@ const Catalogue = () => {
   const [lockScroll, setLockScroll] = useState<boolean>(false);
   const [hoveredProduct, setHoveredProduct] = useState<Product | undefined>();
   const { viewProduct, setViewProduct, setItems } = useProductContext();
+	const { isMobile } = useDeviceContext();
+
 
   useEffect(() => {
     if(fakeyysProducts && fakeyysProducts.length > 0){
@@ -110,7 +113,7 @@ const Catalogue = () => {
                     <motion.div className='image-container'>
                         <motion.img src={item.cover_image}/>
                     </motion.div>
-                    <motion.div className='content' animate={hoveredProduct?.id === item.id ? {background: `rgb(40,40,40)`, color: 'white'} : {background: `transparent`, color: 'black'}}>
+                    <motion.div className='content' animate={hoveredProduct?.id === item.id && !isMobile ? {background: `rgb(40,40,40)`, color: 'white'} : {background: `transparent`, color: 'black'}}>
                         <motion.div className='head' initial={{opacity:1}} animate={hoveredProduct?.id === item.id ? {scale: 1.0} : !hoveredProduct ? {opacity:1} : {opacity:0}}>
                           <motion.p>{title}</motion.p>
                           <motion.p>${item.price}</motion.p>
