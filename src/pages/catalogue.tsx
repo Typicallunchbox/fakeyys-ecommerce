@@ -93,7 +93,7 @@ const Catalogue = () => {
             <motion.p>CHECKOUT OUR NEW RANGE OF LIMITED EDITION HANDBAGS.</motion.p>
             <motion.p>EACH HAND MADE IN GERMANY BY OUR SKILLED CRAFTSMEN.</motion.p>
           </motion.div>
-          {productList && <motion.div initial={{opacity:0}} animate={{opacity:1, transition:{delay:0.25}}} className="product-list">
+          {productList && <motion.div initial={{opacity:0}} animate={{opacity:1, transition:{delay:0.25}}} className={`product-list ${viewProduct ? 'z-increase' : ''}`}>
               {productList.map((item:Product) => {
               const title = item.title.toUpperCase()
               

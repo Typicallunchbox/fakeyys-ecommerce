@@ -387,6 +387,10 @@ h3 {
                 z-index: 0;
                 position: relative;
 
+                &.z-increase{
+                    z-index: 2;
+                }
+
                 .product{
                     position: relative;
                     left: auto;
