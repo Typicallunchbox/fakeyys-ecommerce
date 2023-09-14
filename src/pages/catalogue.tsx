@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import AnimatedPage from "../AnimatedPage";
 import { textVariant, variants } from "../utils/animation-variants";
-import { fakeyysProducts } from "../static/product-list";
+import { Products } from "../static/product-list";
 import { useProductContext } from "../contexts/product-context";
 import { BsArrowLeft } from 'react-icons/bs';
 import Scene from '../components/canvas/catalogue-canvas';
@@ -11,13 +11,14 @@ import { Product } from '../typings/index';
 
 const Catalogue = () => {
   //page variables
+  const fakeyysProducts:any = Products;
   const [selectedId, setSelectedId] = useState<string>('');
   const [productList, setProductList] = useState<Array<Product>>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product>();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [showModalContent, setShowModalContent] = useState<boolean>(false);
   const [lockScroll, setLockScroll] = useState<boolean>(false);
-  const [hoveredProduct, setHoveredProduct] = useState<Product>();
+  const [hoveredProduct, setHoveredProduct] = useState<Product | undefined>();
   const { viewProduct, setViewProduct, setItems } = useProductContext();
 
   useEffect(() => {
@@ -104,7 +105,7 @@ const Catalogue = () => {
                 animate={isModalOpen ? 'hide' : 'show'} 
                 layoutId={item.id} 
                 onClick={()=> {openModal(item); setHoveredProduct(item)}}
-                onHoverEnd={() => {setHoveredProduct(null);}} onHoverStart={() => {setHoveredProduct(item);}}
+                onHoverEnd={() => {setHoveredProduct(undefined);}} onHoverStart={() => {setHoveredProduct(item);}}
                 >
                     <motion.div className='image-container'>
                         <motion.img src={item.cover_image}/>

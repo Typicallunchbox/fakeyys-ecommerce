@@ -1,4 +1,4 @@
-export const fakeyysProducts = [
+export const Products = [
     {
       id: '0',
       title: 'Dark Cosmic Red',

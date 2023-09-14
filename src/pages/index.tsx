@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import { motion, useAnimate } from "framer-motion";
+import { useEffect } from "react";
+import { Helmet } from 'react-helmet';
 import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
-import { Helmet } from 'react-helmet';
-import { motion, useAnimate } from "framer-motion";
 import { useDeviceContext } from "../contexts/device-context";
 
 const Index = () => {
 const navigate = useNavigate();
-const [scope, animate] = useAnimate();
+const [scope] = useAnimate();
 const { isMobile } = useDeviceContext();
 const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
 // const [ctaTrigger, setCtatrigger] = useState(false);

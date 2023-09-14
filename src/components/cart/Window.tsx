@@ -62,8 +62,8 @@ const Window = ({showCart, setShowCart}:any) => {
       </div>}
       <div className='cart-content'>
         {cartItems.length > 0 ? 
-        cartItems.map((item) => (
-          <Fragment key={item?.id}>
+        cartItems.map((item:any) => (
+          <Fragment key={item.id}>
             <CartItem item={item}/>
             <hr className='item-divider' />
           </Fragment>

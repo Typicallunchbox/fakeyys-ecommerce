@@ -7,12 +7,16 @@ import * as THREE from "three";
 import { Product } from '../../typings/index';
 
 type TopologyProps = {
-  hoveredProduct? : Product,
-  product: Product,
-  selectedProduct: Product
+  hoveredProduct? : Product | undefined,
+  selectedProduct: Product |undefined
 }
 
-const WaveShaderMaterial = shaderMaterial(
+type TopologyProps2 = {
+  product: Product | undefined,
+  selectedProduct: Product |undefined
+}
+
+const WaveShaderMaterial:any = shaderMaterial(
   // Uniform
   {
     time: 0.1 ,
@@ -126,7 +130,7 @@ const WaveShaderMaterial = shaderMaterial(
 
 extend({ WaveShaderMaterial });
 
-const Wave = ({product, selectedProduct,}:TopologyProps) => {
+const Wave = ({product, selectedProduct,}:TopologyProps2) => {
   const ref = useRef({
     time:0,
     speed:0,
@@ -173,7 +177,7 @@ const Wave = ({product, selectedProduct,}:TopologyProps) => {
 };
 
 const Scene = ({hoveredProduct,selectedProduct}:TopologyProps) => {
-  const [product, setProduct] = useState<Product>(hoveredProduct || {})
+  const [product, setProduct] = useState<Product | undefined>(hoveredProduct)
 
   useEffect(() => {
     setProduct(hoveredProduct);

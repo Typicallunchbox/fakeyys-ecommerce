@@ -8,7 +8,6 @@ import About from "./pages/about";
 import Catalogue from "./pages/catalogue";
 import Error from "./pages/error";
 import Landing from "./pages/index";
-import Product from "./pages/product";
 
 //Component imports
 import Cart from "./components/cart/index";
@@ -28,7 +27,6 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/about" element={<About />} />
             <Route path="/catalogue" element={<Catalogue />} />
-            <Route path="/catalogue/product/:id" element={<Product />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </AnimatePresence>
