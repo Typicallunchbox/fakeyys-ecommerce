@@ -4,14 +4,17 @@ import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
 import { LiaShoppingCartSolid } from 'react-icons/lia';
 import { RxCross1 } from 'react-icons/rx';
 import { useProductContext } from '../../contexts/product-context';
+import { useDeviceContext } from "../../contexts/device-context";
+
 
 
 const CartItem = ({item}:any) => {
+	const { isMobile } = useDeviceContext();
 	const { setItems, removeItems } = useProductContext();
   const [showControl, setShowControl] = useState(false);
   return (
     <motion.div onHoverEnd={() => setShowControl(false)} onHoverStart={() => setShowControl(true)} className='cart-item'>
-      <motion.div initial={{opacity:0}} animate={showControl ? {opacity:1}:{opacity:0}} className='delete-item' onClick={() => removeItems(item.id)}>
+      <motion.div initial={{opacity:0}} animate={showControl || isMobile ? {opacity:1}:{opacity:0}} className='delete-item' onClick={() => removeItems(item.id)}>
         <RxCross1 />
       </motion.div>
       <div>
