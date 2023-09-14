@@ -164,7 +164,6 @@ h3 {
 .page{
     width: 70%;
     margin: 0 auto;
-    // border: 2px black solid;
 
     /* HOME PAGE STYLING */
     &.home{
@@ -496,6 +495,60 @@ h3 {
                     background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 10%, #fffffff0 30%, #ffffffc9 70%, rgba(255, 255, 255, 0) 90%);
                     z-index: 1;
                 }
+            }
+        }
+    }
+
+    /* ERROR PAGE STYLING */
+    &.error{
+        display: flex;
+        height: 100dvh;
+
+        .error-container{
+            margin: auto;
+            width: fit-content;
+            max-width: 400px;
+            text-align: center;
+
+            .image-container{
+                align-items: center;
+                display: flex;
+                height: 38vh;
+                position: relative;
+                justify-content: center;
+                z-index: -1;
+                
+                  .title {
+                    color: #000000;
+                    font-size: 200px;
+                    font-weight: 700;
+                    padding: 0 20px;
+                    position: absolute;
+                    text-align: center;
+                    text-transform: uppercase;
+                  }
+                  
+                  .stroked-title {
+                    color: transparent;
+                    -webkit-text-stroke: 4px white;
+                  }
+                  
+                  .image {
+                    border-radius: 20px;
+                    position: fixed;
+                    width: 200px;
+                    border-radius: 10px;
+                  }
+            }
+
+            h3, a{
+                padding-top: 20px;
+            }
+
+            a{
+                font-size: 20px;
+                font-family: 'SourceSansPro-semibold', sans-serif;
+                color: #3689d2;
             }
         }
     }
