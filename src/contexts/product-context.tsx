@@ -31,7 +31,7 @@ export function ProductContextProvider({ children } : ProductContextProviderProp
     const [cartCount, setCartCount] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const MIN_CART_LIMIT = 1;
-    const MAX_CART_LIMIT = 10;
+    const MAX_CART_LIMIT = 9;
 
     const cartItemsCount = () => {
         let count = 0;
