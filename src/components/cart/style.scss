@@ -11,7 +11,23 @@
         cursor: pointer;
         z-index: 5;
 
+        .count{
+            background: red;
+            border-radius: 50%;
+            text-align: center;
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            right: 20%;
+            top: 30%;
+            transform: translate(-20%, -30%);
 
+            p{
+                color: white;
+                font-size: 12px;
+            }
+            
+        }
 
         svg{
             color: white;
