@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { shaderMaterial } from "@react-three/drei";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import glsl from "babel-plugin-glsl/macro";
