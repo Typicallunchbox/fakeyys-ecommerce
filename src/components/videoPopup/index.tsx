@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import video from './videos/mubien_clip.webm'
+import { useEffect, useState } from 'react';
 
 type VideoPopupProps = {
     video: string
@@ -74,7 +73,7 @@ const VideoPopup = ({video}:VideoPopupProps) => {
         },
       }}
     >
-      <video src={`./videos/${video}`} controls autoPlay muted loop></video> 
+      <video src={`./videos/${video}`} controls={false} autoPlay muted loop></video> 
     </motion.div>
   );
 };

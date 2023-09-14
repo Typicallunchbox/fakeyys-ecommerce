@@ -1,7 +1,8 @@
-export const fakeyysProducts = [
+export const Products = [
     {
       id: '0',
       title: 'Dark Cosmic Red',
+      tag:"For the bold",
       cover_image: './images/black-white-handbag.jpg',
       product_images: '',
       price: 120.00,
@@ -20,6 +21,7 @@ export const fakeyysProducts = [
     {
       id: '1',
       title: 'Dark Cosmic Blue',
+      tag:"For the bold",
       cover_image: './images/green-black-handbag.jpg',
       product_images: '',
       price: 120.00,

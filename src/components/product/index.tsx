@@ -1,6 +1,5 @@
-import React, {useState} from 'react'
-import './style.scss';
 import { motion } from 'framer-motion';
+import './style.scss';
 
 interface Props {
   item: {
@@ -8,24 +7,21 @@ interface Props {
     title: string,
     price: number,
     description: string,
-    cover_image: string
+    cover_image: string,
   },
   key: number,
   isSelected: number,
-  setIsSelected: number,
+  setIsSelected: Function,
+  layoutId: any
 }
 
-
-
 const product = (props:Props) => {
-  const {item, key, isSelected, setIsSelected, layoutId} = props;
+  const {item, isSelected, setIsSelected, layoutId} = props;
   const title = item.title.toUpperCase()
 
   const setProductId = (id:number) => {
     setIsSelected(id)
   }
-const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
-
 
   const animation = {
     initial: {

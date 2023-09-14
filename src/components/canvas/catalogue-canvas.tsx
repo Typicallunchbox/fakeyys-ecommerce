@@ -1,19 +1,23 @@
-import * as THREE from "three";
-import { useRef, useState, useEffect, Suspense } from "react";
-import { Canvas, extend, useFrame, useLoader } from "@react-three/fiber";
+// @ts-nocheck
 import { shaderMaterial } from "@react-three/drei";
+import { Canvas, extend, useFrame } from "@react-three/fiber";
 import glsl from "babel-plugin-glsl/macro";
+// import { Perf } from 'r3f-perf';
+import { Suspense, useEffect, useRef, useState } from "react";
+import * as THREE from "three";
 import { Product } from '../../typings/index';
-import { Stats } from '@react-three/drei';
-import { Perf } from 'r3f-perf'
 
 type TopologyProps = {
-  hoveredProduct: Product,
-  product: Product,
-  selectedProduct: Product
+  hoveredProduct? : Product | undefined,
+  selectedProduct: Product |undefined
 }
 
-const WaveShaderMaterial = shaderMaterial(
+type TopologyProps2 = {
+  product: Product | undefined,
+  selectedProduct: Product |undefined
+}
+
+const WaveShaderMaterial:any = shaderMaterial(
   // Uniform
   {
     time: 0.1 ,
@@ -127,7 +131,7 @@ const WaveShaderMaterial = shaderMaterial(
 
 extend({ WaveShaderMaterial });
 
-const Wave = ({product, selectedProduct}:TopologyProps) => {
+const Wave = ({product, selectedProduct,}:TopologyProps2) => {
   const ref = useRef({
     time:0,
     speed:0,
@@ -160,7 +164,7 @@ const Wave = ({product, selectedProduct}:TopologyProps) => {
       reference = selectedProduct;
     }
     else{
-      console.log('HIT!')
+      // console.log('HIT!')
       ref.current.topoColor = new THREE.Color(225/255, 225/255, 225/255)
     }
   })
@@ -174,7 +178,7 @@ const Wave = ({product, selectedProduct}:TopologyProps) => {
 };
 
 const Scene = ({hoveredProduct,selectedProduct}:TopologyProps) => {
-  const [product, setProduct] = useState<Product>(hoveredProduct || {})
+  const [product, setProduct] = useState<Product | undefined>(hoveredProduct)
 
   useEffect(() => {
     setProduct(hoveredProduct);
@@ -187,7 +191,7 @@ const Scene = ({hoveredProduct,selectedProduct}:TopologyProps) => {
       <Suspense fallback={null}>
         <Wave product={product} selectedProduct={selectedProduct} />
       </Suspense>
-      <Perf position="top-left" />
+      {/* <Perf position="top-left" /> */}
     </Canvas>
   );
 };
