@@ -2,7 +2,7 @@
 import { shaderMaterial } from "@react-three/drei";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import glsl from "babel-plugin-glsl/macro";
-import { Perf } from 'r3f-perf';
+// import { Perf } from 'r3f-perf';
 import { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Product } from '../../typings/index';
@@ -191,7 +191,7 @@ const Scene = ({hoveredProduct,selectedProduct}:TopologyProps) => {
       <Suspense fallback={null}>
         <Wave product={product} selectedProduct={selectedProduct} />
       </Suspense>
-      <Perf position="top-left" />
+      {/* <Perf position="top-left" /> */}
     </Canvas>
   );
 };
