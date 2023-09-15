@@ -71,7 +71,6 @@ const Catalogue = () => {
     setSelectedProduct(undefined); 
     setIsModalOpen(false); 
     setLockScroll(false);
-    return;
   }
 
   const addItem = (item:Product) => {
