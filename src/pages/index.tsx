@@ -1,14 +1,16 @@
 import { motion, useAnimate } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from 'react-helmet';
 import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 import { useDeviceContext } from "../contexts/device-context";
+import { variants } from "../utils/animation-variants";
 
 const Index = () => {
 const navigate = useNavigate();
 const [scope] = useAnimate();
 const { isMobile } = useDeviceContext();
+const [isCtaHover, setIsCtaHover] = useState(false);
 const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
 // const [ctaTrigger, setCtatrigger] = useState(false);
 
@@ -194,8 +196,13 @@ const sizes = {
   // }
 
   useEffect(() => {
-    // myAnimation();
-  }, []);
+    if (document.getElementById("cta_video"))
+      {
+        let videoTemp = document!.getElementById("cta_video")
+        videoTemp.currentTime = 0;
+        videoTemp.play();
+      }
+  }, [isCtaHover]);
 
   return (
     <AnimatedPage>
@@ -204,8 +211,11 @@ const sizes = {
           <title>Fakeyys - Homepage</title>
           <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
         </Helmet>
+
         <img className="ThreeJSImg" src={'./images/landingMockup.png'} alt="landingMock" />
-        <motion.div  ref={scope}  onClick={() => {navigate("/catalogue")}} className={`cta ${isMobile ? 'mobile' : 'desktop'}`}>
+        <motion.div onHoverEnd={() => setIsCtaHover(false)} onHoverStart={() => {setIsCtaHover(true)}}  ref={scope}  onClick={() => {navigate("/catalogue")}} className={`cta ${isMobile ? 'mobile' : 'desktop'}`}>
+          <motion.video id="cta_video" initial={{opacity:0}} animate={isCtaHover ? {opacity:1} : {opacity:0}} variants={variants} src={`./videos/cta_hover_clip.webm`} controls={false} autoPlay muted loop></motion.video> 
+
           <h3>VIEW CATALOGUE</h3>
         </motion.div>
         {!isMobile && <>
