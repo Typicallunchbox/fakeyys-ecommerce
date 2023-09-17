@@ -4,6 +4,7 @@ import AnimatedPage from "../AnimatedPage";
 import { textVariant, variants } from "../utils/animation-variants";
 import { Products } from "../static/product-list";
 import { useProductContext } from "../contexts/product-context";
+import { enqueueSnackbar } from 'notistack';
 import { BsArrowLeft } from 'react-icons/bs';
 import Scene from '../components/canvas/catalogue-canvas';
 import { useDeviceContext } from "../contexts/device-context";
@@ -75,6 +76,7 @@ const Catalogue = () => {
 
   const addItem = (item:Product) => {
     setItems({item});
+    enqueueSnackbar('Item added to cart.', { variant: 'success' });
   }
 
   

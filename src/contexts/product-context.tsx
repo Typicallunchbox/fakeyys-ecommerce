@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { iCartItem } from "../typings";
+import { enqueueSnackbar } from "notistack";
 
 type ProductContextProviderProps = {
     children: React.ReactNode
@@ -97,11 +98,13 @@ export function ProductContextProvider({ children } : ProductContextProviderProp
 
     const removeItems = (itemId:any) => {
         let newArray = [...cartItems.filter((product: iCartItem) => product.id !== itemId)]
-        setCartItems(newArray)
+        setCartItems(newArray);
+        enqueueSnackbar('Removed item from cart.', { variant: 'info' });
     }
 
     const clearCart = () => {
         setCartItems([]);
+        enqueueSnackbar('Cart cleared.', { variant: 'info' });
     }
 
     return (

@@ -4,6 +4,7 @@ import './style.scss';
 
 //Page imports
 import { DeviceContextProvider } from './contexts/device-context';
+import { SnackbarProvider } from 'notistack';
 import About from "./pages/about";
 import Catalogue from "./pages/catalogue";
 import Error from "./pages/error";
@@ -21,6 +22,7 @@ function App() {
     <DeviceContextProvider>
       <ProductContextProvider>
         <AnimatePresence initial={true} mode='wait'>
+          <SnackbarProvider>
           <Navbar key={"nav"}/>
           <Cart key={"cart"} />
           <Routes key={location.pathname} location={location}>
@@ -29,6 +31,7 @@ function App() {
             <Route path="/catalogue" element={<Catalogue />} />
             <Route path="*" element={<Error />} />
           </Routes>
+          </SnackbarProvider>
         </AnimatePresence>
       </ProductContextProvider>
     </DeviceContextProvider>
