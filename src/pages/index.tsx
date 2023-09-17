@@ -198,7 +198,7 @@ const sizes = {
   useEffect(() => {
     if (document.getElementById("cta_video"))
       {
-        let videoTemp = document!.getElementById("cta_video")
+        let videoTemp:any = document.getElementById("cta_video")
         videoTemp.currentTime = 0;
         videoTemp.play();
       }
