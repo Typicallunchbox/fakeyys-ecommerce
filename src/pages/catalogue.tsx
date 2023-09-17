@@ -76,7 +76,6 @@ const Catalogue = () => {
 
   const addItem = (item:Product) => {
     setItems({item});
-    enqueueSnackbar('Item added to cart.', { variant: 'success' });
   }
 
   

@@ -72,6 +72,8 @@ export function ProductContextProvider({ children } : ProductContextProviderProp
         if (!isObjectPresent) {  
             tempArray.push({...item, count: 1});
             setCartItems(tempArray);
+            enqueueSnackbar('Item added to cart.', { variant: 'success' });
+
 
         }else{
             for (let index = 0; index < tempArray.length; index++) {
