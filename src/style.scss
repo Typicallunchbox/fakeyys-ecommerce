@@ -477,7 +477,7 @@ h3 {
                         }
                         .foot{
                             display: flex;
-                            flex-direction: row;
+                            flex-direction: column-reverse;
                             gap: 60px;
                             align-items: end;
                             margin-top: 20px;
@@ -485,20 +485,18 @@ h3 {
                             button{
                                 min-width: fit-content;
                                 padding: 20px;
-                                background: transparent;
-                                border: 2px black solid;
+                                background: #3689d2;
+                                color: white;
+                                border: none;
                                 font-family: 'SourceSansPro-semibold', sans-serif;
                                 font-size: 20px;
                                 cursor: pointer;
                                 transition: all .25s ease-in;
-                                mix-blend-mode: difference;
-                                color: var(--fakeyys-black);
                             }
 
                             button:hover{
-                                background: rgb(226, 46, 46);
+                                background: #64adee;
                                 color: var(--fakeyys-white);
-                                border: 2px var(--fakeyys-white) solid;
                             }
                         }
                     }
@@ -670,6 +668,23 @@ h3 {
             .content{
                 .product-list{
                     .popup{
+
+                        .head{
+                            padding: 20px 0;
+                        }
+
+                        .foot{
+                            flex-direction: column-reverse !important;
+
+                            p{
+                                max-height: 35vh;
+                                overflow: auto;
+                            }
+
+                            button{
+                                width: 100%;
+                            }
+                        }
 
                         // left: 0 !important;
                         width: 100vw;
