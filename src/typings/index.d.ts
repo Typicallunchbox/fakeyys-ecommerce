@@ -1,4 +1,4 @@
-export interface Product {
+export type Product = {
     id: string,
     tag:string,
     title: string,
@@ -11,7 +11,7 @@ export interface Product {
   }
 }
 
-export interface iCartItem {
+export type iCartItem = {
   id: string,
   title: string,
   price: number,
@@ -22,5 +22,5 @@ export interface iCartItem {
   color_accents: {
       primary: Array<number>,
       secondary: Array<number>,
-}
+  }
 }
