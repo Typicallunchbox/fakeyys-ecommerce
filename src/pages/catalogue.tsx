@@ -137,10 +137,10 @@ const Catalogue = () => {
                     className="popup"
                     // onClick={()=> closeModal()} 
                     layoutId={selectedId}
-                    initial={{translateX: '50% !important'}}
+                    // initial={{translateX: '50% !important'}}
                     // style={{left: '50%', transformOrigin: 'none'}}
                     variants={testVariants} 
-                    animate={isModalOpen ? 'show' : 'hide'} 
+                    animate={viewProduct ? 'show' : 'hide'} 
 
                   >
                     <motion.div className='image-container'>

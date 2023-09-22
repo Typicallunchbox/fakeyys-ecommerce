@@ -672,19 +672,13 @@ h3 {
             .content{
                 .product-list{
                     .popup{
+                        padding: 0 0 80px 0;
 
                         .head{
                             padding: 20px 0;
                         }
 
                         .foot{
-                            flex-direction: column-reverse !important;
-
-                            p{
-                                max-height: 35vh;
-                                overflow: auto;
-                            }
-
                             button{
                                 width: 100%;
                             }
