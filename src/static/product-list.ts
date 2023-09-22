@@ -7,7 +7,7 @@ export const Products = [
       product_images: '',
       price: 120.00,
       color_accents: {
-        "primary": [74, 72, 73],
+        "primary": [47, 47, 47],
         "secondary": [0, 0, 0]
       },
       description: `Introducing the epitome of timeless elegance, our black and white fashion handbag effortlessly blends 
@@ -77,7 +77,7 @@ export const Products = [
       product_images: '',
       price: 120.00,
       color_accents: {
-        "primary": [74, 72, 73],
+        "primary": [162, 41, 60],
         "secondary": [0, 0, 0]
       },
       description: `Introducing our Crimson Noir Carryall, a versatile companion that marries the passionate allure of crimson with the 
@@ -89,12 +89,28 @@ export const Products = [
     },
     {
       id: '5',
+      title: 'Mocha Midnight Chic',
+      cover_image: './images/orange-black-handbag.jpg',
+      product_images: '',
+      price: 120.00,
+      color_accents: {
+        "primary": [241, 175, 82],
+        "secondary": [0, 0, 0]
+      },
+      description: `The "Mocha Midnight Chic" handbag, a timeless masterpiece that seamlessly blends the warmth of mocha with the allure of midnight black. 
+                    This sophisticated accessory captures the essence of refined elegance. Its deep mocha color exudes a sense of comfort and sophistication, while the 
+                    glossy black accents add a touch of mystery and intrigue. The spacious interior effortlessly accommodates all your essentials, and the sturdy handles 
+                    ensure comfort and durability. Whether you're attending a formal event or a casual evening out, the "Mocha Midnight Chic" handbag is your go-to choice 
+                    for making a statement and exuding unparalleled style. Elevate your fashion game with this exquisite piece of artistry.`
+    },
+    {
+      id: '6',
       title: 'Bumblebee Mini Marvel',
       cover_image: './images/yellow-black-handbag.jpg',
       product_images: '',
       price: 120.00,
       color_accents: {
-        "primary": [74, 72, 73],
+        "primary": [223, 182, 2],
         "secondary": [0, 0, 0]
       },
       description: `Introducing our "Bumblebee Mini Marvel," a petite fashion icon that packs a punch. This compact bag beautifully blends the 
@@ -103,21 +119,5 @@ export const Products = [
                     sophistication, while the sleek design ensures it's an ideal choice for any occasion, from casual outings to special events. 
                     With the "Bumblebee Mini Marvel" at your side, you'll carry a burst of sunshine and a touch of chic, showcasing that greatness 
                     comes in small packages.`
-    },
-    {
-      id: '6',
-      title: 'Mocha Midnight Chic',
-      cover_image: './images/orange-black-handbag.jpg',
-      product_images: '',
-      price: 120.00,
-      color_accents: {
-        "primary": [74, 72, 73],
-        "secondary": [0, 0, 0]
-      },
-      description: `The "Mocha Midnight Chic" handbag, a timeless masterpiece that seamlessly blends the warmth of mocha with the allure of midnight black. 
-                    This sophisticated accessory captures the essence of refined elegance. Its deep mocha color exudes a sense of comfort and sophistication, while the 
-                    glossy black accents add a touch of mystery and intrigue. The spacious interior effortlessly accommodates all your essentials, and the sturdy handles 
-                    ensure comfort and durability. Whether you're attending a formal event or a casual evening out, the "Mocha Midnight Chic" handbag is your go-to choice 
-                    for making a statement and exuding unparalleled style. Elevate your fashion game with this exquisite piece of artistry.`
     }
   ]
