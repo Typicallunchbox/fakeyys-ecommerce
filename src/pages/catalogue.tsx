@@ -154,7 +154,9 @@ const Catalogue = () => {
                           <motion.div initial={{display: 'none', opacity:'0'}} animate={showModalContent ? {display: 'flex', opacity:'1'} : {opacity:'0', display: 'none'}}  className='foot'>
                             <motion.p>{selectedProduct.description}</motion.p>
                             {/* Add fabric texture animation on hover of button */}
-                            <motion.button onClick={() => {addItem(selectedProduct)}}>ADD TO CART</motion.button>
+                            <motion.div className="btn">
+                              <motion.p onClick={() => {addItem(selectedProduct)}}>ADD TO CART</motion.p>
+                            </motion.div>
                           </motion.div>
                       </motion.div>
                   </motion.div>

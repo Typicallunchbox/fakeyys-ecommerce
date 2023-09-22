@@ -211,6 +211,7 @@ h3 {
                 bottom: 30%;
                 border-radius: 25px;
                 
+                
                 h3{
                     font-size: 80px;
                 }
@@ -224,6 +225,14 @@ h3 {
                 max-width: 500px;
                 text-align: center;
                 transform: translateX(-50%) !important;
+                background: #3689d2;
+                color: white;
+                border: none;
+                
+
+                video{
+                    opacity: 0.3 !important;
+                }
 
                 h3{
                     font-size: 45px;
@@ -231,11 +240,13 @@ h3 {
             }
         }
         .cta:hover{
-            background-color: #3689d2a8;
+            background: #3689d2;
             color: white;
             border: white;
-            // opacity: 80%;
-            // transition: all 2s ease-in-out;
+            
+            video{
+                opacity: 0.6 !important;
+            }
         }
         .cta-shadow{
             position: absolute;
