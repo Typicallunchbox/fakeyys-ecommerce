@@ -5,7 +5,7 @@ export const Products = [
       tag:"For the bold",
       cover_image: './images/black-white-handbag.jpg',
       product_images: '',
-      price: 120.00,
+      price: 195.00,
       color_accents: {
         "primary": [47, 47, 47],
         "secondary": [0, 0, 0]
@@ -24,7 +24,7 @@ export const Products = [
       tag:"For the bold",
       cover_image: './images/green-black-handbag.jpg',
       product_images: '',
-      price: 120.00,
+      price: 160.00,
       color_accents: {
         "primary": [45, 74, 54],
         "secondary": [0, 0, 0]
@@ -41,7 +41,7 @@ export const Products = [
       title: 'Burgundy Snowfall',
       cover_image: './images/maroon-white-handbag.jpg',
       product_images: '',
-      price: 120.00,
+      price: 125.00,
       color_accents: {
         "primary": [174, 65, 58],
         "secondary": [0, 0, 0]
@@ -75,7 +75,7 @@ export const Products = [
       title: 'Crimson Noir Carryall',
       cover_image: './images/red-black-handbagv2.jpg',
       product_images: '',
-      price: 120.00,
+      price: 150.00,
       color_accents: {
         "primary": [162, 41, 60],
         "secondary": [0, 0, 0]
@@ -92,7 +92,7 @@ export const Products = [
       title: 'Mocha Midnight Chic',
       cover_image: './images/orange-black-handbag.jpg',
       product_images: '',
-      price: 120.00,
+      price: 145.00,
       color_accents: {
         "primary": [241, 175, 82],
         "secondary": [0, 0, 0]
