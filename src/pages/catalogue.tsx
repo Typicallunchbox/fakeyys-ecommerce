@@ -80,7 +80,7 @@ const Catalogue = () => {
 
   const testVariants = {
     initial: {height: 'auto', overflow: 'none', padding:0, transition: {duration: 0}},
-    show: {height: '100dvh' , overflow: 'auto', padding:'0 20px 80px 20px', transition: {duration: 0}},
+    show: {height: '100dvh' , overflow: 'auto', padding: 0, transition: {duration: 0}},
     hide: {height: 'auto', overflow: 'auto', padding:0, transition: {duration: 0}}
   };
 
