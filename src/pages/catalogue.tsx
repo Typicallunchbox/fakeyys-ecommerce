@@ -77,6 +77,12 @@ const Catalogue = () => {
     setItems({item});
   }
 
+  const testVariants = {
+    initial: {height: 'auto', overflow: 'none', padding:0, transition: {duration: 0}},
+    show: {height: '100dvh' , overflow: 'auto', padding:'0 20px 80px 20px', transition: {duration: 0}},
+    hide: {height: 'auto', overflow: 'auto', padding:0, transition: {duration: 0}}
+  };
+
   
   return (
     <AnimatedPage>
@@ -133,8 +139,8 @@ const Catalogue = () => {
                     layoutId={selectedId}
                     initial={{translateX: '50% !important'}}
                     // style={{left: '50%', transformOrigin: 'none'}}
-                    // variants={modalVariants} 
-                    // animate={isModalOpen ? 'hide' : 'hide'} 
+                    variants={testVariants} 
+                    animate={isModalOpen ? 'show' : 'hide'} 
 
                   >
                     <motion.div className='image-container'>

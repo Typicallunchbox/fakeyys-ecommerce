@@ -449,6 +449,7 @@ h3 {
                 .popup{
                     position: fixed;
                     // transform-origin: 50% 50% 0px;
+                    scrollbar-width: none;
                     transform: translateX(-50%) !important;
                     left: 50% !important;
                     top: 0 !important;
