@@ -6,6 +6,7 @@ import { Products } from "../static/product-list";
 import { useProductContext } from "../contexts/product-context";
 import { BsArrowLeft } from 'react-icons/bs';
 import Scene from '../components/canvas/catalogue-canvas';
+import { AiOutlinePlusCircle  } from 'react-icons/ai';
 import { useDeviceContext } from "../contexts/device-context";
 import { Product } from '../typings/index';
 
@@ -154,7 +155,8 @@ const Catalogue = () => {
                           <motion.div initial={{display: 'none', opacity:'0'}} animate={showModalContent ? {display: 'flex', opacity:'1'} : {opacity:'0', display: 'none'}}  className='foot'>
                             <motion.p>{selectedProduct.description}</motion.p>
                             {/* Add fabric texture animation on hover of button */}
-                            <motion.div className="btn">
+                            <motion.div className="btn icon">
+                              <AiOutlinePlusCircle />
                               <motion.p onClick={() => {addItem(selectedProduct)}}>ADD TO CART</motion.p>
                             </motion.div>
                           </motion.div>
@@ -162,9 +164,9 @@ const Catalogue = () => {
                   </motion.div>
                 </>
               )}
-          {isModalOpen && <div className="product">
+          {/* {isModalOpen && <div className="product">
               <img src={'./images/comingSoon.png'}/>  
-          </div>}
+          </div>} */}
           </motion.div>}
         </div>
       </motion.div>
