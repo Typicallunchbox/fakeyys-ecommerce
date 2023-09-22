@@ -370,17 +370,18 @@ h3 {
         
         .back-arrow{
             position: fixed;
-            top: 20px;
+            top: 40px;
             left: 20px;
             font-size: 40px;
             cursor: pointer;
             transition: all 0.25s ease-out;
             color: #0f0f0f;
-            height: 80px;
             z-index: 3;
+            border-radius: 10px;
 
             &.show{
                 opacity: 1;
+
             }
 
             &.hide{
@@ -391,6 +392,8 @@ h3 {
         .back-arrow:hover{
             font-size: 45px;
             color: var(--fakeyys-white);
+            background: #0f0f0f;
+
         }
 
         .content{
