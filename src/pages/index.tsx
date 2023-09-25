@@ -10,7 +10,7 @@ const Index = () => {
 // const navigate = useNavigate();
 // const [scope] = useAnimate();
 const { isMobile } = useDeviceContext();
-const [isCtaHover, setIsCtaHover] = useState(false);
+const [isCtaHover] = useState(false);
 // const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
 // const [ctaTrigger, setCtatrigger] = useState(false);
 
