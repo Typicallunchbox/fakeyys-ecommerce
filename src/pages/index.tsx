@@ -1,17 +1,17 @@
-import { motion, useAnimate } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Helmet } from 'react-helmet';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 import { useDeviceContext } from "../contexts/device-context";
 import { variants } from "../utils/animation-variants";
 
 const Index = () => {
-const navigate = useNavigate();
-const [scope] = useAnimate();
+// const navigate = useNavigate();
+// const [scope] = useAnimate();
 const { isMobile } = useDeviceContext();
 const [isCtaHover, setIsCtaHover] = useState(false);
-const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
+// const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
 // const [ctaTrigger, setCtatrigger] = useState(false);
 
 const cursor = {x:0, y:0}
