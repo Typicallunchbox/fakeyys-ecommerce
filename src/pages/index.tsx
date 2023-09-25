@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Helmet } from 'react-helmet';
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 import { useDeviceContext } from "../contexts/device-context";
 import { variants } from "../utils/animation-variants";
 
 const Index = () => {
-// const navigate = useNavigate();
+const navigate = useNavigate();
 // const [scope] = useAnimate();
 const { isMobile } = useDeviceContext();
 const [isCtaHover] = useState(false);
@@ -200,9 +200,13 @@ const sizes = {
       {
         let videoTemp:any = document.getElementById("cta_video")
         videoTemp.currentTime = 0;
+        videoTemp.pla
+        videoTemp.playbackRate = 0.80;
         videoTemp.play();
       }
   }, [isCtaHover]);
+
+  
 
   return (
     <AnimatedPage>
@@ -220,7 +224,7 @@ const sizes = {
               <h1>Define Your Style.</h1>
             </div>
             <p>Discover the latest fashion trends, curated for your unique taste. Explore, shop, and redefine your wardrobe effortlessly.</p>
-            <button className="btn">VIEW CATALOGUE</button>
+            <button onClick={() => {navigate("/catalogue")}} className="btn">VIEW CATALOGUE</button>
             {/* <motion.div onHoverEnd={() => setIsCtaHover(false)} onHoverStart={() => {setIsCtaHover(true)}}  ref={scope}  onClick={() => {navigate("/catalogue")}} className={`cta ${isMobile ? 'mobile' : 'desktop'}`}>
             <h3>VIEW CATALOGUE</h3>
           </motion.div> */}
