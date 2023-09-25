@@ -1,17 +1,17 @@
-import { motion, useAnimate } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Helmet } from 'react-helmet';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 import { useDeviceContext } from "../contexts/device-context";
 import { variants } from "../utils/animation-variants";
 
 const Index = () => {
-const navigate = useNavigate();
-const [scope] = useAnimate();
+// const navigate = useNavigate();
+// const [scope] = useAnimate();
 const { isMobile } = useDeviceContext();
-const [isCtaHover, setIsCtaHover] = useState(false);
-const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
+const [isCtaHover] = useState(false);
+// const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
 // const [ctaTrigger, setCtatrigger] = useState(false);
 
 const cursor = {x:0, y:0}
@@ -211,11 +211,34 @@ const sizes = {
           <title>Fakeyys - Homepage</title>
           <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
         </Helmet>
+        <div className="grid">
+          <div></div>
+          <div>
+            <div>
+             <motion.video id="cta_video" initial={{opacity:1}} animate={isCtaHover ? {opacity:1} : {opacity:1}} variants={variants} src={`./videos/landing_clip.webm`} controls={false} autoPlay muted loop></motion.video>
+              <h1>Embrace Elegance,</h1>
+              <h1>Define Your Style.</h1>
+            </div>
+            <p>Discover the latest fashion trends, curated for your unique taste. Explore, shop, and redefine your wardrobe effortlessly.</p>
+            <button className="btn">VIEW CATALOGUE</button>
+            {/* <motion.div onHoverEnd={() => setIsCtaHover(false)} onHoverStart={() => {setIsCtaHover(true)}}  ref={scope}  onClick={() => {navigate("/catalogue")}} className={`cta ${isMobile ? 'mobile' : 'desktop'}`}>
+            <h3>VIEW CATALOGUE</h3>
+          </motion.div> */}
+          {/* {!isMobile && <>
+            <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow" data-value="7">
+              <h3>VIEW CATALOGUE</h3>
+            </motion.div>
+            <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow blue" data-value="12">
+              <h3>VIEW CATALOGUE</h3>
+            </motion.div>
+            </>} */}
+            
+          </div>
+        </div>
 
-        <img className="ThreeJSImg" src={'./images/landingMockup.png'} alt="landingMock" />
+        {/* <img className="ThreeJSImg" src={'./images/landingMockup.png'} alt="landingMock" />
         <motion.div onHoverEnd={() => setIsCtaHover(false)} onHoverStart={() => {setIsCtaHover(true)}}  ref={scope}  onClick={() => {navigate("/catalogue")}} className={`cta ${isMobile ? 'mobile' : 'desktop'}`}>
-          <motion.video id="cta_video" initial={{opacity:0}} animate={isCtaHover ? {opacity:1} : {opacity:0}} variants={variants} src={`./videos/cta_hover_clip.webm`} controls={false} autoPlay muted loop></motion.video> 
-
+          <motion.video id="cta_video" initial={{opacity:0}} animate={isCtaHover ? {opacity:1} : {opacity:0}} variants={variants} src={`./videos/cta_hover_clip.webm`} controls={false} autoPlay muted loop></motion.video>
           <h3>VIEW CATALOGUE</h3>
         </motion.div>
         {!isMobile && <>
@@ -225,7 +248,7 @@ const sizes = {
           <motion.div exit={{opacity: 0}} transition={transition} id="cta-shadow" className="cta-shadow blue" data-value="12">
             <h3>VIEW CATALOGUE</h3>
           </motion.div>
-        </>}
+        </>} */}
         <div className={`creators ${isMobile ? 'mobile' : 'desktop'}`}>
           <h3>GERMAN MADE</h3>
           <h3>SWISS DESIGNED</h3>
