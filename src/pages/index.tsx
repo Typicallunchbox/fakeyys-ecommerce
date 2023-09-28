@@ -122,7 +122,7 @@ const IMAGES = [
           </div>
           <div>
             <div className="header">
-             <motion.video id="cta_video" initial={{opacity:1}} animate={isCtaHover ? {opacity:1} : {opacity:1}} variants={variants} src={`./videos/landing_clip.webm`} controls={false} autoPlay muted loop></motion.video>
+             {/* <motion.video id="cta_video" initial={{opacity:1}} animate={isCtaHover ? {opacity:1} : {opacity:1}} variants={variants} src={`./videos/landing_clip.webm`} controls={false} autoPlay muted loop></motion.video> */}
               <p>Embrace Elegance,</p>
               <p>Define Your Style.</p>
             </div>

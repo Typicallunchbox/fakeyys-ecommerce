@@ -226,12 +226,13 @@ h3 {
                 justify-content: end;
                 align-items: center;
 
+                .slider{
+                    width: 70%;
+                    min-width: 300px;
 
-                img{
-                    object-fit: cover;    
-                    width: 50%;
-                    max-width: 500px;
-                    opacity: 0.9;
+                    .image:hover{
+                        cursor: default !important;
+                    }
                 }
             }
 
@@ -298,6 +299,7 @@ h3 {
                 h3{
                     font-size: 25px;
                     line-height: 1em;
+                    color: #e6e6e6;
                 }
             }
             &.mobile{
@@ -323,6 +325,7 @@ h3 {
             position: absolute;
             right: 20px;
             bottom: 10px;
+            color: #e6e6e6;
         }
     }
 
@@ -669,9 +672,17 @@ h3 {
             .grid{
                 height: 100vh;
                 flex-direction: column-reverse;
-                top: 0 !important;
+
+                >:first-child{
+                    .slider{
+                        width: 100% !important;
+                    }
+                }
                
                 >:last-child{
+
+                    padding-left: 0;
+                    padding: 3em;
                         
                     h1, p {
                         width: 100%;
