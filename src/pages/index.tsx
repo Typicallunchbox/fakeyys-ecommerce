@@ -1,199 +1,49 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Helmet } from 'react-helmet';
 import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 import { useDeviceContext } from "../contexts/device-context";
 import { variants } from "../utils/animation-variants";
+import { wrap } from "popmotion";
+
 
 const Index = () => {
 const navigate = useNavigate();
-// const [scope] = useAnimate();
 const { isMobile } = useDeviceContext();
 const [isCtaHover] = useState(false);
-// const transition = {duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]}
-// const [ctaTrigger, setCtatrigger] = useState(false);
-
-const cursor = {x:0, y:0}
-const sizes = {
-  width: window.innerWidth,
-  height: window.innerHeight
-}
 
 
-  // const ctaAnimation = {
-  //   initial: {
-  //     opacity: 1, 
-  //     scale:1, 
-  //     backgroundColor: 'rgba(255, 255, 255, 0)',
-  //   },
-  //   animate: {
-  //     opacity: 1
-  //   },
-  //   exit: {
-  //     opacity: 1, 
-  //     scaleX:10, 
-  //     scaleY:10, 
-  //     border: 'rgba(255, 255, 255)',
-  //     backgroundColor: 'rgba(255, 255, 255)', 
-  //     color: 'rgba(255, 255, 255)',
-  //     transition: {
-        
-  //       color: { duration: 0.2 },
-  //       border: { duration: 0.2 },
-  //       backgroundColor: { duration: 0.2 },
-  //       scaleX: { duration: 2 },
-  //       scaleY: { duration: 2 },
-  //     },
-  //   },
-  //   // exit: {
-  //   //   opacity: 0,
-  //   //   y: -50,
-  //   //   scale: 1.2,
-  //   //   backgroundColor: "green", // Color change during exit
-  //   //   transition: {
-  //   //     y: { duration: 0.5 },
-  //   //     scale: { duration: 0.5 },
-  //   //     backgroundColor: { duration: 0.5 }, // Color change duration
-  //   //   },
-  //   // },
-  //   transition: transition
-  // }
+const IMAGES = [
+  {
+    id: 0,
+    imageSrc:
+      "/images/carousel-1.jpg"
+  },
+  {
+    id: 1,
+    imageSrc:
+    "/images/carousel-2.jpg"
 
-  // const ctaAnimation2 = {
-  //   initial: {
-  //     opacity: 1, 
-  //     scale:1, 
-  //     backgroundColor: 'rgba(255, 255, 255, 0)',
-  //   },
-  //   animate: {
-  //     opacity: 1
-  //   },
-  //   exit: ctaTrigger ? {
-  //     opacity: 1, 
-  //     scaleX:10, 
-  //     scaleY:10, 
-  //     border: 'rgba(255, 255, 255)',
-  //     backgroundColor: 'rgba(255, 255, 255)', 
-  //     color: 'rgba(255, 255, 255)',
-      
-  //     transition: {
-        
-  //       color: { duration: 0.2 },
-  //       border: { duration: 0.2 },
-  //       backgroundColor: { duration: 0.2 },
-  //       scaleX: { duration: 2 },
-  //       scaleY: { duration: 2 },
-  //     },
-  //   }:{},
-  //   // exit: {
-  //   //   opacity: 0,
-  //   //   y: -50,
-  //   //   scale: 1.2,
-  //   //   backgroundColor: "green", // Color change during exit
-  //   //   transition: {
-  //   //     y: { duration: 0.5 },
-  //   //     scale: { duration: 0.5 },
-  //   //     backgroundColor: { duration: 0.5 }, // Color change duration
-  //   //   },
-  //   // },
-  //   transition: transition
-  // }
+  },
+  {
+    id: 2,
+    imageSrc:
+    "/images/carousel-3.jpg"
 
-  // const customExitAnimation = async () => {
-  //   return new Promise((resolve: any) => {
-  //     setTimeout(() => {
-  //       resolve();
-  //     }, 300); // Adjust the duration to control the delay between animations
-  //   });
-  // };
+  },
+  {
+    id: 3,
+    imageSrc:
+    "/images/carousel-4.jpg"
 
-  let counter = 0;
-  const updateRate = 10;
-  const limit = 45;
-  const tiltable = document.getElementById("tiltable");
-
-  function updateNow() {
-      return counter++ % updateRate === 0;
-  };
-
-  //ATTACH TO MOBILE CTA IN ORDER TO TEST IF ITS WORKING!
-  window.addEventListener("deviceorientation", function(event:any) {
-    if (updateNow()) {
-      let position = Math.round(event.gamma);
-      if (Math.abs(position) > limit) {
-        if (position > limit) {
-              position = limit;
-          } else {
-              position = -limit;
-                  }
-          }
-      position = position / -100;
-      let style = "rotateY(" + position + "deg)";
-      tiltable!.style.transform = style;
-      }
-  });
-
-  
-  onmousemove = (event) => {
-    cursor.x = event.clientX / sizes.width - 0.5
-    cursor.y = event.clientY / sizes.height - 0.5  
-    parallax();
-  };
-
-  function parallax(){
-    document.querySelectorAll(".cta-shadow").forEach(function(move:any){
-      const moving_value:number = move.getAttribute("data-value");
-      let x = (cursor.x * moving_value) * 5 ;
-      let y = (cursor.y * moving_value) * 5;
-
-      const parallaxX = cursor.x
-      const parallaxY = - cursor.y
-
-      x += (parallaxX - x) * 0.2
-      y += (parallaxY - y) * 0.2
-      move.style.transform = "translateX(" +  Math.round(-x).toString() + "px) translateY(" +  Math.round(-y).toString() + "px)";
-    });
-
-    document.querySelectorAll(".cta").forEach(function(move:any){
-      const moving_value:any = 2;
-      let x = (cursor.x * moving_value) * 5 ;
-      let y = (cursor.y * moving_value) * 5;
-
-      const parallaxX = cursor.x
-      const parallaxY = - cursor.y
-
-      x += (parallaxX - x) * 0.2
-      y += (parallaxY - y) * 0.2
-      move.style.transform = "translateX(" +  Math.round(-x).toString() + "px) translateY(" +  Math.round(-y).toString() + "px)";
-    });
+  },
+  {
+    id: 4,
+    imageSrc:
+    "/images/carousel-5.jpg"
   }
-
-  // onresize = (event) => {
-  //   cursor.x = event.clientX / sizes.width - 0.5
-  //   cursor.y = event.clientY / sizes.height - 0.5
-  // };
-
-  //FOR THREEJS BACKGROUND REFER TO BLENDER FILE MOCKUP YOU DID
-
-  // async function myAnimation() {
-  //   await animate(scope.current, { rotate: -90 });
-  //   await animate(scope.current, { scale: 1.5 });
-  //   await animate(scope.current, { rotate: 0 });
-  //   await animate(scope.current, { scale: 1 });
-  //   await animate(
-  //     scope.current,
-  //     {
-  //       x: 100
-  //     },
-  //     {
-  //       repeat: Infinity,
-  //       repeatType: "mirror",
-  //       ease: "easeInOut",
-  //       duration: 1
-  //     }
-  //   );
-  // }
+]
 
   useEffect(() => {
     if (document.getElementById("cta_video"))
@@ -206,7 +56,41 @@ const sizes = {
       }
   }, [isCtaHover]);
 
+  //CAROUSEL LOGIC
+
+  const [[imageCount, direction], setImageCount] = useState([0, 0]);
+  const activeImageIndex = wrap(0, IMAGES.length, imageCount);
+
+  const swipeToImage = (swipeDirection:number) => {
+    setImageCount([imageCount + swipeDirection, swipeDirection]);
+  };
+
+  const sliderVariants = {
+    incoming: (direction:number) => ({
+      x: direction > 0 ? "100%" : "-100%",
+      scale: 1.2,
+      opacity: 0
+    }),
+    active: { x: 0, scale: 1, opacity: 1 },
+    exit: (direction:number) => ({
+      x: direction > 0 ? "-100%" : "100%",
+      scale: 1,
+      opacity: 0.2
+    })
+  };
   
+  const sliderTransition = {
+    duration: 1,
+    ease: [0.56, 0.03, 0.12, 1.04]
+  };
+  
+
+
+  useEffect(() => {
+    setTimeout(() => {
+      swipeToImage(1)    
+    }, 5000);
+  });
 
   return (
     <AnimatedPage>
@@ -217,8 +101,24 @@ const sizes = {
         </Helmet>
         <div className="grid">
           <div>
-            <div></div>
-            <img src={'/images/landing_image.png'}/>
+            {/* <img src={'/images/landing_image.png'}/> */}
+            <div className="slider">
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={imageCount}
+              style={{
+                backgroundImage: `url(${IMAGES[activeImageIndex].imageSrc})`
+              }}
+              custom={direction}
+              variants={sliderVariants}
+              initial="incoming"
+              animate="active"
+              exit="exit"
+              transition={sliderTransition}
+              className="image"
+            />
+          </AnimatePresence>
+        </div>
           </div>
           <div>
             <div className="header">
