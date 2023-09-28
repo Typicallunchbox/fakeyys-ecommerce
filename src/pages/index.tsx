@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 import { useDeviceContext } from "../contexts/device-context";
-import { variants } from "../utils/animation-variants";
+// import { variants } from "../utils/animation-variants";
 import { wrap } from "popmotion";
 
 
