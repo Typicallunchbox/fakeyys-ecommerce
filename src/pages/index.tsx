@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 import { useDeviceContext } from "../contexts/device-context";
 // import { variants } from "../utils/animation-variants";
+import { FaArrowRightLong  } from 'react-icons/fa6';
+
 import { wrap } from "popmotion";
 
 
@@ -127,7 +129,11 @@ const IMAGES = [
               <p>Define Your Style.</p>
             </div>
             <p>Discover the latest fashion trends, curated for your unique taste. Explore, shop, and redefine your wardrobe effortlessly.</p>
-            <button onClick={() => {navigate("/catalogue")}} className="btn">VIEW CATALOGUE</button>
+            {/* <button onClick={() => {navigate("/catalogue")}} className="btn">VIEW CATALOGUE</button> */}
+            <motion.div onClick={() => {navigate("/catalogue")}} className="btn icon">
+              <motion.span>VIEW CATALOGUE</motion.span>
+              <FaArrowRightLong />
+            </motion.div>
           </div>
         </div>
         <div className={`creators ${isMobile ? 'mobile' : 'desktop'}`}>
