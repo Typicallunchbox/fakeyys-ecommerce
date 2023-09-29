@@ -19,7 +19,8 @@
 
 
 1. [Summary](#summary)
-3. [Getting Started](#getting-started)
+2. [Getting Started](#getting-started)
+3. [Project Challenges and Solutions](#project-challenges-and-solutions)
 
 <br />
 <br />
@@ -38,6 +39,8 @@ Fakeyys is a portfolio project which was built to further improve the author's s
  
 <br />
 <br />
+<br />
+
  
 ## Getting Started
 If you are interested in cloning and understanding this project you will need the below requirements to get started:
@@ -52,4 +55,20 @@ Once setup with all the necessary requirements, now we can clone the repository.
 
 Once cloned you will need to run `npm install` command in your terminal in both the root project folder.
 Finally, your last step is to run `npm run dev` from the root of the project. Enjoy :)
+
+<br />
+<br />
+<br />
+
+
+## Project Challenges and Solutions
+During the project journey I ran into many challenges, from both the UI/UX side and the development side. Below I shall talk on
+a few of the issues I ran into and how I dealt with them. I of course ran into man roadblocks and challenegs during Fakeyys project journey,
+but below are the main ones that stuckout to me:
+
+1) ThreeJS background Implementation
+2) Framer Motion Catalogue Popup
+3) Landing Page UI/UX
+4) Project lacking something (Added Cart)
+   
 
