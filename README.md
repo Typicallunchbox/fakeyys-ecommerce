@@ -63,12 +63,41 @@ Finally, your last step is to run `npm run dev` from the root of the project. En
 
 ## Project Challenges and Solutions
 During the project journey I ran into many challenges, from both the UI/UX side and the development side. Below I shall talk on
-a few of the issues I ran into and how I dealt with them. I of course ran into man roadblocks and challenegs during Fakeyys project journey,
+a few of the issues I ran into and how I dealt with them. I of course ran into many roadblocks and challenegs during Fakeyys project journey,
 but below are the main ones that stuckout to me:
 
 1) ThreeJS background Implementation
-2) Framer Motion Catalogue Popup
-3) Landing Page UI/UX
-4) Project lacking something (Added Cart)
+   <br />
    
+   Trying to implement a ThreeJS dynamic background stood out to be quite a challenge. I had never implemented threeJs into any of
+   my previous projects. My best online resource being codepens with ThreeJs work people had done, helped me find the current effect I implemented. Unfortunately it
+   was not as simple and copying and pasting as I was working with a slightly modified ThreeJS like package called React Three Fiber. Along with Typescript,
+   it gave me many type headaches. Bit by bit I slowly converted every piece of the codepen example. Below is a link to the awesome author's codepen that helped me
+   achieve my effect: [Codepen]([https://nodejs.org/en/download/](https://codepen.io/vaalentin/pen/vLqmwG)). Going through this taught me about a new concept called
+   GLSL Shaders.
+   
+   <br />
+   <br />
+
+   
+2) Framer Motion Catalogue Popup
+   <br />
+   
+   Adding Animations to a project through a library was quite a new concept to me. I found a great animation library called Framer Motion which
+   had me stuck for a while trying to understand the correct implementation approaches. As with anything new it just takes time and practise. With Framer Motion I learnt
+   a lot from Youtube videos but the best help was Framer Motion'sDocumentation which was full of examples and code snippets to assist developers. At the end I
+   was able to get close to my intended result for my product popup by following a similiar process Framer Motion did on their official devd docs site.
+
+   <br />
+   <br />
+   
+4) Landing Page UI/UX
+   <br />
+   
+   Many times designs for the Landing and Catalogue Product View whould change due to incomplete planning from a UI/UX designs I created.
+   As with anything new it just takes time and practise. This ended up delaying me quite a bit with finishing the project. I went back and redesigned parts
+   of the landing page, catalogue page, navbar and product view. I also got feedback from peers on improvements I could make. These insights from others was very
+   crucial, some critiques were small layout spacing or coloring issues but some mentioned of entire sections feeling wrong. Going back and taking the time to make
+   changes ended with a much better final project. 
+
 
