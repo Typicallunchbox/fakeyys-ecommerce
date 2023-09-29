@@ -2,7 +2,7 @@
  A sleak and stylish frontend eccomerce design combining framer-motion and React
 ##### Note: Application is hosted on heroku, please give the application a few extra seconds to spin up from non-activity mode.
 
-#### View Fakeyys Site : ???
+#### View Fakeyys Site : [Website Link]([https://react.dev/](https://fakeyys.netlify.app/))
 #### View Figma Design : ???
 
 <br />
