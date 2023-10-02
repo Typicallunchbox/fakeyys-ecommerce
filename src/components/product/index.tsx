@@ -42,9 +42,7 @@ const product = (props:Props) => {
               <motion.p>{title}</motion.p>
               <motion.p>${item.price}</motion.p>
             </motion.div>
-            <motion.div className='foot'>
-
-            </motion.div>
+            <motion.div className='foot'></motion.div>
         </motion.div>
     </motion.div>
   )

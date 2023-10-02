@@ -10,14 +10,9 @@ import './style.scss';
 const Index = () => {
 	const location = useLocation();
 	const [isStandard, setIsStandard] = useState(false);
-	// const [isDarkTheme, setIsDarkTheme] = useState(false);
 	const { isMobile } = useDeviceContext();
 	const { viewProduct } = useProductContext();
-	//  const variants = {
-	// 	show: {opacity: 1, pointerEvents: 'all', transition: {duration: 0.5}},
-	// 	hide: {opacity: 0, pointerEvents: 'none', transition: {duration: 0.5}}
-	// };
-	
+
 	useEffect(() => {
 		['/','/about'].includes(location.pathname) ? setIsStandard(true) : setIsStandard(false);
 	}, [location])

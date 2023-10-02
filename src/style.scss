@@ -620,6 +620,13 @@ h3 {
     top: 0;
     left: 0;
     pointer-events: none;
+    height: 285px;
+    width: 450px;
+    left: 180px;
+    top: 80px;
+    opacity: 0.8;
+    z-index: 2;
+    overflow: hidden;
 
     video{
         width: 100%;

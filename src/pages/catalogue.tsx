@@ -1,18 +1,17 @@
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import AnimatedPage from "../AnimatedPage";
-import { textVariant, variants } from "../utils/animation-variants";
 import { Products } from "../static/product-list";
-import { useProductContext } from "../contexts/product-context";
-import { BsArrowLeft } from 'react-icons/bs';
-import Scene from '../components/canvas/catalogue-canvas';
-import { AiOutlinePlusCircle  } from 'react-icons/ai';
-import { useDeviceContext } from "../contexts/device-context";
 import { Product } from '../typings/index';
-
+import { motion } from "framer-motion";
+import AnimatedPage from "../AnimatedPage";
+import { BsArrowLeft } from 'react-icons/bs';
+import { AiOutlinePlusCircle  } from 'react-icons/ai';
+import Scene from '../components/canvas/catalogue-canvas';
+import { useProductContext } from "../contexts/product-context";
+import { useDeviceContext } from "../contexts/device-context";
+import { textVariant, variants, modalVariants } from "../utils/animation-variants";
 
 const Catalogue = () => {
-  //page variables
+
   const fakeyysProducts:any = Products;
   const [selectedId, setSelectedId] = useState<string>('');
   const [productList, setProductList] = useState<Array<Product>>([]);
@@ -24,26 +23,16 @@ const Catalogue = () => {
   const { viewProduct, setViewProduct, setItems } = useProductContext();
 	const { isMobile } = useDeviceContext();
 
-
   useEffect(() => {
     if(fakeyysProducts && fakeyysProducts.length > 0){
       setProductList(fakeyysProducts)
     }
-    if(isModalOpen) {
-      document.querySelector("body")!.classList.add('no-scroll');
-    }else{
-      document.querySelector("body")!.classList.remove('no-scroll');
-    }
-}, [lockScroll])
-
-  // useEffect(() => {
-  //   if(selectedId){
-  //     window.history.pushState(null,'JavaScript',`/catalogue/${selectedId}`);
-  //   }else{
-  //     window.history.pushState(null,'JavaScript',`/catalogue`);
-  //   }
-  // },[selectedProduct])
+  }, [])
   
+  useEffect(() => {
+    if(isModalOpen) document.querySelector("body")!.classList.add('no-scroll');
+    else{ document.querySelector("body")!.classList.remove('no-scroll'); }
+}, [lockScroll])
  
   function timeout(ms:number) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -77,13 +66,6 @@ const Catalogue = () => {
   const addItem = (item:Product) => {
     setItems({item});
   }
-
-  const testVariants = {
-    initial: {height: 'auto', overflow: 'none', padding:0, transition: {duration: 0}},
-    show: {height: '100dvh' , overflow: 'auto', padding:'0px 0px 80px 0px', transition: {duration: 0}},
-    hide: {height: 'auto', overflow: 'auto', padding:0, transition: {duration: 0}}
-  };
-
   
   return (
     <AnimatedPage>
@@ -119,14 +101,15 @@ const Catalogue = () => {
                     <motion.div className='image-container'>
                         <motion.img src={item.cover_image}/>
                     </motion.div>
-                    <motion.div className='content' animate={hoveredProduct?.id === item.id && !isMobile ? {background: `rgb(40,40,40)`, color: 'white'} : {background: `transparent`, color: 'black'}}>
-                        <motion.div className='head' initial={{opacity:1}} animate={hoveredProduct?.id === item.id ? {scale: 1.0} : !hoveredProduct ? {opacity:1} : {opacity:0}}>
-                          <motion.p>{title}</motion.p>
-                          <motion.p>${item.price}</motion.p>
-                        </motion.div>
-                        <motion.div className='foot'>
-            
-                        </motion.div>
+                    <motion.div 
+                      className='content' 
+                      animate={hoveredProduct?.id === item.id && !isMobile ? {background: `rgb(40,40,40)`, color: 'white'} : {background: `transparent`, color: 'black'}}
+                    >
+                      <motion.div className='head' initial={{opacity:1}} animate={hoveredProduct?.id === item.id ? {scale: 1.0} : !hoveredProduct ? {opacity:1} : {opacity:0}}>
+                        <motion.p>{title}</motion.p>
+                        <motion.p>${item.price}</motion.p>
+                      </motion.div>
+                      <motion.div className='foot'></motion.div>
                     </motion.div>
                 </motion.div>
               )})}
@@ -136,37 +119,34 @@ const Catalogue = () => {
                   <div onClick={() => closeModal()} className="backdrop"></div>
                   <motion.div 
                     className="popup"
-                    // onClick={()=> closeModal()} 
                     layoutId={selectedId}
-                    // initial={{translateX: '50% !important'}}
-                    // style={{left: '50%', transformOrigin: 'none'}}
-                    variants={testVariants} 
+                    variants={modalVariants} 
                     animate={viewProduct ? 'show' : 'hide'} 
 
                   >
                     <motion.div className='image-container'>
                         <motion.img src={selectedProduct.cover_image}/>
-                      </motion.div>
-                      <motion.div className='content'>
-                          <motion.div className='head'>
-                            <motion.p className="product-title">{selectedProduct.title}</motion.p>
-                            <motion.p>${selectedProduct.price}</motion.p>
+                    </motion.div>
+                    <motion.div className='content'>
+                        <motion.div className='head'>
+                          <motion.p className="product-title">{selectedProduct.title}</motion.p>
+                          <motion.p>${selectedProduct.price}</motion.p>
+                        </motion.div>
+                        <motion.div 
+                          initial={{display: 'none', opacity:'0'}} 
+                          animate={showModalContent ? {display: 'flex', opacity:'1'} : {opacity:'0', display: 'none'}}  
+                          className='foot'
+                        >
+                          <motion.p>{selectedProduct.description}</motion.p>
+                          <motion.div onClick={() => {addItem(selectedProduct)}} className="btn icon">
+                            <AiOutlinePlusCircle />
+                            <motion.p>ADD TO CART</motion.p>
                           </motion.div>
-                          <motion.div initial={{display: 'none', opacity:'0'}} animate={showModalContent ? {display: 'flex', opacity:'1'} : {opacity:'0', display: 'none'}}  className='foot'>
-                            <motion.p>{selectedProduct.description}</motion.p>
-                            {/* Add fabric texture animation on hover of button */}
-                            <motion.div onClick={() => {addItem(selectedProduct)}} className="btn icon">
-                              <AiOutlinePlusCircle />
-                              <motion.p>ADD TO CART</motion.p>
-                            </motion.div>
-                          </motion.div>
-                      </motion.div>
+                        </motion.div>
+                    </motion.div>
                   </motion.div>
                 </>
               )}
-          {/* {isModalOpen && <div className="product">
-              <img src={'./images/comingSoon.png'}/>  
-          </div>} */}
           </motion.div>}
         </div>
       </motion.div>

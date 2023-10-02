@@ -1,15 +1,12 @@
 
 import { useState } from "react";
 import AnimatedPage from "../AnimatedPage";
-// import ImagePopup from '../components/imagePopup';
 import VideoPopup from '../components/videoPopup';
 import { motion } from "framer-motion";
 import { useDeviceContext } from "../contexts/device-context";
 import { AiFillLinkedin, AiOutlineLink } from 'react-icons/ai';
 
-
-
-const about = () => {
+const About = () => {
   const { isMobile } = useDeviceContext();
   const [showImage, setShowImage]= useState(false);
   const [image, setImage]= useState<string>('');
@@ -76,4 +73,4 @@ const about = () => {
   );
 }
 
-export default about
+export default About

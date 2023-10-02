@@ -6,8 +6,6 @@ import { RxCross1 } from 'react-icons/rx';
 import { useProductContext } from '../../contexts/product-context';
 import { useDeviceContext } from "../../contexts/device-context";
 
-
-
 const CartItem = ({item}:any) => {
 	const { isMobile } = useDeviceContext();
 	const { setItems, removeItems } = useProductContext();
@@ -35,7 +33,6 @@ const CartItem = ({item}:any) => {
     </motion.div>
   )
 }
-
 
 const Window = ({showCart, setShowCart}:any) => {
 	const { totalPrice, cartItems, cartCount, clearCart } = useProductContext();

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 const standard = () => {
   return (
     <div className="standard">

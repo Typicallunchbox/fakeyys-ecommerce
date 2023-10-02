@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import Button from './Button';
 import Window from './Window';
 import { useLocation } from "react-router-dom";
-
 import './style.scss'
 
 const Index = () => {
