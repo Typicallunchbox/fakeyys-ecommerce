@@ -10,17 +10,16 @@ type DeviceContext = {
 }
 
 export const DeviceContext = createContext<DeviceContext | null>(null);
-
 export function DeviceContextProvider({ children } : DeviceContextProviderProps){
+
+    let counter = 0;
+    const updateRate = 10;
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
 		setIsMobile(getDeviceType());
 	}, [])
 
-    let counter = 0;
-    const updateRate = 10;
-  
     window.addEventListener("resize", () => {
         if(counter++ % updateRate === 0){
             setIsMobile(getDeviceType())
