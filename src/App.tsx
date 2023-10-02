@@ -3,8 +3,6 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import './style.scss';
 
 //Page imports
-import { DeviceContextProvider } from './contexts/device-context';
-import { SnackbarProvider } from 'notistack';
 import About from "./pages/about";
 import Catalogue from "./pages/catalogue";
 import Error from "./pages/error";
@@ -13,7 +11,9 @@ import Landing from "./pages/index";
 //Component imports
 import Cart from "./components/cart/index";
 import Navbar from "./components/navbar/index";
+import { SnackbarProvider } from 'notistack';
 import { ProductContextProvider } from "./contexts/product-context";
+import { DeviceContextProvider } from './contexts/device-context';
 
 function App() {
   const location = useLocation();
