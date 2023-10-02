@@ -141,11 +141,11 @@ const Wave = ({product, selectedProduct}:WaveProps) => {
   useFrame(() => {
     //SPEED SETTING
     if(reference === product){
-      ref.current.time += ref.current.speed*5;
+      ref.current.time += ref.current.speed*2;
       return;
 
     }else{
-      ref.current.time += ref.current.speed*2;
+      ref.current.time += ref.current.speed;
     }
 
     //COLOUR SETTING
