@@ -6,11 +6,17 @@
    hide: {opacity: 0,transition: {duration: 0.5}}
  };
 
+ export const cartVariants = {
+    initial: {height: 'auto', overflow: 'none', padding:0, transition: {duration: 0}},
+    show: {height: '100dvh' , overflow: 'auto', padding:'0px 0px 80px 0px', transition: {duration: 0}},
+    hide: {height: 'auto', overflow: 'auto', padding:0, transition: {duration: 0}}
+  };
+
  export const modalVariants = {
     initial: {height: 'auto', overflow: 'none', padding:0, transition: {duration: 0}},
     show: {height: '100dvh' , overflow: 'auto', padding:'0px 0px 80px 0px', transition: {duration: 0}},
     hide: {height: 'auto', overflow: 'auto', padding:0, transition: {duration: 0}}
-};
+  };
 
 export const sliderVariants = {
   incoming: (direction:number) => ({

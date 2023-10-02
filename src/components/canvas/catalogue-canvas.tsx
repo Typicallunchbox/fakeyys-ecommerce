@@ -2,7 +2,6 @@
 import { shaderMaterial } from "@react-three/drei";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import glsl from "babel-plugin-glsl/macro";
-// import { Perf } from 'r3f-perf';
 import { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Product } from '../../typings/index';
@@ -12,7 +11,7 @@ type TopologyProps = {
   selectedProduct: Product |undefined
 }
 
-type TopologyProps2 = {
+type WaveProps = {
   product: Product | undefined,
   selectedProduct: Product |undefined
 }
@@ -131,7 +130,7 @@ const WaveShaderMaterial:any = shaderMaterial(
 
 extend({ WaveShaderMaterial });
 
-const Wave = ({product, selectedProduct,}:TopologyProps2) => {
+const Wave = ({product, selectedProduct}:WaveProps) => {
   const ref = useRef({
     time:0,
     speed:0,
@@ -140,31 +139,27 @@ const Wave = ({product, selectedProduct,}:TopologyProps2) => {
   let reference:object = {};
 
   useFrame(() => {
+    //SPEED SETTING
     if(reference === product){
       ref.current.time += ref.current.speed*5;
+      return;
 
-      //Initial hover fast for a feb seconds then slow 
-      // setTimeout(function(){
-      //   console.log('hit')
-      //   ref.current.time += ref.current.speed/5;
-      // }, 1000)
-
-      return
     }else{
       ref.current.time += ref.current.speed*2;
     }
 
+    //COLOUR SETTING
     if(product && product.color_accents){
       let colours = product.color_accents.primary;
       ref.current.topoColor = new THREE.Color(colours[0]/255, colours[1]/255, colours[2]/255)
       reference = product;
+
     }else if (selectedProduct) {
       let colours = selectedProduct.color_accents.primary;
       ref.current.topoColor = new THREE.Color(colours[0]/255, colours[1]/255, colours[2]/255)
       reference = selectedProduct;
     }
     else{
-      // console.log('HIT!')
       ref.current.topoColor = new THREE.Color(225/255, 225/255, 225/255)
     }
   })
@@ -184,14 +179,11 @@ const Scene = ({hoveredProduct,selectedProduct}:TopologyProps) => {
     setProduct(hoveredProduct);
   }, [hoveredProduct])
 
-  //ADD PARALLAX EFFECT
-  //https://sbcode.net/react-three-fiber/lerp/
   return (
     <Canvas id="demoTest" className="canvas" camera={{ fov: 60, position: [0, 0, 5] }}>
       <Suspense fallback={null}>
         <Wave product={product} selectedProduct={selectedProduct} />
       </Suspense>
-      {/* <Perf position="top-left" /> */}
     </Canvas>
   );
 };
