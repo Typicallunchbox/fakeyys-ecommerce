@@ -10,7 +10,6 @@ const hamburger = () => {
 	const { isMobile } = useDeviceContext();
   const [showMenu, setShowMenu] = useState(false);
 
-
   const variants = {
     open: {
       x: 0,
@@ -47,8 +46,6 @@ const hamburger = () => {
 
   return (
     <div onClick={() => {setShowMenu(!showMenu)}} className="hamburger">
-      {/* Hamburger */}
-      {/* Convert links to svgs and add to threeJs plane in order to do wave warp */}
       <motion.div  initial={{x:1000, y:-550, opacity:0}} animate={animateForDevice()} exit={isMobile ?{x:0, y:-290, opacity:0}:{x:550, y:0, opacity:0}} variants={variants} className={`links ${isMobile ? 'mobile' : 'desktop'}`}>
         <Link to='/catalogue'>CATALOGUE</Link>
         <Link to='/about'>ABOUT</Link>

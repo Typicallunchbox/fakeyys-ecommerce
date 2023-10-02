@@ -27,6 +27,10 @@ const ImagePopup = ({image}:ImagePopupProps) => {
     };
   }, []);
 
+  const style = {
+    backgroundImage: `url('./images/${image}')`,
+  };
+
   const variants = {
     default: {
       x: mousePosition.x - 200,
@@ -38,6 +42,7 @@ const ImagePopup = ({image}:ImagePopupProps) => {
   return (
     <motion.div
       className={`fixed-playground`}
+      style={style}
       variants={variants}
       animate="default"
       transition={ImagePopupTran}

@@ -26,22 +26,11 @@ const VideoPopup = ({video}:VideoPopupProps) => {
     };
   }, []);
 
-  const style = {
-    width: '450px',
-    left: '180px',
-    top: '80px',
-    overflow: 'hidden',
-    opacity: 0.9,
-    zIndex: 2,
-  };
-
   const variants = {
     default: {
       x: mousePosition.x - 200,
       y: mousePosition.y - 200,
       scale: 1,
-      // rotate: [0, 0, 0, 0, 270],
-      // borderRadius: ['20%', '20%', '50%', '50%', '20%'],
     },
   };
 
@@ -49,7 +38,6 @@ const VideoPopup = ({video}:VideoPopupProps) => {
   return (
     <motion.div
       className={`fixed-playground`}
-      style={style}
       variants={variants}
       animate="default"
       transition={{
