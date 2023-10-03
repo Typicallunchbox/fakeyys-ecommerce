@@ -72,6 +72,10 @@ const Index = () => {
   return (
     <AnimatedPage>
       <div className="page home">
+        <div className="video-container">
+          <div className="filter-gradient"></div>
+          <video src={`./videos/landing_clip2.webm`} controls={false} autoPlay muted loop></video> 
+        </div>
         <Helmet>
           <title>Fakeyys - Homepage</title>
           <meta name="description" content="Fakeyys, home to high quality fashion handbags" />
@@ -102,7 +106,7 @@ const Index = () => {
               <p>Define Your Style.</p>
             </div>
             <p>Discover the latest fashion trends, curated for your unique taste. Explore, shop, and redefine your wardrobe effortlessly.</p>
-.            <motion.div onClick={() => {navigate("/catalogue")}} className="btn icon">
+            <motion.div onClick={() => {navigate("/catalogue")}} className="btn icon">
               <motion.span>VIEW CATALOGUE</motion.span>
               <FaArrowRightLong />
             </motion.div>
