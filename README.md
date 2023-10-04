@@ -69,13 +69,12 @@ but below are the main ones that stuckout to me:
 
 1) ThreeJS background Implementation
    <br />
-   
-   Trying to implement a ThreeJS dynamic background stood out to be quite a challenge. I had never implemented threeJs into any of
-   my previous projects. My best online resource being codepens with ThreeJs work people had done, helped me find the current effect I implemented. Unfortunately it
-   was not as simple and copying and pasting as I was working with a slightly modified ThreeJS like package called React Three Fiber. Along with Typescript,
-   it gave me many type headaches. Bit by bit I slowly converted every piece of the codepen example. Below is a link to the awesome author's codepen that helped me
-   achieve my effect: [Codepen]([https://nodejs.org/en/download/](https://codepen.io/vaalentin/pen/vLqmwG)). Going through this taught me about a new concept called
-   GLSL Shaders.
+
+  Trying to implement a dynamic background with ThreeJS turned out to be quite a challenge. I had never used ThreeJS in any of my previous projects. My best online resource was CodePen, 
+  where I found examples of ThreeJS work done by other people. These examples helped me find the current effect I implemented. Unfortunately, it was not as simple as copying and pasting, 
+  because I was working with a slightly modified ThreeJS-like package called React Three Fiber. Along with TypeScript, it gave me many headaches related to types. Bit by bit, I slowly 
+  converted every piece of the CodePen example. Below is a link to the awesome author's CodePen that helped me achieve my effect: [Codepen]([https://nodejs.org/en/download/](https://codepen.io/vaalentin/pen/vLqmwG)). 
+  Going through this experience taught me about a new concept called GLSL Shaders.
    
    <br />
    <br />
@@ -84,21 +83,20 @@ but below are the main ones that stuckout to me:
 2) Framer Motion Catalogue Popup
    <br />
    
-   Adding Animations to a project through a library was quite a new concept to me. I found a great animation library called Framer Motion which
-   had me stuck for a while trying to understand the correct implementation approaches. As with anything new it just takes time and practise. With Framer Motion I learnt
-   a lot from Youtube videos but the best help was Framer Motion'sDocumentation which was full of examples and code snippets to assist developers. At the end I
-   was able to get close to my intended result for my product popup by following a similiar process Framer Motion did on their official devd docs site.
+   Adding animations to a project through a library was quite a new concept for me. I found a great animation library called Framer Motion, which had me stuck for a while as I tried
+   to understand the correct implementation approaches. As with anything new, it just takes time and practice. I learned a lot from YouTube videos, but the best help came from Framer
+   Motion's documentation, which was full of examples and code snippets to assist developers. In the end, I was able to get close to my intended result for my product popup by following
+   a similar process to what Framer Motion did on their official developer documentation site.
 
    <br />
    <br />
    
-4) Landing Page UI/UX
+3) Landing Page UI/UX
    <br />
    
-   Many times designs for the Landing and Catalogue Product View whould change due to incomplete planning from a UI/UX designs I created.
-   As with anything new it just takes time and practise. This ended up delaying me quite a bit with finishing the project. I went back and redesigned parts
-   of the landing page, catalogue page, navbar and product view. I also got feedback from peers on improvements I could make. These insights from others was very
-   crucial, some critiques were small layout spacing or coloring issues but some mentioned of entire sections feeling wrong. Going back and taking the time to make
-   changes ended with a much better final project. 
+   Many times, designs for the landing and product catalog view would change due to incomplete planning in the UI/UX designs I created. This ended up delaying me significantly in
+   finishing the project. I went back and redesigned parts of the landing page, catalog page, navbar, and product view. I alsoreceived feedback from peers on improvements I could make.
+   These insights from others were very crucial; some critiques were about small layout spacing or coloring issues, but others mentioned entire sections feeling wrong. Going back and
+   taking the time to make changes resulted in a much better final project. 
 
 
