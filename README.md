@@ -1,6 +1,6 @@
 # Fakeyys : Modern Frontend Ecommerce
  A sleak and stylish frontend eccomerce design combining framer-motion and React
-##### Note: Application is hosted on heroku, please give the application a few extra seconds to spin up from non-activity mode.
+##### Note: Application is hosted on netlify, please excuse the slow image load.
 
 #### View Fakeyys Site : [Website Link](https://fakeyys.netlify.app)
 
