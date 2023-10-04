@@ -4,7 +4,7 @@
 
 #### View Fakeyys Site : [Website Link](https://fakeyys.netlify.app)
 
-#### View Figma Design : ???
+#### View Figma Design : [Figma Link](https://www.figma.com/file/xn0A7RlTcSH5V7nWsVN9AB/fakeyys-mocup?type=design&node-id=0%3A1&mode=design&t=o3Fo5V4yV2A7B9mU-1)
 
 <br />
 
